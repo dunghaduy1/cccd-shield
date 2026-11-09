@@ -11,20 +11,21 @@
   <meta name="keywords" content="che cccd, che mờ cccd, đóng dấu cccd, watermark cccd, bảo vệ căn cước công dân, che mã qr cccd, chống vay tiền cccd">
   <meta name="author" content="CCCD Shield">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://cccdshield.com/">
+  <link rel="canonical" href="https://cccd-shield.pages.dev/">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://cccdshield.com/">
+  <meta property="og:url" content="https://cccd-shield.pages.dev/">
   <meta property="og:title" content="CCCD Shield - Che mờ & Đóng dấu căn cước an toàn">
   <meta property="og:description" content="Tự bảo vệ thông tin CCCD trước khi gửi qua mạng. 100% Client-Side, ngắt mạng vẫn chạy bình thường.">
-  <meta property="og:image" content="https://cccdshield.com/og-image.png">
+  <meta property="og:image" content="https://cccd-shield.pages.dev/og-image.png">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://cccdshield.com/">
+  <meta property="twitter:url" content="https://cccd-shield.pages.dev/">
   <meta property="twitter:title" content="CCCD Shield - Che mờ & Đóng dấu căn cước an toàn">
   <meta property="twitter:description" content="Che số định danh, đóng dấu watermark chống vay tiền app online. Xử lý 100% trên thiết bị.">
+  <meta property="twitter:image" content="https://cccd-shield.pages.dev/og-image.png">
 
   <!-- Favicon SVG -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2322c55e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/><path d='m9 12 2 2 4-4'/></svg>">
@@ -78,7 +79,7 @@
       {
         "@type": "WebApplication",
         "name": "CCCD Shield",
-        "url": "https://cccdshield.com",
+        "url": "https://cccd-shield.pages.dev",
         "description": "Công cụ che mờ và đóng dấu watermark chống lộ thông tin căn cước công dân trực tiếp trên trình duyệt, không gửi dữ liệu ra máy chủ.",
         "applicationCategory": "SecurityApplication",
         "operatingSystem": "All",
@@ -932,6 +933,7 @@
 
       function handlePointerDown(e) {
         if (!img) return;
+        if (e.cancelable) e.preventDefault();
         const coords = getCanvasCoordinates(e);
 
         // Check if user clicked/tapped inside an existing box to select it
