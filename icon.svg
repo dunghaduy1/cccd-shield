@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1120"/>
+      <stop offset="100%" stop-color="#162e4c"/>
+    </linearGradient>
+    <linearGradient id="shieldGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1e3a5f"/>
+      <stop offset="100%" stop-color="#22c55e"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="15" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Rounded Background -->
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+
+  <!-- Outer Ring Accent -->
+  <rect x="16" y="16" width="480" height="480" rx="96" fill="none" stroke="#22c55e" stroke-width="6" stroke-opacity="0.3"/>
+
+  <!-- Glow behind shield -->
+  <circle cx="256" cy="256" r="140" fill="#22c55e" opacity="0.18" filter="url(#glow)"/>
+
+  <!-- Shield Base -->
+  <path d="M256 420s130-65 130-170V120l-130-45-130 45v130c0 105 130 170 130 170z" fill="url(#shieldGrad)"/>
+
+  <!-- Shield Inner Border -->
+  <path d="M256 400s115-58 115-155V135l-115-40-115 40v110c0 97 115 155 115 155z" fill="none" stroke="#ffffff" stroke-width="8" stroke-opacity="0.4"/>
+
+  <!-- Checkmark -->
+  <path d="m205 250 36 36 72-72" fill="none" stroke="#ffffff" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

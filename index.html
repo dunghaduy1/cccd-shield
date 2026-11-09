@@ -30,6 +30,14 @@
   <!-- Google Search Console Verification -->
   <meta name="google-site-verification" content="5785e46a70927cd6" />
 
+  <!-- Progressive Web App (PWA) -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1e3a5f">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="CCCD Shield">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
   <!-- Favicon SVG -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2322c55e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/><path d='m9 12 2 2 4-4'/></svg>">
 
@@ -176,6 +184,10 @@
 
       <!-- Quick Nav & Share -->
       <div class="flex items-center gap-2">
+        <button id="btnInstallApp" type="button" class="hidden px-3 py-2 text-xs font-bold rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 transition flex items-center gap-1.5 shadow-lg shadow-emerald-500/20 cursor-pointer" title="Cài đặt CCCD Shield vào máy">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span>Cài app</span>
+        </button>
         <button id="btnShare" type="button" class="px-3 py-2 text-xs font-semibold rounded-lg bg-dark-card hover:bg-slate-800 text-slate-200 border border-dark-border transition flex items-center gap-1.5 cursor-pointer">
           <svg class="w-4 h-4 text-accent-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
           <span class="hidden sm:inline">Chia sẻ</span>
@@ -1217,6 +1229,44 @@
       window.addEventListener('online', updateNetworkStatus);
       window.addEventListener('offline', updateNetworkStatus);
       updateNetworkStatus();
+
+      // Register Service Worker for PWA Offline functionality
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').then((reg) => {
+            console.log('CCCD Shield Service Worker registered:', reg.scope);
+          }).catch((err) => {
+            console.warn('Service Worker registration failed:', err);
+          });
+        });
+      }
+
+      // Handle PWA Install Prompt
+      let deferredInstallPrompt = null;
+      const btnInstallApp = document.getElementById('btnInstallApp');
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredInstallPrompt = e;
+        if (btnInstallApp) btnInstallApp.classList.remove('hidden');
+      });
+
+      if (btnInstallApp) {
+        btnInstallApp.addEventListener('click', async () => {
+          if (!deferredInstallPrompt) return;
+          deferredInstallPrompt.prompt();
+          const { outcome } = await deferredInstallPrompt.userChoice;
+          if (outcome === 'accepted') {
+            showToast('Cảm ơn bạn đã cài đặt CCCD Shield!', 'success');
+          }
+          deferredInstallPrompt = null;
+          btnInstallApp.classList.add('hidden');
+        });
+      }
+
+      window.addEventListener('appinstalled', () => {
+        if (btnInstallApp) btnInstallApp.classList.add('hidden');
+        showToast('CCCD Shield đã được cài đặt thành công!', 'success');
+      });
 
     })();
   </script>
