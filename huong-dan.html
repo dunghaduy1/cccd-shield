@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hướng dẫn che và đóng dấu CCCD an toàn - CCCD Shield</title>
+  <meta name="description" content="Hướng dẫn chi tiết các vùng cần che mờ trên thẻ CCCD gắn chip và cách đóng dấu watermark chéo đúng chuẩn, chống bị kẻ gian vay nợ và mở tài khoản rác.">
+  <link rel="canonical" href="https://cccdshield.com/huong-dan.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+          colors: {
+            brand: { 500: '#1e3a5f', 600: '#162e4c' },
+            accent: { 400: '#4ade80', 500: '#22c55e', 600: '#16a34a' },
+            dark: { bg: '#0b1120', card: '#131d31', border: '#1e293b', muted: '#94a3b8' }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-dark-bg text-slate-100 font-sans antialiased min-h-screen flex flex-col">
+
+  <header class="border-b border-dark-border bg-dark-bg/90 sticky top-0 z-50 backdrop-blur-md">
+    <div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-500 to-accent-500 flex items-center justify-center text-white">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+        </div>
+        <span class="text-lg font-bold text-white">CCCD Shield</span>
+      </a>
+      <a href="index.html" class="text-xs font-semibold px-3.5 py-2 rounded-xl bg-accent-500 hover:bg-accent-400 text-slate-950 font-bold transition shadow-lg shadow-accent-500/20">
+        Vào công cụ che CCCD ngay
+      </a>
+    </div>
+  </header>
+
+  <main class="flex-grow py-12 px-4 sm:px-6">
+    <article class="max-w-3xl mx-auto bg-dark-card border border-dark-border rounded-2xl p-6 sm:p-10 text-slate-300 leading-relaxed text-sm space-y-8">
+
+      <div class="border-b border-dark-border pb-6">
+        <span class="text-xs font-bold text-accent-400 uppercase tracking-wider">Cẩm nang an toàn số</span>
+        <h1 class="text-2xl sm:text-4xl font-extrabold text-white mt-2 leading-tight">
+          Hướng dẫn bảo vệ căn cước công dân (CCCD) khi chia sẻ qua mạng
+        </h1>
+        <p class="text-xs text-dark-muted mt-2">Được tư vấn theo khuyến nghị của chuyên gia an ninh mạng & Nghị định 13/2023/NĐ-CP</p>
+      </div>
+
+      <!-- Phần 1 -->
+      <section class="space-y-4">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-accent-500"></span>
+          1. Nên che những vùng nào trên thẻ CCCD gắn chip?
+        </h2>
+        <p>
+          Khi gửi ảnh CCCD để thuê trọ, thuê xe hoặc giao dịch mua bán, bên nhận thường chỉ cần xác nhận danh tính người thật (họ tên, năm sinh, ảnh chân dung). Kẻ xấu sẽ khai thác các thông tin còn lại để trục lợi. Vì vậy:
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+          <div class="p-4 rounded-xl bg-slate-900 border border-emerald-500/30">
+            <h3 class="font-bold text-emerald-400 text-sm mb-2 flex items-center gap-1.5">
+              <span>✓</span> THÔNG TIN NÊN GIỮ LẠI:
+            </h3>
+            <ul class="text-xs space-y-1.5 text-slate-300">
+              <li>• Họ và tên đầy đủ</li>
+              <li>• Ngày, tháng, năm sinh</li>
+              <li>• Ảnh chân dung</li>
+              <li>• Giới tính, Quốc tịch</li>
+            </ul>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-900 border border-red-500/30">
+            <h3 class="font-bold text-red-400 text-sm mb-2 flex items-center gap-1.5">
+              <span>✕</span> THÔNG TIN NÊN CHE MỜ / BỎ:
+            </h3>
+            <ul class="text-xs space-y-1.5 text-slate-300">
+              <li>• <strong>4 - 6 số giữa của số CCCD</strong> (chỉ để lại 3 số đầu và 3 số cuối)</li>
+              <li>• <strong>Mã QR code</strong> ở góc trên bên phải (chứa đầy đủ dữ liệu cá nhân)</li>
+              <li>• <strong>Chip điện tử</strong> ở mặt sau</li>
+              <li>• <strong>Dãy ký tự MRZ</strong> (3 dòng chữ số dưới cùng mặt sau)</li>
+              <li>• Đặc điểm nhận dạng / Vân tay</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Phần 2 -->
+      <section class="space-y-4">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-accent-500"></span>
+          2. Công thức đóng dấu Watermark chống bị lợi dụng
+        </h2>
+        <p>
+          Một dòng watermark chéo chuẩn cần đáp ứng 3 yếu tố:
+        </p>
+        <div class="p-4 rounded-xl bg-slate-900 border border-slate-700 font-mono text-xs text-accent-400 space-y-1">
+          <p class="font-bold text-white">[MỤC ĐÍCH DUY NHẤT] + [NGÀY THỰC HIỆN] + [LỜI CẢNH BÁO TÍN DỤNG]</p>
+          <p class="text-slate-400">Ví dụ chuẩn: "CHỈ DÙNG ĐĂNG KÝ THUÊ XE NGÀY 09/11/2026 - KHÔNG CÓ GIÁ TRỊ VAY VỐN TÍN DỤNG"</p>
+        </div>
+        <p class="text-xs text-slate-400">
+          Khi có dòng chữ này đè chéo lên ảnh, các nhân viên thẩm định tín dụng của ngân hàng và công ty tài chính sẽ từ chối hồ sơ ngay lập tức vì phát hiện đây là ảnh bị giới hạn mục đích.
+        </p>
+      </section>
+
+      <!-- Phần 3 -->
+      <section class="space-y-4">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-accent-500"></span>
+          3. Quy trình 3 bước xử lý nhanh với CCCD Shield
+        </h2>
+        <ol class="list-decimal list-inside space-y-2 text-slate-300 text-xs">
+          <li><strong>Bước 1:</strong> Mở <a href="index.html" class="text-accent-400 underline">CCCD Shield</a>, kéo thả hoặc chọn ảnh từ máy / điện thoại (hoặc bấm <code>Ctrl + V</code> để dán ảnh chụp màn hình).</li>
+          <li><strong>Bước 2:</strong> Dùng chuột hoặc ngón tay kéo các ô hình chữ nhật che số định danh và mã QR. Chọn preset watermark phù hợp (Thuê xe, Thuê phòng, Đăng ký dịch vụ).</li>
+          <li><strong>Bước 3:</strong> Nhấn nút "Tải ảnh đã bảo vệ" và gửi cho bên yêu cầu.</li>
+        </ol>
+      </section>
+
+      <div class="pt-6 border-t border-dark-border text-center">
+        <a href="index.html" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-accent-500 hover:bg-accent-400 text-slate-950 font-extrabold text-sm transition shadow-xl shadow-accent-500/25">
+          <span>Thực hiện ngay trên CCCD Shield</span>
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+
+    </article>
+  </main>
+
+  <footer class="border-t border-dark-border bg-slate-950 py-6 text-xs text-slate-500 text-center">
+    <p>&copy; 2026 CCCD Shield. Công cụ bảo vệ quyền riêng tư số.</p>
+  </footer>
+</body>
+</html>

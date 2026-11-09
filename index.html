@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Primary Meta Tags -->
+  <title>CCCD Shield - Che mờ & Đóng dấu căn cước an toàn (100% Offline trên máy)</title>
+  <meta name="title" content="CCCD Shield - Che mờ & Đóng dấu căn cước an toàn (100% Offline trên máy)">
+  <meta name="description" content="Công cụ che số CCCD, mã QR, chip và đóng dấu watermark chống vay tín dụng đen, chống lừa đảo trực tuyến. Xử lý 100% trong RAM trình duyệt, không gửi ảnh lên máy chủ.">
+  <meta name="keywords" content="che cccd, che mờ cccd, đóng dấu cccd, watermark cccd, bảo vệ căn cước công dân, che mã qr cccd, chống vay tiền cccd">
+  <meta name="author" content="CCCD Shield">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://cccdshield.com/">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cccdshield.com/">
+  <meta property="og:title" content="CCCD Shield - Che mờ & Đóng dấu căn cước an toàn">
+  <meta property="og:description" content="Tự bảo vệ thông tin CCCD trước khi gửi qua mạng. 100% Client-Side, ngắt mạng vẫn chạy bình thường.">
+  <meta property="og:image" content="https://cccdshield.com/og-image.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://cccdshield.com/">
+  <meta property="twitter:title" content="CCCD Shield - Che mờ & Đóng dấu căn cước an toàn">
+  <meta property="twitter:description" content="Che số định danh, đóng dấu watermark chống vay tiền app online. Xử lý 100% trên thiết bị.">
+
+  <!-- Favicon SVG -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2322c55e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/><path d='m9 12 2 2 4-4'/></svg>">
+
+  <!-- Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#f0f7ff',
+              100: '#e0effe',
+              500: '#1e3a5f',
+              600: '#162e4c',
+              700: '#0f1f33',
+            },
+            accent: {
+              400: '#4ade80',
+              500: '#22c55e',
+              600: '#16a34a',
+            },
+            dark: {
+              bg: '#0b1120',
+              card: '#131d31',
+              border: '#1e293b',
+              muted: '#94a3b8',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Schema.org JSON-LD (WebApplication & FAQPage) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "CCCD Shield",
+        "url": "https://cccdshield.com",
+        "description": "Công cụ che mờ và đóng dấu watermark chống lộ thông tin căn cước công dân trực tiếp trên trình duyệt, không gửi dữ liệu ra máy chủ.",
+        "applicationCategory": "SecurityApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "VND"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Công cụ này có lưu trữ hoặc gửi ảnh CCCD của tôi lên máy chủ không?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tuyệt đối không. Toàn bộ thao tác xử lý trong RAM thiết bị bằng HTML5 Canvas API. Bạn có thể bật chế độ máy bay, web vẫn chạy bình thường và xuất ảnh bình thường."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Tại sao phải đóng dấu watermark đè chéo lên ảnh CCCD?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Dòng watermark ghi rõ mục đích sử dụng (thuê xe, thuê nhà) và ngày tháng giúp vô hiệu hóa khả năng kẻ gian dùng ảnh để đăng ký sim rác hoặc vay tiền online."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Nên che những vùng nào trên thẻ CCCD gắn chip?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Nên che 4 đến 6 số giữa của số CCCD, mã QR ở mặt trước, chip điện tử và 3 dòng mã MRZ ở mặt sau. Giữ lại họ tên, ngày sinh và ảnh chân dung."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #0b1120; }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #334155; }
+    .canvas-bg {
+      background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.5px, transparent 0);
+      background-size: 18px 18px;
+      background-position: -19px -19px;
+    }
+    canvas {
+      touch-action: none; /* Crucial for smooth touch drag on mobile */
+    }
+  </style>
+</head>
+<body class="bg-dark-bg text-slate-100 font-sans antialiased min-h-screen flex flex-col selection:bg-accent-500 selection:text-dark-bg">
+
+  <!-- ACCESSIBLE TOAST NOTIFICATIONS -->
+  <div id="toastContainer" class="fixed top-5 right-5 z-[100] flex flex-col gap-2 pointer-events-none" role="status" aria-live="polite"></div>
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-dark-bg/85 border-b border-dark-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-500 to-accent-500 flex items-center justify-center text-white shadow-lg shadow-accent-500/20 group-hover:scale-105 transition-transform duration-200">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="m9 12 2 2 4-4"/>
+          </svg>
+        </div>
+        <div>
+          <span class="text-lg font-bold tracking-tight text-white flex items-center gap-1.5">
+            CCCD Shield
+            <span class="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-accent-500/20 text-accent-400 border border-accent-500/30">Offline</span>
+          </span>
+          <p class="text-[11px] text-dark-muted hidden sm:block">Bảo vệ căn cước & quyền riêng tư số</p>
+        </div>
+      </a>
+
+      <!-- Realtime Offline/Online Trust Indicator -->
+      <div id="networkStatusBadge" class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/90 border border-dark-border text-xs">
+        <span id="networkDot" class="w-2 h-2 rounded-full bg-accent-500 animate-pulse"></span>
+        <span id="networkText" class="font-medium text-slate-200">100% Cục bộ trong máy</span>
+        <span class="text-slate-600">|</span>
+        <span class="text-slate-400">0 byte tải lên</span>
+      </div>
+
+      <!-- Quick Nav & Share -->
+      <div class="flex items-center gap-2">
+        <button id="btnShare" type="button" class="px-3 py-2 text-xs font-semibold rounded-lg bg-dark-card hover:bg-slate-800 text-slate-200 border border-dark-border transition flex items-center gap-1.5 cursor-pointer">
+          <svg class="w-4 h-4 text-accent-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          <span class="hidden sm:inline">Chia sẻ</span>
+        </button>
+        <a href="huong-dan.html" class="px-3 py-2 text-xs font-semibold rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-dark-border transition">
+          Cẩm nang an toàn
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="flex-grow">
+
+    <!-- HERO SECTION (Trust & Conversion Centric) -->
+    <section class="pt-8 pb-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/10 border border-brand-500/30 text-accent-400 text-xs font-semibold mb-3">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Tuân thủ Nghị định 13/2023/NĐ-CP về Bảo vệ dữ liệu cá nhân
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight max-w-4xl mx-auto">
+        Che mờ & Đóng dấu căn cước <br class="hidden sm:block" />
+        <span class="bg-gradient-to-r from-blue-400 via-sky-300 to-accent-400 bg-clip-text text-transparent">Chống lừa đảo, cấm vay tiền</span>
+      </h1>
+
+      <p class="mt-3 text-xs sm:text-sm text-dark-muted max-w-2xl mx-auto leading-relaxed">
+        Che số CCCD, mã QR, chip và chèn watermark chéo giới hạn mục đích (thuê trọ, thuê xe, mở sim).
+        Toàn bộ thao tác chạy 100% trên trình duyệt của bạn — ngắt internet vẫn chạy.
+      </p>
+
+      <!-- Key Value Badges -->
+      <div class="mt-4 flex flex-wrap items-center justify-center gap-3 text-[11px] font-medium text-slate-400">
+        <span class="flex items-center gap-1.5 bg-slate-900/60 px-2.5 py-1 rounded-md border border-slate-800">
+          <svg class="w-3.5 h-3.5 text-accent-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          Không cần đăng ký
+        </span>
+        <span class="flex items-center gap-1.5 bg-slate-900/60 px-2.5 py-1 rounded-md border border-slate-800">
+          <svg class="w-3.5 h-3.5 text-accent-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          Hỗ trợ phím tắt dán ảnh (Ctrl+V)
+        </span>
+        <span class="flex items-center gap-1.5 bg-slate-900/60 px-2.5 py-1 rounded-md border border-slate-800">
+          <svg class="w-3.5 h-3.5 text-accent-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          Xuất ảnh HD chất lượng gốc
+        </span>
+      </div>
+    </section>
+
+    <!-- CORE WORKSPACE / CANVAS -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+      <div class="bg-dark-card border border-dark-border rounded-2xl shadow-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 min-h-[640px]">
+
+        <!-- LEFT: CANVAS WORKSPACE (8 Columns) -->
+        <div class="lg:col-span-8 flex flex-col border-b lg:border-b-0 lg:border-r border-dark-border bg-slate-950/60">
+
+          <!-- Workspace Header Toolbar -->
+          <div class="p-3 border-b border-dark-border bg-dark-card/90 flex flex-wrap items-center justify-between gap-2">
+
+            <!-- Masking Tool Modes -->
+            <div class="flex items-center gap-1 bg-slate-900/90 p-1 rounded-xl border border-dark-border">
+              <button id="toolBlur" type="button" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-brand-500 text-white flex items-center gap-1.5 transition cursor-pointer">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                Làm mờ (Blur)
+              </button>
+              <button id="toolSolid" type="button" class="px-3 py-1.5 text-xs font-semibold rounded-lg text-slate-300 hover:text-white flex items-center gap-1.5 transition cursor-pointer">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/></svg>
+                Che đen (Solid)
+              </button>
+            </div>
+
+            <!-- Actions: Replace image, Undo, Redo, Delete selected, Clear -->
+            <div class="flex items-center gap-1 text-xs">
+              <button id="btnReplaceImg" type="button" class="hidden px-2.5 py-1.5 text-slate-300 hover:text-white rounded-lg hover:bg-slate-800 transition cursor-pointer flex items-center gap-1">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7"/><line x1="16" y1="5" x2="22" y2="5"/><line x1="19" y1="2" x2="19" y2="8"/></svg>
+                <span>Đổi ảnh</span>
+              </button>
+
+              <button id="btnUndo" type="button" class="p-2 text-slate-300 hover:text-white rounded-lg hover:bg-slate-800 disabled:opacity-30 transition cursor-pointer" title="Hoàn tác (Ctrl+Z)">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7v6h6"/><path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13"/></svg>
+              </button>
+
+              <button id="btnRedo" type="button" class="p-2 text-slate-300 hover:text-white rounded-lg hover:bg-slate-800 disabled:opacity-30 transition cursor-pointer" title="Làm lại (Ctrl+Y)">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 7v6h-6"/><path d="M3 17a9 9 0 0 1 9-9 9 9 0 0 1 6 2.3L21 13"/></svg>
+              </button>
+
+              <button id="btnDeleteSelected" type="button" class="hidden px-2 py-1.5 text-amber-400 hover:text-amber-300 hover:bg-amber-950/30 rounded-lg transition cursor-pointer" title="Xóa vùng đang chọn (Delete)">
+                Xóa vùng chọn
+              </button>
+
+              <button id="btnClear" type="button" class="px-2.5 py-1.5 text-red-400 hover:text-red-300 hover:bg-red-950/30 rounded-lg transition cursor-pointer" title="Xóa tất cả vùng che">
+                Xóa hết vùng
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Interactive Stage Area -->
+          <div class="flex-grow flex items-center justify-center p-4 relative canvas-bg overflow-auto min-h-[440px]" id="stageContainer">
+
+            <!-- Hidden File Input & Camera Input -->
+            <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp" class="hidden">
+            <input type="file" id="cameraInput" accept="image/*" capture="environment" class="hidden">
+
+            <!-- Empty State / Dropzone -->
+            <div id="dropZone" class="w-full max-w-lg p-8 border-2 border-dashed border-slate-700 hover:border-accent-500 rounded-2xl flex flex-col items-center justify-center text-center cursor-pointer transition group bg-slate-900/50">
+              <div class="w-16 h-16 rounded-2xl bg-brand-500/20 text-accent-400 flex items-center justify-center mb-4 group-hover:scale-110 transition duration-200">
+                <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+              </div>
+              <p class="text-base font-bold text-white mb-1">Chọn ảnh CCCD hoặc Kéo thả vào đây</p>
+              <p class="text-xs text-slate-400 mb-5">Hỗ trợ JPG, PNG, WEBP • Bạn cũng có thể bấm <strong>Ctrl + V</strong> để dán ảnh</p>
+
+              <div class="flex flex-wrap items-center justify-center gap-3">
+                <button type="button" id="btnBrowse" class="px-4 py-2.5 bg-accent-500 hover:bg-accent-400 text-slate-950 font-bold text-xs rounded-xl shadow-lg shadow-accent-500/20 transition flex items-center gap-2">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  Tải ảnh từ máy
+                </button>
+                <button type="button" id="btnCamera" class="px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs rounded-xl border border-slate-700 transition flex items-center gap-2">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+                  Chụp bằng camera
+                </button>
+              </div>
+
+              <!-- Quick Sample Test Image -->
+              <button id="btnLoadSample" type="button" class="mt-5 text-xs text-accent-400 hover:underline flex items-center gap-1">
+                <span>Dùng ảnh mẫu CCCD thử nghiệm ngay</span>
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+              </button>
+            </div>
+
+            <!-- Canvas Wrapper -->
+            <div id="canvasWrapper" class="hidden relative select-none flex items-center justify-center">
+              <canvas id="mainCanvas" class="max-w-full max-h-[560px] rounded-lg shadow-2xl cursor-crosshair border border-slate-700"></canvas>
+            </div>
+
+          </div>
+
+          <!-- Canvas Bottom Control Bar -->
+          <div class="p-2.5 px-4 bg-slate-900/80 border-t border-dark-border text-xs text-slate-400 flex flex-wrap items-center justify-between gap-2">
+            <span class="flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5 text-accent-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+              <span>Kéo chuột hoặc ngón tay để tạo ô che. Chạm vào ô để chọn và bấm Xóa.</span>
+            </span>
+            <span id="canvasStats" class="font-mono text-[11px] text-slate-400 bg-slate-950 px-2 py-0.5 rounded border border-slate-800">
+              0 vùng che
+            </span>
+          </div>
+
+        </div>
+
+        <!-- RIGHT: SETTINGS & WATERMARK & EXPORT (4 Columns) -->
+        <div class="lg:col-span-4 p-5 flex flex-col justify-between bg-dark-card space-y-6">
+
+          <div class="space-y-5">
+
+            <!-- Watermark Heading -->
+            <div class="flex items-center justify-between pb-3 border-b border-dark-border">
+              <h2 class="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                <svg class="w-4 h-4 text-accent-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Dấu Watermark Bảo Vệ
+              </h2>
+              <span class="text-[11px] text-accent-400 bg-accent-500/10 px-2 py-0.5 rounded font-mono">Bản quyền chìm</span>
+            </div>
+
+            <!-- Quick Presets -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-2">Chọn nhanh mục đích (kèm ngày hôm nay):</label>
+              <div class="grid grid-cols-2 gap-2 text-xs">
+                <button type="button" class="preset-btn p-2 rounded-lg bg-slate-900 border border-slate-700 hover:border-accent-500 text-left transition font-medium text-slate-200" data-preset="RENT_HOUSE">
+                  🏠 Thuê trọ / Nhà
+                </button>
+                <button type="button" class="preset-btn p-2 rounded-lg bg-slate-900 border border-slate-700 hover:border-accent-500 text-left transition font-medium text-slate-200" data-preset="RENT_CAR">
+                  🚗 Thuê xe tự lái
+                </button>
+                <button type="button" class="preset-btn p-2 rounded-lg bg-slate-900 border border-slate-700 hover:border-accent-500 text-left transition font-medium text-slate-200" data-preset="KYC">
+                  📱 Đăng ký sim / sàn
+                </button>
+                <button type="button" class="preset-btn p-2 rounded-lg bg-slate-900 border border-slate-700 hover:border-accent-500 text-left transition font-medium text-slate-200" data-preset="ANTI_LOAN">
+                  🚫 Chống vay vốn
+                </button>
+              </div>
+            </div>
+
+            <!-- Watermark Text Input -->
+            <div>
+              <label for="wmText" class="block text-xs font-semibold text-slate-300 mb-1.5">
+                Nội dung in chéo:
+              </label>
+              <textarea id="wmText" rows="3" class="w-full text-xs font-mono bg-slate-900 border border-slate-700 rounded-xl p-2.5 text-white focus:outline-none focus:border-accent-500 transition resize-none"></textarea>
+            </div>
+
+            <!-- Watermark Controls -->
+            <div class="space-y-3.5 bg-slate-900/60 p-3.5 rounded-xl border border-dark-border text-xs">
+
+              <!-- Pattern Style -->
+              <div class="flex items-center justify-between">
+                <span class="text-slate-400">Kiểu hiển thị:</span>
+                <div class="flex gap-1 bg-slate-950 p-1 rounded-lg border border-slate-800">
+                  <button id="patternGrid" type="button" class="px-2 py-1 rounded bg-brand-500 text-white font-medium text-[11px]">Vắt chéo lặp lại</button>
+                  <button id="patternSingle" type="button" class="px-2 py-1 rounded text-slate-400 hover:text-white font-medium text-[11px]">1 dòng trung tâm</button>
+                </div>
+              </div>
+
+              <!-- Opacity Slider -->
+              <div>
+                <div class="flex justify-between text-slate-400 mb-1">
+                  <span>Độ mờ dấu (Opacity)</span>
+                  <span id="valOpacity" class="font-mono text-white">25%</span>
+                </div>
+                <input type="range" id="wmOpacity" min="10" max="80" value="25" class="w-full accent-accent-500 cursor-pointer">
+              </div>
+
+              <!-- Font Size Slider -->
+              <div>
+                <div class="flex justify-between text-slate-400 mb-1">
+                  <span>Cỡ chữ watermark</span>
+                  <span id="valSize" class="font-mono text-white">18px</span>
+                </div>
+                <input type="range" id="wmSize" min="12" max="36" value="18" class="w-full accent-accent-500 cursor-pointer">
+              </div>
+
+              <!-- Angle Slider -->
+              <div>
+                <div class="flex justify-between text-slate-400 mb-1">
+                  <span>Góc nghiêng</span>
+                  <span id="valAngle" class="font-mono text-white">-25°</span>
+                </div>
+                <input type="range" id="wmAngle" min="-60" max="60" value="-25" class="w-full accent-accent-500 cursor-pointer">
+              </div>
+
+              <!-- Color Palette -->
+              <div class="flex items-center justify-between pt-1 border-t border-slate-800">
+                <span class="text-slate-400 font-medium">Màu sắc:</span>
+                <div class="flex items-center gap-2">
+                  <button type="button" class="color-btn w-6 h-6 rounded-full bg-red-500 ring-2 ring-white transition" data-color="rgba(239, 68, 68," title="Đỏ cảnh báo"></button>
+                  <button type="button" class="color-btn w-6 h-6 rounded-full bg-blue-500 ring-0 ring-white transition" data-color="rgba(59, 130, 246," title="Xanh dương"></button>
+                  <button type="button" class="color-btn w-6 h-6 rounded-full bg-slate-300 ring-0 ring-white transition" data-color="rgba(203, 213, 225," title="Xám nhạt"></button>
+                  <button type="button" class="color-btn w-6 h-6 rounded-full bg-amber-400 ring-0 ring-white transition" data-color="rgba(251, 191, 36," title="Vàng hổ phách"></button>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Export Area -->
+          <div class="pt-4 border-t border-dark-border space-y-2.5">
+            <button id="btnDownload" disabled class="w-full py-3.5 px-4 bg-accent-500 hover:bg-accent-400 disabled:opacity-35 disabled:hover:bg-accent-500 text-slate-950 font-extrabold text-sm rounded-xl shadow-lg shadow-accent-500/25 flex items-center justify-center gap-2 transition duration-200 cursor-pointer">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span>Tải ảnh đã bảo vệ (PNG HD)</span>
+            </button>
+
+            <button id="btnCopyImage" disabled class="w-full py-2.5 px-4 bg-slate-800 hover:bg-slate-700 disabled:opacity-35 disabled:hover:bg-slate-800 text-slate-200 font-semibold text-xs rounded-xl border border-slate-700 flex items-center justify-center gap-2 transition cursor-pointer">
+              <svg class="w-4 h-4 text-accent-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+              <span>Sao chép ảnh vào bộ nhớ tạm (Copy)</span>
+            </button>
+
+            <p class="text-[11px] text-center text-slate-500">
+              Xuất ảnh chất lượng gốc. Hoàn toàn không gắn logo quảng cáo của bên thứ ba.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- AD BANNER SPACE (Responsive & Clean) -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+      <div class="w-full p-4 rounded-xl border border-dashed border-slate-800 bg-slate-900/40 text-center text-xs text-slate-500 flex flex-col items-center justify-center min-h-[90px]">
+        <span>Quảng cáo hỗ trợ chi phí duy trì máy chủ tĩnh (Google AdSense Responsive)</span>
+      </div>
+    </section>
+
+    <!-- TRUST & WHY SECTION -->
+    <section class="bg-slate-950 py-16 border-t border-dark-border" id="huong-dan">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white">
+            Tại sao tuyệt đối không nên gửi ảnh CCCD nguyên bản?
+          </h2>
+          <p class="mt-2 text-sm text-dark-muted">
+            Chỉ với một bức ảnh CCCD hai mặt rõ nét, kẻ gian có thể gây ra những hậu quả tài chính và pháp lý nghiêm trọng:
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="p-6 rounded-2xl bg-dark-card border border-dark-border hover:border-slate-700 transition">
+            <div class="w-12 h-12 rounded-xl bg-red-500/10 text-red-400 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+            </div>
+            <h3 class="text-base font-bold text-white mb-2">Đăng ký vay tín dụng đen</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Nhiều app vay tiền online giải ngân nhanh chỉ cần ảnh chụp CMND/CCCD. Bạn có thể vô tình gánh khoản nợ hàng chục triệu đồng và bị các đối tượng quấy rối, đe dọa.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-dark-card border border-dark-border hover:border-slate-700 transition">
+            <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3 class="text-base font-bold text-white mb-2">Mở tài khoản ngân hàng rác</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Kẻ lừa đảo mở tài khoản mạo danh để nhận tiền chiếm đoạt từ các vụ án online, đẩy bạn vào nguy cơ bị cơ quan điều tra triệu tập và phong tỏa tài khoản chính.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-dark-card border border-dark-border hover:border-slate-700 transition">
+            <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3 class="text-base font-bold text-white mb-2">Đăng ký sim rác viễn thông</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Số định danh cá nhân bị lợi dụng kích hoạt sim rác phục vụ phát tán tin nhắn lừa đảo, cuộc gọi giả mạo cơ quan thuế hoặc đe dọa tống tiền.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FAQ SECTION (Rich Snippets) -->
+    <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Câu hỏi thường gặp (FAQ)</h2>
+        <p class="mt-2 text-xs text-dark-muted">Giải đáp chi tiết về tính bảo mật và tính pháp lý của ảnh đã đóng dấu</p>
+      </div>
+
+      <div class="space-y-4">
+        <details class="group bg-dark-card border border-dark-border rounded-xl p-4 [&_summary::-webkit-details-marker]:hidden" open>
+          <summary class="flex items-center justify-between cursor-pointer font-bold text-sm text-white">
+            <span>Website có lưu trữ hoặc gửi ảnh căn cước của tôi lên máy chủ không?</span>
+            <span class="transition group-open:rotate-180">
+              <svg class="w-4 h-4 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </summary>
+          <p class="mt-3 text-xs text-slate-400 leading-relaxed">
+            Tuyệt đối không. Toàn bộ mã nguồn chạy 100% trong RAM của trình duyệt thông qua công nghệ HTML5 Canvas API. Bạn có thể bật chế độ máy bay (ngắt Wi-Fi/4G), ứng dụng vẫn xử lý và xuất ảnh bình thường. Không một byte dữ liệu nào rời khỏi thiết bị của bạn.
+          </p>
+        </details>
+
+        <details class="group bg-dark-card border border-dark-border rounded-xl p-4 [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex items-center justify-between cursor-pointer font-bold text-sm text-white">
+            <span>Đóng dấu chéo có làm ảnh bị từ chối khi làm thủ tục không?</span>
+            <span class="transition group-open:rotate-180">
+              <svg class="w-4 h-4 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </summary>
+          <p class="mt-3 text-xs text-slate-400 leading-relaxed">
+            Khi thuê trọ, thuê xe, đặt phòng khách sạn, giao dịch mua bán online dân sự: hoàn toàn hợp lệ và được các bên hoan nghênh vì họ chỉ cần đối chiếu họ tên, ảnh chân dung và ngày sinh. Chỉ khi làm thủ tục hành chính công cấp hộ chiếu hoặc định danh ngân hàng chính ngạch (eKYC tự động) mới cần ảnh gốc.
+          </p>
+        </details>
+
+        <details class="group bg-dark-card border border-dark-border rounded-xl p-4 [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex items-center justify-between cursor-pointer font-bold text-sm text-white">
+            <span>Tôi nên che những vùng nào trên thẻ căn cước?</span>
+            <span class="transition group-open:rotate-180">
+              <svg class="w-4 h-4 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </summary>
+          <p class="mt-3 text-xs text-slate-400 leading-relaxed">
+            Nên che 4 đến 6 chữ số giữa của dãy số CCCD, che vùng mã QR ở góc trên mặt trước, và che vùng chip điện tử cùng 3 dòng mã MRZ ở mặt sau. Giữ lại họ tên, ngày sinh và ảnh đại diện.
+          </p>
+        </details>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-dark-border bg-slate-950 py-8 text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <span class="font-bold text-white">CCCD Shield</span>
+        <span>&copy; 2026. Công cụ bảo vệ quyền riêng tư số. Xử lý 100% Client-side.</span>
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="huong-dan.html" class="hover:text-slate-300 transition">Hướng dẫn an toàn</a>
+        <a href="chinh-sach-bao-mat.html" class="hover:text-slate-300 transition">Chính sách bảo mật</a>
+        <a href="dieu-khoan.html" class="hover:text-slate-300 transition">Điều khoản sử dụng</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CORE INTERACTIVE ENGINE -->
+  <script>
+    (() => {
+      // DOM Elements
+      const dropZone = document.getElementById('dropZone');
+      const fileInput = document.getElementById('fileInput');
+      const cameraInput = document.getElementById('cameraInput');
+      const btnBrowse = document.getElementById('btnBrowse');
+      const btnCamera = document.getElementById('btnCamera');
+      const btnLoadSample = document.getElementById('btnLoadSample');
+      const btnReplaceImg = document.getElementById('btnReplaceImg');
+
+      const canvasWrapper = document.getElementById('canvasWrapper');
+      const canvas = document.getElementById('mainCanvas');
+      const ctx = canvas.getContext('2d');
+
+      const toolBlur = document.getElementById('toolBlur');
+      const toolSolid = document.getElementById('toolSolid');
+      const btnUndo = document.getElementById('btnUndo');
+      const btnRedo = document.getElementById('btnRedo');
+      const btnDeleteSelected = document.getElementById('btnDeleteSelected');
+      const btnClear = document.getElementById('btnClear');
+      const canvasStats = document.getElementById('canvasStats');
+
+      const wmText = document.getElementById('wmText');
+      const wmOpacity = document.getElementById('wmOpacity');
+      const wmSize = document.getElementById('wmSize');
+      const wmAngle = document.getElementById('wmAngle');
+      const valOpacity = document.getElementById('valOpacity');
+      const valSize = document.getElementById('valSize');
+      const valAngle = document.getElementById('valAngle');
+      const patternGrid = document.getElementById('patternGrid');
+      const patternSingle = document.getElementById('patternSingle');
+
+      const btnDownload = document.getElementById('btnDownload');
+      const btnCopyImage = document.getElementById('btnCopyImage');
+      const btnShare = document.getElementById('btnShare');
+      const toastContainer = document.getElementById('toastContainer');
+
+      // State Management
+      let img = null;
+      let maskBoxes = []; // Array of {x, y, w, h, mode: 'blur'|'solid'}
+      let historyStack = []; // History for undo
+      let redoStack = []; // Stack for redo
+      let selectedBoxIndex = -1;
+      let currentMode = 'blur';
+      let currentColor = 'rgba(239, 68, 68,'; // Red
+      let isGridPattern = true;
+
+      // Pointer / Touch Drawing State
+      let isDrawing = false;
+      let startX = 0, startY = 0;
+
+      // Toast Notification Helper
+      function showToast(message, type = 'info') {
+        const toast = document.createElement('div');
+        const bg = type === 'success' ? 'bg-emerald-600' : (type === 'error' ? 'bg-red-600' : 'bg-slate-800');
+        toast.className = `${bg} text-white text-xs font-semibold px-4 py-2.5 rounded-xl shadow-xl flex items-center gap-2 transform transition-all duration-300 translate-y-2 opacity-0 pointer-events-auto border border-white/10`;
+        toast.innerHTML = `
+          <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            ${type === 'success' ? '<polyline points="20 6 9 17 4 12"/>' : '<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>'}
+          </svg>
+          <span>${message}</span>
+        `;
+        toastContainer.appendChild(toast);
+        requestAnimationFrame(() => {
+          toast.classList.remove('translate-y-2', 'opacity-0');
+        });
+        setTimeout(() => {
+          toast.classList.add('opacity-0', 'translate-y-2');
+          setTimeout(() => toast.remove(), 300);
+        }, 3000);
+      }
+
+      // Presets
+      const today = new Date().toLocaleDateString('vi-VN');
+      const presets = {
+        RENT_HOUSE: `CHỈ DÙNG THỦ TỤC THUÊ NHÀ NGÀY ${today} - KHÔNG DÙNG MỤC ĐÍCH KHÁC`,
+        RENT_CAR: `BẢN XÁC THỰC THUÊ XE NGÀY ${today} - KHÔNG CÓ GIÁ TRỊ VAY VỐN / MỞ THẺ`,
+        KYC: `CHỈ DÙNG ĐĂNG KÝ DỊCH VỤ NGÀY ${today} - CẤM SAO CHÉP DƯỚI MỌI HÌNH THỨC`,
+        ANTI_LOAN: `CẢNH BÁO: HÌNH ẢNH NÀY TUYỆT ĐỐI KHÔNG CÓ GIÁ TRỊ VAY TÍN DỤNG`
+      };
+      wmText.value = presets.RENT_CAR;
+
+      // File Pickers
+      btnBrowse.addEventListener('click', (e) => {
+        e.stopPropagation();
+        fileInput.click();
+      });
+      btnCamera.addEventListener('click', (e) => {
+        e.stopPropagation();
+        cameraInput.click();
+      });
+      btnReplaceImg.addEventListener('click', () => fileInput.click());
+
+      fileInput.addEventListener('change', (e) => {
+        if (e.target.files && e.target.files[0]) loadFile(e.target.files[0]);
+      });
+      cameraInput.addEventListener('change', (e) => {
+        if (e.target.files && e.target.files[0]) loadFile(e.target.files[0]);
+      });
+
+      // Drag and Drop
+      dropZone.addEventListener('click', () => fileInput.click());
+      dropZone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropZone.classList.add('border-accent-500', 'bg-slate-900/80');
+      });
+      dropZone.addEventListener('dragleave', () => {
+        dropZone.classList.remove('border-accent-500', 'bg-slate-900/80');
+      });
+      dropZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropZone.classList.remove('border-accent-500', 'bg-slate-900/80');
+        if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+          loadFile(e.dataTransfer.files[0]);
+        }
+      });
+
+      // Paste from Clipboard (Ctrl+V)
+      window.addEventListener('paste', (e) => {
+        const items = (e.clipboardData || e.originalEvent.clipboardData).items;
+        for (let item of items) {
+          if (item.type.indexOf('image') === 0) {
+            const blob = item.getAsFile();
+            loadFile(blob);
+            showToast('Đã nhận ảnh từ bộ nhớ tạm (Clipboard)!', 'success');
+            break;
+          }
+        }
+      });
+
+      function loadFile(file) {
+        if (!file.type.match('image.*')) {
+          showToast('Vui lòng chọn file hình ảnh (JPG, PNG, WEBP)!', 'error');
+          return;
+        }
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          img = new Image();
+          img.onload = () => {
+            initCanvas();
+            showToast('Đã tải ảnh lên thành công!', 'success');
+          };
+          img.src = event.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+
+      // Sample Mock Identity Card Generator
+      btnLoadSample.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const sampleCanvas = document.createElement('canvas');
+        sampleCanvas.width = 1000;
+        sampleCanvas.height = 630;
+        const sctx = sampleCanvas.getContext('2d');
+
+        // Background ID card gradient
+        sctx.fillStyle = '#0f172a';
+        sctx.fillRect(0, 0, 1000, 630);
+
+        const grad = sctx.createLinearGradient(0, 0, 1000, 630);
+        grad.addColorStop(0, '#132845');
+        grad.addColorStop(1, '#1b3f6b');
+        sctx.fillStyle = grad;
+        sctx.roundRect(25, 25, 950, 580, 24);
+        sctx.fill();
+        sctx.lineWidth = 2;
+        sctx.strokeStyle = '#38bdf8';
+        sctx.stroke();
+
+        // National Header
+        sctx.fillStyle = '#f8fafc';
+        sctx.font = 'bold 22px "Plus Jakarta Sans", sans-serif';
+        sctx.textAlign = 'center';
+        sctx.fillText('CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM', 500, 75);
+        sctx.font = '16px "Plus Jakarta Sans", sans-serif';
+        sctx.fillText('Độc lập - Tự do - Hạnh phúc', 500, 105);
+
+        sctx.fillStyle = '#fbbf24';
+        sctx.font = '800 24px "Plus Jakarta Sans", sans-serif';
+        sctx.fillText('CĂN CƯỚC CÔNG DÂN', 500, 155);
+
+        // Details
+        sctx.textAlign = 'left';
+        sctx.fillStyle = '#94a3b8';
+        sctx.font = 'bold 15px "Plus Jakarta Sans", sans-serif';
+        sctx.fillText('Số / No:', 320, 215);
+        sctx.fillStyle = '#ef4444';
+        sctx.font = 'bold 24px "JetBrains Mono", monospace';
+        sctx.fillText('001098012345', 430, 217);
+
+        sctx.fillStyle = '#94a3b8';
+        sctx.font = '15px "Plus Jakarta Sans", sans-serif';
+        sctx.fillText('Họ và tên:', 320, 265);
+        sctx.fillStyle = '#ffffff';
+        sctx.font = 'bold 20px "Plus Jakarta Sans", sans-serif';
+        sctx.fillText('NGUYỄN VĂN A', 430, 265);
+
+        sctx.fillStyle = '#94a3b8';
+        sctx.fillText('Ngày sinh:', 320, 315);
+        sctx.fillStyle = '#ffffff';
+        sctx.fillText('15/08/1998', 430, 315);
+
+        sctx.fillStyle = '#94a3b8';
+        sctx.fillText('Quê quán:', 320, 365);
+        sctx.fillStyle = '#ffffff';
+        sctx.fillText('Hà Nội, Việt Nam', 430, 365);
+
+        // Portrait photo box
+        sctx.fillStyle = '#1e293b';
+        sctx.roundRect(70, 195, 200, 260, 12);
+        sctx.fill();
+        sctx.strokeStyle = '#475569';
+        sctx.stroke();
+        sctx.fillStyle = '#94a3b8';
+        sctx.font = '14px "Plus Jakarta Sans", sans-serif';
+        sctx.textAlign = 'center';
+        sctx.fillText('Ảnh chân dung', 170, 330);
+
+        // QR Code Box
+        sctx.fillStyle = '#ffffff';
+        sctx.roundRect(810, 60, 120, 120, 8);
+        sctx.fill();
+        sctx.fillStyle = '#0f172a';
+        sctx.font = 'bold 13px "Plus Jakarta Sans", sans-serif';
+        sctx.fillText('MÃ QR', 870, 125);
+
+        // Chip Box
+        sctx.fillStyle = '#eab308';
+        sctx.roundRect(70, 480, 70, 50, 6);
+        sctx.fill();
+        sctx.fillStyle = '#713f12';
+        sctx.font = 'bold 11px sans-serif';
+        sctx.fillText('CHIP', 105, 510);
+
+        img = new Image();
+        img.onload = () => {
+          initCanvas();
+          showToast('Đã tải ảnh mẫu căn cước thử nghiệm!', 'success');
+        };
+        img.src = sampleCanvas.toDataURL();
+      });
+
+      function initCanvas() {
+        canvas.width = img.width;
+        canvas.height = img.height;
+        dropZone.classList.add('hidden');
+        canvasWrapper.classList.remove('hidden');
+        btnReplaceImg.classList.remove('hidden');
+        btnDownload.disabled = false;
+        btnCopyImage.disabled = false;
+        maskBoxes = [];
+        historyStack = [];
+        redoStack = [];
+        selectedBoxIndex = -1;
+        updateUI();
+        render();
+      }
+
+      function saveHistory() {
+        historyStack.push(JSON.parse(JSON.stringify(maskBoxes)));
+        redoStack = []; // Clear redo on new action
+        updateUI();
+      }
+
+      function updateUI() {
+        canvasStats.textContent = `${maskBoxes.length} vùng che`;
+        btnUndo.disabled = historyStack.length === 0;
+        btnRedo.disabled = redoStack.length === 0;
+        if (selectedBoxIndex >= 0 && selectedBoxIndex < maskBoxes.length) {
+          btnDeleteSelected.classList.remove('hidden');
+        } else {
+          btnDeleteSelected.classList.add('hidden');
+        }
+      }
+
+      function render() {
+        if (!img) return;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img, 0, 0);
+
+        // 1. Draw Masks
+        maskBoxes.forEach((box, idx) => {
+          if (box.mode === 'solid') {
+            ctx.fillStyle = '#000000';
+            ctx.fillRect(box.x, box.y, box.w, box.h);
+          } else {
+            applyPixelate(box);
+          }
+
+          // Active Selected Border vs Normal Border
+          if (idx === selectedBoxIndex) {
+            ctx.strokeStyle = '#22c55e'; // Green active
+            ctx.lineWidth = Math.max(2, Math.floor(canvas.width / 400));
+            ctx.setLineDash([6, 4]);
+          } else {
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.6)';
+            ctx.lineWidth = 1;
+            ctx.setLineDash([]);
+          }
+          ctx.strokeRect(box.x, box.y, box.w, box.h);
+          ctx.setLineDash([]);
+        });
+
+        // 2. Draw Watermark
+        const text = wmText.value.trim();
+        if (text) {
+          ctx.save();
+          const opacity = wmOpacity.value / 100;
+          const fontSize = parseInt(wmSize.value, 10);
+          const angle = parseInt(wmAngle.value, 10);
+
+          ctx.fillStyle = `${currentColor} ${opacity})`;
+          ctx.font = `800 ${fontSize}px "Plus Jakarta Sans", sans-serif`;
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+
+          if (isGridPattern) {
+            // Matrix diagonal pattern
+            ctx.translate(canvas.width / 2, canvas.height / 2);
+            ctx.rotate(angle * Math.PI / 180);
+            ctx.translate(-canvas.width / 2, -canvas.height / 2);
+
+            const stepX = Math.max(280, text.length * fontSize * 0.65);
+            const stepY = fontSize * 4;
+            const diag = Math.sqrt(canvas.width ** 2 + canvas.height ** 2);
+
+            for (let y = -diag; y < diag * 1.5; y += stepY) {
+              for (let x = -diag; x < diag * 1.5; x += stepX) {
+                ctx.fillText(text, x, y);
+              }
+            }
+          } else {
+            // Single center banner
+            ctx.translate(canvas.width / 2, canvas.height / 2);
+            ctx.rotate(angle * Math.PI / 180);
+            ctx.fillText(text, 0, 0);
+          }
+          ctx.restore();
+        }
+      }
+
+      function applyPixelate(box) {
+        const pixelSize = Math.max(8, Math.floor(Math.min(box.w, box.h) / 8));
+        const w = Math.max(1, box.w);
+        const h = Math.max(1, box.h);
+
+        const offCanvas = document.createElement('canvas');
+        offCanvas.width = Math.max(1, Math.floor(w / pixelSize));
+        offCanvas.height = Math.max(1, Math.floor(h / pixelSize));
+        const offCtx = offCanvas.getContext('2d');
+        offCtx.imageSmoothingEnabled = false;
+
+        offCtx.drawImage(canvas, box.x, box.y, w, h, 0, 0, offCanvas.width, offCanvas.height);
+
+        ctx.imageSmoothingEnabled = false;
+        ctx.drawImage(offCanvas, 0, 0, offCanvas.width, offCanvas.height, box.x, box.y, w, h);
+        ctx.imageSmoothingEnabled = true;
+      }
+
+      // Pointer Coordinate Normalization (Desktop + Mobile touch)
+      function getCanvasCoordinates(e) {
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = canvas.width / rect.width;
+        const scaleY = canvas.height / rect.height;
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        return {
+          x: (clientX - rect.left) * scaleX,
+          y: (clientY - rect.top) * scaleY
+        };
+      }
+
+      function handlePointerDown(e) {
+        if (!img) return;
+        const coords = getCanvasCoordinates(e);
+
+        // Check if user clicked/tapped inside an existing box to select it
+        let clickedBoxIndex = -1;
+        for (let i = maskBoxes.length - 1; i >= 0; i--) {
+          const b = maskBoxes[i];
+          if (coords.x >= b.x && coords.x <= b.x + b.w && coords.y >= b.y && coords.y <= b.y + b.h) {
+            clickedBoxIndex = i;
+            break;
+          }
+        }
+
+        if (clickedBoxIndex >= 0) {
+          selectedBoxIndex = clickedBoxIndex;
+          updateUI();
+          render();
+          return;
+        }
+
+        selectedBoxIndex = -1;
+        updateUI();
+
+        // Start drawing new mask box
+        isDrawing = true;
+        startX = coords.x;
+        startY = coords.y;
+      }
+
+      function handlePointerMove(e) {
+        if (!isDrawing) return;
+        if (e.cancelable) e.preventDefault(); // Stop mobile screen scrolling
+        const coords = getCanvasCoordinates(e);
+
+        render();
+        // Live preview of dragging bounding box
+        ctx.strokeStyle = '#22c55e';
+        ctx.lineWidth = Math.max(2, Math.floor(canvas.width / 400));
+        ctx.strokeRect(startX, startY, coords.x - startX, coords.y - startY);
+      }
+
+      function handlePointerUp(e) {
+        if (!isDrawing) return;
+        isDrawing = false;
+
+        let clientX = e.changedTouches ? e.changedTouches[0].clientX : e.clientX;
+        let clientY = e.changedTouches ? e.changedTouches[0].clientY : e.clientY;
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = canvas.width / rect.width;
+        const scaleY = canvas.height / rect.height;
+        const endX = (clientX - rect.left) * scaleX;
+        const endY = (clientY - rect.top) * scaleY;
+
+        const x = Math.min(startX, endX);
+        const y = Math.min(startY, endY);
+        const w = Math.abs(endX - startX);
+        const h = Math.abs(endY - startY);
+
+        if (w > 12 && h > 12) {
+          saveHistory();
+          maskBoxes.push({ x, y, w, h, mode: currentMode });
+          selectedBoxIndex = maskBoxes.length - 1;
+        }
+        updateUI();
+        render();
+      }
+
+      // Mouse events
+      canvas.addEventListener('mousedown', handlePointerDown);
+      window.addEventListener('mousemove', handlePointerMove);
+      window.addEventListener('mouseup', handlePointerUp);
+
+      // Touch events (Mobile support)
+      canvas.addEventListener('touchstart', handlePointerDown, { passive: false });
+      window.addEventListener('touchmove', handlePointerMove, { passive: false });
+      window.addEventListener('touchend', handlePointerUp);
+
+      // Tool Switchers
+      toolBlur.addEventListener('click', () => {
+        currentMode = 'blur';
+        toolBlur.className = 'px-3 py-1.5 text-xs font-semibold rounded-lg bg-brand-500 text-white flex items-center gap-1.5 transition cursor-pointer';
+        toolSolid.className = 'px-3 py-1.5 text-xs font-semibold rounded-lg text-slate-300 hover:text-white flex items-center gap-1.5 transition cursor-pointer';
+        if (selectedBoxIndex >= 0 && selectedBoxIndex < maskBoxes.length) {
+          saveHistory();
+          maskBoxes[selectedBoxIndex].mode = 'blur';
+          render();
+        }
+      });
+
+      toolSolid.addEventListener('click', () => {
+        currentMode = 'solid';
+        toolSolid.className = 'px-3 py-1.5 text-xs font-semibold rounded-lg bg-brand-500 text-white flex items-center gap-1.5 transition cursor-pointer';
+        toolBlur.className = 'px-3 py-1.5 text-xs font-semibold rounded-lg text-slate-300 hover:text-white flex items-center gap-1.5 transition cursor-pointer';
+        if (selectedBoxIndex >= 0 && selectedBoxIndex < maskBoxes.length) {
+          saveHistory();
+          maskBoxes[selectedBoxIndex].mode = 'solid';
+          render();
+        }
+      });
+
+      // Undo & Redo Handlers
+      btnUndo.addEventListener('click', () => {
+        if (historyStack.length > 0) {
+          redoStack.push(JSON.parse(JSON.stringify(maskBoxes)));
+          maskBoxes = historyStack.pop();
+          selectedBoxIndex = -1;
+          updateUI();
+          render();
+          showToast('Đã hoàn tác thao tác!');
+        }
+      });
+
+      btnRedo.addEventListener('click', () => {
+        if (redoStack.length > 0) {
+          historyStack.push(JSON.parse(JSON.stringify(maskBoxes)));
+          maskBoxes = redoStack.pop();
+          selectedBoxIndex = -1;
+          updateUI();
+          render();
+          showToast('Đã làm lại thao tác!');
+        }
+      });
+
+      // Keyboard Shortcuts (Ctrl+Z, Ctrl+Y, Delete)
+      window.addEventListener('keydown', (e) => {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z') {
+          e.preventDefault();
+          if (e.shiftKey) btnRedo.click();
+          else btnUndo.click();
+        } else if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'y') {
+          e.preventDefault();
+          btnRedo.click();
+        } else if (e.key === 'Delete' || e.key === 'Backspace') {
+          if (selectedBoxIndex >= 0) {
+            e.preventDefault();
+            btnDeleteSelected.click();
+          }
+        }
+      });
+
+      // Delete Selected Box
+      btnDeleteSelected.addEventListener('click', () => {
+        if (selectedBoxIndex >= 0 && selectedBoxIndex < maskBoxes.length) {
+          saveHistory();
+          maskBoxes.splice(selectedBoxIndex, 1);
+          selectedBoxIndex = -1;
+          updateUI();
+          render();
+          showToast('Đã xóa vùng che được chọn!');
+        }
+      });
+
+      // Clear All
+      btnClear.addEventListener('click', () => {
+        if (maskBoxes.length > 0) {
+          saveHistory();
+          maskBoxes = [];
+          selectedBoxIndex = -1;
+          updateUI();
+          render();
+          showToast('Đã xóa tất cả vùng che!');
+        }
+      });
+
+      // Presets
+      document.querySelectorAll('.preset-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const type = btn.getAttribute('data-preset');
+          if (presets[type]) {
+            wmText.value = presets[type];
+            render();
+            showToast('Đã áp dụng mẫu nội dung!', 'success');
+          }
+        });
+      });
+
+      // Colors
+      document.querySelectorAll('.color-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          currentColor = btn.getAttribute('data-color');
+          document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('ring-2'));
+          btn.classList.add('ring-2');
+          render();
+        });
+      });
+
+      // Pattern mode toggles
+      patternGrid.addEventListener('click', () => {
+        isGridPattern = true;
+        patternGrid.className = 'px-2 py-1 rounded bg-brand-500 text-white font-medium text-[11px]';
+        patternSingle.className = 'px-2 py-1 rounded text-slate-400 hover:text-white font-medium text-[11px]';
+        render();
+      });
+      patternSingle.addEventListener('click', () => {
+        isGridPattern = false;
+        patternSingle.className = 'px-2 py-1 rounded bg-brand-500 text-white font-medium text-[11px]';
+        patternGrid.className = 'px-2 py-1 rounded text-slate-400 hover:text-white font-medium text-[11px]';
+        render();
+      });
+
+      // Sliders & Text
+      wmText.addEventListener('input', render);
+      wmOpacity.addEventListener('input', () => {
+        valOpacity.textContent = `${wmOpacity.value}%`;
+        render();
+      });
+      wmSize.addEventListener('input', () => {
+        valSize.textContent = `${wmSize.value}px`;
+        render();
+      });
+      wmAngle.addEventListener('input', () => {
+        valAngle.textContent = `${wmAngle.value}°`;
+        render();
+      });
+
+      // Download HD (Lossless PNG)
+      btnDownload.addEventListener('click', () => {
+        if (!canvas) return;
+        selectedBoxIndex = -1; // Unselect before exporting
+        render();
+
+        const link = document.createElement('a');
+        link.download = `cccd-shield-protected-${Date.now()}.png`;
+        link.href = canvas.toDataURL('image/png', 1.0);
+        link.click();
+        showToast('Đã tải ảnh về thiết bị thành công!', 'success');
+      });
+
+      // Copy Image to Clipboard
+      btnCopyImage.addEventListener('click', async () => {
+        if (!canvas) return;
+        selectedBoxIndex = -1;
+        render();
+
+        try {
+          canvas.toBlob(async (blob) => {
+            if (!blob) throw new Error('Blob creation failed');
+            await navigator.clipboard.write([
+              new ClipboardItem({ 'image/png': blob })
+            ]);
+            showToast('Đã sao chép ảnh vào bộ nhớ tạm (Clipboard)!', 'success');
+          }, 'image/png');
+        } catch (err) {
+          showToast('Trình duyệt không hỗ trợ sao chép ảnh trực tiếp. Vui lòng bấm Tải ảnh.', 'error');
+        }
+      });
+
+      // Share Tool
+      btnShare.addEventListener('click', async () => {
+        if (navigator.share) {
+          try {
+            await navigator.share({
+              title: 'CCCD Shield',
+              text: 'Che mờ & Đóng dấu căn cước an toàn trực tiếp trên trình duyệt, chống lừa đảo vay tiền.',
+              url: window.location.href,
+            });
+          } catch (err) {}
+        } else {
+          navigator.clipboard.writeText(window.location.href);
+          showToast('Đã sao chép liên kết vào bộ nhớ tạm!', 'success');
+        }
+      });
+
+      // Network Offline/Online real-time detection
+      function updateNetworkStatus() {
+        const networkDot = document.getElementById('networkDot');
+        const networkText = document.getElementById('networkText');
+        if (!navigator.onLine) {
+          networkDot.className = 'w-2 h-2 rounded-full bg-blue-400';
+          networkText.textContent = 'Đang Offline (An toàn tuyệt đối)';
+          showToast('Thiết bị đang ngắt mạng: Web vẫn hoạt động 100%!', 'info');
+        } else {
+          networkDot.className = 'w-2 h-2 rounded-full bg-accent-500 animate-pulse';
+          networkText.textContent = '100% Cục bộ trong máy';
+        }
+      }
+      window.addEventListener('online', updateNetworkStatus);
+      window.addEventListener('offline', updateNetworkStatus);
+      updateNetworkStatus();
+
+    })();
+  </script>
+</body>
+</html>

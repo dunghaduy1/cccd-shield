@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chính sách bảo mật - CCCD Shield</title>
+  <meta name="description" content="Chính sách bảo mật của CCCD Shield. Cam kết 100% xử lý cục bộ trên trình duyệt (Client-side), không thu thập, không lưu trữ dữ liệu cá nhân.">
+  <link rel="canonical" href="https://cccdshield.com/chinh-sach-bao-mat.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+          colors: {
+            brand: { 500: '#1e3a5f', 600: '#162e4c' },
+            accent: { 400: '#4ade80', 500: '#22c55e', 600: '#16a34a' },
+            dark: { bg: '#0b1120', card: '#131d31', border: '#1e293b', muted: '#94a3b8' }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-dark-bg text-slate-100 font-sans antialiased min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="border-b border-dark-border bg-dark-bg/90 sticky top-0 z-50 backdrop-blur-md">
+    <div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-500 to-accent-500 flex items-center justify-center text-white">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+        </div>
+        <span class="text-lg font-bold text-white">CCCD Shield</span>
+      </a>
+      <a href="index.html" class="text-xs font-semibold px-3 py-2 rounded-lg bg-slate-900 border border-dark-border text-slate-300 hover:text-white transition">
+        ← Về trang công cụ
+      </a>
+    </div>
+  </header>
+
+  <main class="flex-grow py-12 px-4 sm:px-6">
+    <article class="max-w-3xl mx-auto bg-dark-card border border-dark-border rounded-2xl p-6 sm:p-10 text-slate-300 leading-relaxed text-sm space-y-6">
+
+      <div class="border-b border-dark-border pb-6">
+        <span class="text-xs font-bold text-accent-400 uppercase tracking-wider">Cam kết bảo mật tuyệt đối</span>
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Chính sách bảo mật thông tin</h1>
+        <p class="text-xs text-dark-muted mt-2">Cập nhật lần cuối: Ngày 09 tháng 11 năm 2026</p>
+      </div>
+
+      <section class="space-y-3">
+        <h2 class="text-base font-bold text-white flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-accent-500"></span>
+          1. Kiến trúc 100% Client-Side (Không có Server lưu trữ)
+        </h2>
+        <p>
+          CCCD Shield được thiết kế theo mô hình <strong>Zero-Knowledge & Zero-Storage</strong>. Toàn bộ quá trình xử lý hình ảnh (tải ảnh, che đen, làm mờ pixelate, chèn watermark, xuất file) được thực hiện hoàn toàn trên bộ nhớ RAM của thiết bị thông qua công nghệ HTML5 Canvas 2D API.
+        </p>
+        <p class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-700/80 text-xs text-accent-400">
+          ✓ Chúng tôi KHÔNG có máy chủ nhận tải ảnh lên.<br>
+          ✓ KHÔNG có API truyền dữ liệu hình ảnh qua internet.<br>
+          ✓ Bạn có thể ngắt kết nối mạng (bật chế độ máy bay) sau khi tải trang, công cụ vẫn hoạt động bình thường.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-base font-bold text-white flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-accent-500"></span>
+          2. Dữ liệu cá nhân của người dùng
+        </h2>
+        <p>
+          CCCD Shield <strong>không thu thập</strong> bất kỳ thông tin nhận dạng cá nhân nào (Họ tên, Số CCCD, Ngày sinh, Địa chỉ, Khuôn mặt...).
+          Khi bạn đóng tab trình duyệt hoặc làm mới trang (F5), toàn bộ dữ liệu ảnh trên RAM tự động bị xóa bỏ hoàn toàn.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-base font-bold text-white flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-accent-500"></span>
+          3. Quảng cáo của bên thứ ba (Google AdSense)
+        </h2>
+        <p>
+          Để duy trì chi phí máy chủ tĩnh và tên miền miễn phí cho cộng đồng, trang web có thể hiển thị quảng cáo từ đối tác thứ ba như Google AdSense.
+          Các đối tác này có thể sử dụng cookie để phục vụ quảng cáo dựa trên các lượt truy cập trước đó của người dùng. Cookie quảng cáo hoàn toàn không có quyền truy cập vào nội dung hình ảnh bạn chỉnh sửa trên trang.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-base font-bold text-white flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-accent-500"></span>
+          4. Tuân thủ pháp luật
+        </h2>
+        <p>
+          CCCD Shield cam kết tuân thủ các quy định tại <strong>Nghị định số 13/2023/NĐ-CP</strong> về bảo vệ dữ liệu cá nhân tại Việt Nam, tôn trọng quyền bảo mật dữ liệu và quyền tự chủ thông tin của công dân.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-base font-bold text-white flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-accent-500"></span>
+          5. Liên hệ
+        </h2>
+        <p>
+          Nếu có bất kỳ thắc mắc hoặc góp ý về bảo mật mã nguồn, bạn có thể gửi phản hồi trực tiếp qua kho lưu trữ mã nguồn mở của dự án.
+        </p>
+      </section>
+
+    </article>
+  </main>
+
+  <footer class="border-t border-dark-border bg-slate-950 py-6 text-xs text-slate-500 text-center">
+    <p>&copy; 2026 CCCD Shield. Công cụ bảo vệ quyền riêng tư số.</p>
+  </footer>
+</body>
+</html>
