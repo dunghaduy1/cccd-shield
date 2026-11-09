@@ -153,6 +153,60 @@
   <!-- ACCESSIBLE TOAST NOTIFICATIONS -->
   <div id="toastContainer" class="fixed top-5 right-5 z-[100] flex flex-col gap-2 pointer-events-none" role="status" aria-live="polite"></div>
 
+  <!-- PWA INSTALL GUIDE MODAL -->
+  <div id="installModal" class="hidden fixed inset-0 z-[110] flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm" role="dialog" aria-modal="true">
+    <div class="bg-dark-card border border-dark-border w-full max-w-sm rounded-2xl p-6 shadow-2xl relative space-y-4">
+      <button id="btnCloseInstallModal" type="button" class="absolute top-4 right-4 text-slate-400 hover:text-white p-1 rounded-lg transition cursor-pointer" aria-label="Đóng">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <div class="flex items-center gap-3">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-brand-500 to-accent-500 flex items-center justify-center text-white shadow-lg shadow-accent-500/20 flex-shrink-0">
+          <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+        </div>
+        <div>
+          <h3 class="font-bold text-white text-base">Cài đặt CCCD Shield</h3>
+          <p class="text-xs text-accent-400 font-medium">Chạy Offline 100% không cần mạng</p>
+        </div>
+      </div>
+
+      <!-- iOS Instructions -->
+      <div id="iosInstallGuide" class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300 space-y-2.5">
+        <p class="font-bold text-white flex items-center gap-1.5 text-xs">
+          <span>🍏</span> Hướng dẫn cho iPhone / iPad (Safari):
+        </p>
+        <div class="space-y-2 text-slate-300 pl-1">
+          <div class="flex items-start gap-2">
+            <span class="w-5 h-5 rounded-full bg-slate-800 text-accent-400 flex items-center justify-center flex-shrink-0 font-bold text-[10px]">1</span>
+            <span>Bấm nút <strong>Chia sẻ</strong> ở thanh dưới cùng Safari (biểu tượng hình vuông có mũi tên <svg class="w-3.5 h-3.5 inline text-sky-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>).</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="w-5 h-5 rounded-full bg-slate-800 text-accent-400 flex items-center justify-center flex-shrink-0 font-bold text-[10px]">2</span>
+            <span>Cuộn xuống chọn <strong>"Thêm vào MH chính"</strong> (Add to Home Screen).</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="w-5 h-5 rounded-full bg-slate-800 text-accent-400 flex items-center justify-center flex-shrink-0 font-bold text-[10px]">3</span>
+            <span>Bấm <strong>"Thêm" (Add)</strong> ở góc phải trên cùng.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Android / PC Instructions -->
+      <div id="otherInstallGuide" class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300 space-y-2.5">
+        <p class="font-bold text-white flex items-center gap-1.5 text-xs">
+          <span>🤖</span> Hướng dẫn cho Android / Chrome:
+        </p>
+        <p class="text-slate-300 pl-1 leading-relaxed">
+          Bấm dấu <strong>3 chấm ⋮</strong> ở góc phải trên cùng trình duyệt ➔ Chọn <strong>"Cài đặt ứng dụng"</strong> hoặc <strong>"Thêm vào màn hình chính"</strong>.
+        </p>
+      </div>
+
+      <button id="btnDismissModal" type="button" class="w-full py-2.5 bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs rounded-xl transition cursor-pointer">
+        Đã hiểu
+      </button>
+    </div>
+  </div>
+
   <!-- HEADER -->
   <header class="sticky top-0 z-50 backdrop-blur-md bg-dark-bg/85 border-b border-dark-border">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
@@ -184,7 +238,7 @@
 
       <!-- Quick Nav & Share -->
       <div class="flex items-center gap-2">
-        <button id="btnInstallApp" type="button" class="hidden px-3 py-2 text-xs font-bold rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 transition flex items-center gap-1.5 shadow-lg shadow-emerald-500/20 cursor-pointer" title="Cài đặt CCCD Shield vào máy">
+        <button id="btnInstallApp" type="button" class="px-2.5 sm:px-3 py-2 text-xs font-bold rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 transition flex items-center gap-1.5 shadow-lg shadow-emerald-500/20 cursor-pointer" title="Cài đặt CCCD Shield vào máy">
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           <span>Cài app</span>
         </button>
@@ -1241,30 +1295,69 @@
         });
       }
 
-      // Handle PWA Install Prompt
+      // PWA Install Elements & Handlers
       let deferredInstallPrompt = null;
       const btnInstallApp = document.getElementById('btnInstallApp');
+      const installModal = document.getElementById('installModal');
+      const btnCloseInstallModal = document.getElementById('btnCloseInstallModal');
+      const btnDismissModal = document.getElementById('btnDismissModal');
+      const iosInstallGuide = document.getElementById('iosInstallGuide');
+      const otherInstallGuide = document.getElementById('otherInstallGuide');
+
+      // Hide button if already installed (standalone mode)
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+      if (isStandalone && btnInstallApp) {
+        btnInstallApp.classList.add('hidden');
+      }
+
       window.addEventListener('beforeinstallprompt', (e) => {
         e.preventDefault();
         deferredInstallPrompt = e;
-        if (btnInstallApp) btnInstallApp.classList.remove('hidden');
       });
+
+      function openInstallModal() {
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        if (isIOS) {
+          iosInstallGuide.classList.remove('hidden');
+          otherInstallGuide.classList.add('hidden');
+        } else {
+          iosInstallGuide.classList.add('hidden');
+          otherInstallGuide.classList.remove('hidden');
+        }
+        installModal.classList.remove('hidden');
+      }
+
+      function closeInstallModal() {
+        installModal.classList.add('hidden');
+      }
 
       if (btnInstallApp) {
         btnInstallApp.addEventListener('click', async () => {
-          if (!deferredInstallPrompt) return;
-          deferredInstallPrompt.prompt();
-          const { outcome } = await deferredInstallPrompt.userChoice;
-          if (outcome === 'accepted') {
-            showToast('Cảm ơn bạn đã cài đặt CCCD Shield!', 'success');
+          if (deferredInstallPrompt) {
+            deferredInstallPrompt.prompt();
+            const { outcome } = await deferredInstallPrompt.userChoice;
+            if (outcome === 'accepted') {
+              showToast('Cảm ơn bạn đã cài đặt CCCD Shield!', 'success');
+              btnInstallApp.classList.add('hidden');
+            }
+            deferredInstallPrompt = null;
+          } else {
+            openInstallModal();
           }
-          deferredInstallPrompt = null;
-          btnInstallApp.classList.add('hidden');
+        });
+      }
+
+      if (btnCloseInstallModal) btnCloseInstallModal.addEventListener('click', closeInstallModal);
+      if (btnDismissModal) btnDismissModal.addEventListener('click', closeInstallModal);
+      if (installModal) {
+        installModal.addEventListener('click', (e) => {
+          if (e.target === installModal) closeInstallModal();
         });
       }
 
       window.addEventListener('appinstalled', () => {
         if (btnInstallApp) btnInstallApp.classList.add('hidden');
+        closeInstallModal();
         showToast('CCCD Shield đã được cài đặt thành công!', 'success');
       });
 
