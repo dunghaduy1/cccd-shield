@@ -35,3 +35,6 @@ yarn-error.log*
 # Claude Code local skills & runtime
 .claude/
 skills-lock.json
+
+# Threads Auto-Reply local state & logs
+threads-auto-reply/data/
