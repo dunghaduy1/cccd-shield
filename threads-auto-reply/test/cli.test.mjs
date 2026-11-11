@@ -41,3 +41,42 @@ test('main --once acquires lock, syncs token, runs 1 tick, saves state, and rele
   assert.equal(fs.existsSync(stateFile), true);
   assert.equal(fs.existsSync(lockFile), false);
 });
+
+test('main parses --post flag and rejects missing --post value', async () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'th-cli-post-'));
+  let seenTarget = '';
+  const baseDeps = {
+    loadConfig: () => ({
+      initThreadsToken: 'tok_1',
+      geminiApiKey: 'gm_1',
+      geminiModel: 'gemini-3.5-flash',
+      dryRun: true,
+      pollIntervalSec: 60,
+      delayMinSec: 60,
+      delayMaxSec: 300,
+      maxRepliesPerHour: 20,
+      maxRepliesPerDay: 100,
+      maxQueueAgeSec: 2700,
+      postLookbackDays: 7,
+      targetPost: '',
+      dataDir: dir,
+      stateFile: path.join(dir, 'state.json'),
+      lockFile: path.join(dir, 'worker.pid'),
+      logFile: path.join(dir, 'escalations.log'),
+    }),
+    createThreadsClient: () => ({}),
+    createGeminiClient: () => ({}),
+    runTick: async ({ config }) => {
+      seenTarget = config.targetPost;
+      return { refreshed: false, enqueued: 0, processed: 0, sent: 0, dryRunCount: 0, escalated: 0, skipped: 0, failed: 0 };
+    },
+  };
+
+  await main(['--once', '--post', 'https://www.threads.com/@me/post/DfkBNOfmUd7'], baseDeps);
+  assert.equal(seenTarget, 'https://www.threads.com/@me/post/DfkBNOfmUd7');
+
+  await main(['--once', '--post=18100720937429753'], baseDeps);
+  assert.equal(seenTarget, '18100720937429753');
+
+  await assert.rejects(() => main(['--once', '--post'], baseDeps), /--post/);
+});

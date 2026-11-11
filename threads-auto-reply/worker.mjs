@@ -38,6 +38,62 @@ function parseTimestampSec(ts, fallback) {
   return Number.isFinite(ms) ? Math.floor(ms / 1000) : fallback;
 }
 
+function extractPostShortcode(raw) {
+  const cleaned = String(raw || '').trim().split(/[?#]/)[0].replace(/\/+$/, '');
+  const match = cleaned.match(/\/post\/([^/]+)$/i);
+  if (match) return match[1];
+  return /^\d+$/.test(cleaned) ? '' : cleaned;
+}
+
+function upsertWatchedPost(state, post, now) {
+  const prev = state.watched_posts[post.id];
+  state.watched_posts[post.id] = {
+    post_id: post.id,
+    post_text: post.text || '',
+    permalink: post.permalink || '',
+    published_at: parseTimestampSec(post.timestamp, now),
+    last_polled_at: prev?.last_polled_at || 0,
+  };
+}
+
+async function resolveTargetPostId(targetPost, { state, threads, now }) {
+  const raw = String(targetPost || '').trim();
+  if (!raw) return '';
+
+  if (/^\d+$/.test(raw)) {
+    if (!state.watched_posts[raw] && typeof threads.getThread === 'function') {
+      const post = await threads.getThread(raw, state.auth.access_token);
+      if (post?.id) upsertWatchedPost(state, post, now);
+    }
+    if (!state.watched_posts[raw]) {
+      const posts = await threads.getUserThreads(state.auth.user_id, state.auth.access_token, 50);
+      const found = posts.find((p) => p.id === raw);
+      if (found) upsertWatchedPost(state, found, now);
+    }
+    if (!state.watched_posts[raw]) {
+      throw new Error(`Target post not found: ${raw}`);
+    }
+    return raw;
+  }
+
+  const shortcode = extractPostShortcode(raw);
+  if (!shortcode) {
+    throw new Error(`Target post not found: ${raw}`);
+  }
+  const cached = Object.values(state.watched_posts).find(
+    (p) => extractPostShortcode(p.permalink) === shortcode
+  );
+  if (cached) return cached.post_id;
+
+  const posts = await threads.getUserThreads(state.auth.user_id, state.auth.access_token, 50);
+  const found = posts.find((p) => extractPostShortcode(p.permalink) === shortcode);
+  if (!found) {
+    throw new Error(`Target post not found: ${raw}`);
+  }
+  upsertWatchedPost(state, found, now);
+  return found.id;
+}
+
 export async function runTick({
   config,
   state,
@@ -95,7 +151,8 @@ export async function runTick({
   }
 
   // Pha B: Sync posts every 5m & poll direct replies
-  if (now - (state.last_posts_sync_at || 0) >= POST_SYNC_INTERVAL_SEC) {
+  const targetPostId = await resolveTargetPostId(config.targetPost, { state, threads, now });
+  if (!targetPostId && now - (state.last_posts_sync_at || 0) >= POST_SYNC_INTERVAL_SEC) {
     try {
       const posts = await threads.getUserThreads(state.auth.user_id, state.auth.access_token);
       state.last_posts_sync_at = now;
@@ -103,14 +160,7 @@ export async function runTick({
       for (const post of posts) {
         const publishedAt = parseTimestampSec(post.timestamp, now);
         if (publishedAt < lookbackCutoff) continue;
-        const prev = state.watched_posts[post.id];
-        state.watched_posts[post.id] = {
-          post_id: post.id,
-          post_text: post.text || '',
-          permalink: post.permalink || '',
-          published_at: publishedAt,
-          last_polled_at: prev?.last_polled_at || 0,
-        };
+        upsertWatchedPost(state, post, now);
       }
     } catch (err) {
       await notifier.notify({
@@ -121,14 +171,16 @@ export async function runTick({
     }
   }
 
-  const postsToPoll = Object.values(state.watched_posts)
-    .sort((a, b) => {
-      const aFresh = a.published_at > now - DAY_SEC ? 0 : 1;
-      const bFresh = b.published_at > now - DAY_SEC ? 0 : 1;
-      if (aFresh !== bFresh) return aFresh - bFresh;
-      return (a.last_polled_at || 0) - (b.last_polled_at || 0);
-    })
-    .slice(0, MAX_POSTS_PER_POLL);
+  const postsToPoll = targetPostId
+    ? [state.watched_posts[targetPostId]].filter(Boolean)
+    : Object.values(state.watched_posts)
+        .sort((a, b) => {
+          const aFresh = a.published_at > now - DAY_SEC ? 0 : 1;
+          const bFresh = b.published_at > now - DAY_SEC ? 0 : 1;
+          if (aFresh !== bFresh) return aFresh - bFresh;
+          return (a.last_polled_at || 0) - (b.last_polled_at || 0);
+        })
+        .slice(0, MAX_POSTS_PER_POLL);
 
   const blockedPairs = new Set();
   for (const c of Object.values(state.comments)) {
@@ -221,7 +273,12 @@ export async function runTick({
 
   // Pha C: Process due queued replies
   const dueItems = Object.values(state.comments)
-    .filter((c) => c.status === 'pending' && c.scheduled_at <= now)
+    .filter(
+      (c) =>
+        c.status === 'pending' &&
+        c.scheduled_at <= now &&
+        (!targetPostId || c.post_id === targetPostId)
+    )
     .sort((a, b) => a.scheduled_at - b.scheduled_at)
     .slice(0, MAX_DUE_PER_TICK);
 

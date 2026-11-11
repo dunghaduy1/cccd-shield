@@ -79,6 +79,16 @@ export function createThreadsClient({
       return request(`${root}/v1.0/me?fields=id,username`, { accessToken });
     },
 
+    async getThread(mediaId, accessToken) {
+      const params = new URLSearchParams({
+        fields: 'id,text,permalink,timestamp',
+      });
+      return request(
+        `${root}/v1.0/${encodeURIComponent(mediaId)}?${params.toString()}`,
+        { accessToken }
+      );
+    },
+
     async getUserThreads(userId, accessToken, limit = 25) {
       const params = new URLSearchParams({
         fields: 'id,text,permalink,timestamp',

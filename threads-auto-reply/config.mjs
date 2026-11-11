@@ -77,6 +77,7 @@ export function loadConfig(
     maxRepliesPerDay: parsePositiveInt(env.MAX_REPLIES_PER_DAY, 100, 'MAX_REPLIES_PER_DAY'),
     maxQueueAgeSec: parsePositiveInt(env.MAX_QUEUE_AGE_SEC, 2700, 'MAX_QUEUE_AGE_SEC'),
     postLookbackDays: parsePositiveInt(env.POST_LOOKBACK_DAYS, 7, 'POST_LOOKBACK_DAYS'),
+    targetPost: String(env.TARGET_POST || '').trim(),
     affiliateMode,
     dataDir,
     stateFile: path.join(dataDir, 'state.json'),

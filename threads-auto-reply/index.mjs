@@ -28,8 +28,31 @@ function sleepAbortable(ms, signal) {
   });
 }
 
+function parseCliArgs(argv) {
+  let once = false;
+  let targetPost = '';
+  for (let i = 0; i < argv.length; i++) {
+    const arg = argv[i];
+    if (arg === '--once') {
+      once = true;
+    } else if (arg === '--post') {
+      const val = argv[i + 1];
+      if (!val || val.startsWith('-')) {
+        throw new Error('Missing value for --post');
+      }
+      targetPost = val.trim();
+      i++;
+    } else if (arg.startsWith('--post=')) {
+      const val = arg.slice(7).trim();
+      if (!val) throw new Error('Missing value for --post');
+      targetPost = val;
+    }
+  }
+  return { once, targetPost };
+}
+
 export async function main(argv = process.argv.slice(2), deps = {}) {
-  const once = argv.includes('--once');
+  const { once, targetPost: cliTargetPost } = parseCliArgs(argv);
   const loadConfig = deps.loadConfig || defaultLoadConfig;
   const loadState = deps.loadState || defaultLoadState;
   const saveState = deps.saveState || defaultSaveState;
@@ -41,7 +64,8 @@ export async function main(argv = process.argv.slice(2), deps = {}) {
   const logger = deps.logger || console;
 
   const envPath = path.resolve(import.meta.dirname, '.env');
-  const config = loadConfig(envPath);
+  const baseConfig = loadConfig(envPath);
+  const config = cliTargetPost ? { ...baseConfig, targetPost: cliTargetPost } : baseConfig;
   const releaseLock = acquireLock(config.lockFile);
 
   const ac = new AbortController();

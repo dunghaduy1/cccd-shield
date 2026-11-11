@@ -279,3 +279,67 @@ test('Pha C halts with escalate alert keeping pending items on 401/403 or non-re
     assert.ok(alerts.some((a) => a.text.includes('[ESCALATE]')));
   }
 });
+
+test('targetPost filters Pha B polling and Pha C sending strictly to the specified post URL or ID', async () => {
+  const { state, notifier, config } = makeBaseDeps();
+  const now = 1_005_000;
+  state.auth.expires_at = now + 30 * 86400;
+  config.targetPost = 'https://www.threads.com/@mebau.vn/post/TargetCode?xmt=abc';
+
+  state.watched_posts['p_other'] = {
+    post_id: 'p_other',
+    post_text: 'Bài khác',
+    permalink: 'https://www.threads.com/@mebau.vn/post/OtherCode',
+    published_at: now - 300,
+    last_polled_at: now - 10,
+  };
+  state.comments['c_other_due'] = {
+    comment_id: 'c_other_due',
+    post_id: 'p_other',
+    author_key: 'u_other',
+    author_username: 'u_other',
+    comment_text: 'comment bài khác',
+    status: 'pending',
+    scheduled_at: now - 5,
+    attempts: 0,
+    created_at: now - 100,
+  };
+
+  const polledPosts = [];
+  const repliedIds = [];
+  const threads = {
+    getMe: async () => ({ id: 'me1', username: 'mebau.vn' }),
+    getUserThreads: async () => [
+      { id: 'p_other', text: 'Bài khác', permalink: 'https://www.threads.com/@mebau.vn/post/OtherCode', timestamp: new Date((now - 300) * 1000).toISOString() },
+      { id: 'p_target', text: 'Bài bầu mục tiêu', permalink: 'https://www.threads.com/@mebau.vn/post/TargetCode', timestamp: new Date((now - 400) * 1000).toISOString() },
+    ],
+    getReplies: async (id) => {
+      polledPosts.push(id);
+      if (id === 'p_target') {
+        return [{ id: 'c_target_new', text: 'mom bầu tuần mấy rồi', username: 'u_target', timestamp: new Date(now * 1000).toISOString(), replied_to: { id: 'p_target' } }];
+      }
+      return [];
+    },
+    replyToComment: async (_uid, commentId) => {
+      repliedIds.push(commentId);
+      return { id: 'r_target' };
+    },
+  };
+  const gemini = {
+    generateCommentDecision: async () => ({ action: 'reply', reason: 'ok', detectedPair: 'mình-mom', replyText: 'Mình đang tuần 24 rồi nè mom ơi, chúc mom khỏe nha' }),
+  };
+
+  const res = await runTick({ config, state, threads, gemini, notifier, nowSec: () => now, randomInt: () => 0 });
+  assert.deepEqual(polledPosts, ['p_target', 'c_target_new']);
+  assert.deepEqual(repliedIds, ['c_target_new']);
+  assert.equal(state.comments['c_other_due'].status, 'pending');
+  assert.equal(state.comments['c_target_new'].status, 'sent');
+  assert.equal(res.sent, 1);
+
+  // Unknown target post rejects clearly instead of replying to other posts
+  config.targetPost = 'https://www.threads.com/@mebau.vn/post/MissingPost';
+  await assert.rejects(
+    () => runTick({ config, state, threads, gemini, notifier, nowSec: () => now }),
+    /Target post not found/
+  );
+});

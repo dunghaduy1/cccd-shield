@@ -29,6 +29,22 @@ test('getMe, getUserThreads, and getReplies parse Graph responses with auth head
   assert.ok(calls.every((c) => c.opts.headers.Authorization === 'Bearer tok'));
 });
 
+test('getThread fetches single post metadata by id', async () => {
+  const client = createThreadsClient({
+    fetchImpl: async (url, opts) => {
+      assert.match(url, /\/v1\.0\/p99\?/);
+      assert.equal(opts.headers.Authorization, 'Bearer tok');
+      return new Response(
+        JSON.stringify({ id: 'p99', text: 'Bài cụ thể', permalink: 'https://www.threads.com/@me/post/AbCd123', timestamp: '2026-11-11T01:00:00Z' }),
+        { status: 200 }
+      );
+    },
+  });
+  const post = await client.getThread('p99', 'tok');
+  assert.equal(post.id, 'p99');
+  assert.equal(post.permalink, 'https://www.threads.com/@me/post/AbCd123');
+});
+
 test('replyToComment performs 2-step create + publish container', async () => {
   const calls = [];
   const client = createThreadsClient({

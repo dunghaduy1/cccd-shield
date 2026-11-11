@@ -51,6 +51,12 @@ Sau khi thấy nháp trả lời tự nhiên:
 node threads-auto-reply/index.mjs
 ```
 
+Nếu chỉ muốn auto-reply bình luận trên **đúng 1 bài post cụ thể** (bỏ qua các bài khác), truyền thêm `--post` kèm link bài hoặc `post_id`:
+
+```bash
+node threads-auto-reply/index.mjs --post https://www.threads.com/@username/post/DfkBNOfmUd7
+```
+
 Nhấn `Ctrl+C` để dừng êm (lưu state và xóa file khóa `data/worker.pid`).
 
 ## 4. Tùy chọn tự chạy khi mở máy (macOS `launchd`)
