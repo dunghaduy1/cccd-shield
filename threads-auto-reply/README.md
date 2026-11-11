@@ -26,13 +26,19 @@ cp threads-auto-reply/.env.example threads-auto-reply/.env
 # Mở threads-auto-reply/.env điền INIT_THREADS_TOKEN và GEMINI_API_KEY
 ```
 
-Chạy thử 1 chu kỳ với chế độ an toàn (`DRY_RUN=true`, không đăng reply thật):
+Chạy thử 1 chu kỳ để kiểm tra kết nối token & quét bài (`DRY_RUN=true`, chưa gọi AI ở lượt đầu do phải chờ trễ tự nhiên 1–5 phút):
 
 ```bash
 node threads-auto-reply/index.mjs --once
 ```
 
-Kiểm tra output trên terminal và file `threads-auto-reply/data/escalations.log` để duyệt thử giọng văn.
+Để AI sinh câu trả lời nháp thật (vẫn ở chế độ `DRY_RUN=true`, không đăng reply lên Threads), chạy nền trong 2–5 phút rồi nhấn `Ctrl+C`:
+
+```bash
+node threads-auto-reply/index.mjs
+```
+
+Hoặc muốn test nhanh nháp ngay lập tức: chạy `--once` với độ trễ 1 giây để xếp hàng, sau đó chờ 2 giây chạy `--once` lần 2 (`DELAY_MIN_SEC=1 DELAY_MAX_SEC=1 node threads-auto-reply/index.mjs --once`). Kiểm tra output `[DRY_RUN]` trên terminal và file `threads-auto-reply/data/escalations.log` để duyệt thử giọng văn.
 
 ## 3. Chạy chính thức
 

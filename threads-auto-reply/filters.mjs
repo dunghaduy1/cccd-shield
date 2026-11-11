@@ -51,7 +51,7 @@ export function preFilterComment(text) {
     .trim();
   if (!meaningful) return { decision: 'skip', reason: 'non_text_only' };
 
-  const lower = nfc.toLowerCase();
+  const lower = withoutMentions.toLowerCase();
   for (const pattern of ESCALATE_PATTERNS) {
     if (pattern.test(lower)) {
       return { decision: 'escalate', reason: `matched_${pattern.source}` };
@@ -80,7 +80,7 @@ export function validateGeneratedReply(text) {
   }
 
   const sentences = cleanText
-    .split(/[.!?…]+/u)
+    .split(/(?<!\d)[.!?…]+|(?<=\d)[.!?…]+(?!\d)/u)
     .map((s) => s.trim())
     .filter(Boolean);
   if (sentences.length > 2) {

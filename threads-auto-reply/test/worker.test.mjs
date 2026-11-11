@@ -165,3 +165,117 @@ test('Pha C blocks post-LLM guardrail violations (URL leak) without posting', as
   assert.equal(res.skipped, 1);
   assert.equal(alerts.length, 1);
 });
+
+test('Pha B continues to Pha C on getUserThreads error without consuming 5m sync window, drops 404 watched posts, and blocks follow-ups after escalated comment', async () => {
+  const { state, alerts, notifier, config } = makeBaseDeps();
+  const now = 1_001_000;
+  state.auth.expires_at = now + 30 * 86400;
+  state.watched_posts['p_live'] = { post_id: 'p_live', post_text: 'Thai kỳ', permalink: 'https://threads.net/p_live', published_at: now - 500, last_polled_at: now - 10 };
+  state.watched_posts['p_gone'] = { post_id: 'p_gone', post_text: 'Đã xóa', permalink: 'https://threads.net/p_gone', published_at: now - 600, last_polled_at: now - 20 };
+  state.comments['c_esc'] = { comment_id: 'c_esc', post_id: 'p_live', author_key: 'u_esc', author_username: 'u_esc', comment_text: 'ra máu nâu', status: 'escalated', scheduled_at: 0, attempts: 0, created_at: now - 200 };
+  state.comments['c_due'] = { comment_id: 'c_due', post_id: 'p_live', author_key: 'u_due', author_username: 'u_due', comment_text: 'chúc mom khỏe', status: 'pending', scheduled_at: now - 1, attempts: 0, created_at: now - 100 };
+
+  let sent = 0;
+  const threads = {
+    getMe: async () => ({ id: 'me1', username: 'mebau.vn' }),
+    getUserThreads: async () => { throw new ThreadsApiError('Server 500', { status: 500, retryable: true }); },
+    getReplies: async (id) => {
+      if (id === 'p_gone') throw new ThreadsApiError('Missing post', { status: 404, retryable: false });
+      if (id === 'p_live') {
+        return [
+          { id: 'c_followup', text: 'lo quá mom ơi', username: 'u_esc', timestamp: new Date(now * 1000).toISOString(), replied_to: { id: 'p_live' } },
+        ];
+      }
+      return [];
+    },
+    replyToComment: async () => { sent++; return { id: 'r_ok' }; },
+  };
+  const gemini = {
+    generateCommentDecision: async () => ({ action: 'reply', reason: 'ok', detectedPair: 'mình-mom', replyText: 'Cảm ơn mom nhiều nha, chúc hai mẹ con khỏe nè' }),
+  };
+
+  const res = await runTick({ config, state, threads, gemini, notifier, nowSec: () => now });
+  assert.equal(state.last_posts_sync_at, 0);
+  assert.equal(state.watched_posts['p_gone'], undefined);
+  assert.equal(state.comments['c_followup'], undefined);
+  assert.equal(sent, 1);
+  assert.equal(res.sent, 1);
+  assert.ok(alerts.length >= 2);
+});
+
+test('Pha C halts with escalate alert keeping pending items on 401/403 or non-retryable Gemini error, and retries retryable failures up to 3 attempts', async () => {
+  // 1. Threads 401 keeps items pending and halts loop
+  {
+    const { state, alerts, notifier, config } = makeBaseDeps();
+    const now = 1_002_000;
+    state.auth.expires_at = now + 30 * 86400;
+    state.watched_posts['p1'] = { post_id: 'p1', post_text: 'Test', permalink: 'https://threads.net/p1', published_at: now - 500, last_polled_at: now };
+    state.comments['c1'] = { comment_id: 'c1', post_id: 'p1', author_key: 'u1', author_username: 'u1', comment_text: 'chào mom', status: 'pending', scheduled_at: now - 10, attempts: 0, created_at: now - 100 };
+    state.comments['c2'] = { comment_id: 'c2', post_id: 'p1', author_key: 'u2', author_username: 'u2', comment_text: 'hay quá mom', status: 'pending', scheduled_at: now - 5, attempts: 0, created_at: now - 100 };
+
+    let c2Touched = false;
+    const threads = {
+      getMe: async () => ({ id: 'me1', username: 'mebau.vn' }),
+      getUserThreads: async () => [],
+      getReplies: async (id) => { if (id === 'c2') c2Touched = true; return []; },
+      replyToComment: async () => { throw new ThreadsApiError('Invalid token', { status: 401, retryable: false }); },
+    };
+    const gemini = { generateCommentDecision: async () => ({ action: 'reply', reason: 'ok', detectedPair: 'mình-mom', replyText: 'Chào mom nha chúc mom thai kỳ khỏe mạnh' }) };
+
+    await runTick({ config, state, threads, gemini, notifier, nowSec: () => now });
+    assert.equal(state.comments['c1'].status, 'pending');
+    assert.equal(c2Touched, false);
+    assert.ok(alerts.some((a) => a.text.includes('[ESCALATE]')));
+  }
+
+  // 2. Gemini non-retryable 4xx (bad model/key) keeps item pending and escalates immediately
+  {
+    const { state, alerts, notifier, config } = makeBaseDeps();
+    const now = 1_003_000;
+    state.auth.expires_at = now + 30 * 86400;
+    state.watched_posts['p1'] = { post_id: 'p1', post_text: 'Test', permalink: 'https://threads.net/p1', published_at: now - 500, last_polled_at: now };
+    state.comments['c1'] = { comment_id: 'c1', post_id: 'p1', author_key: 'u1', author_username: 'u1', comment_text: 'chào mom', status: 'pending', scheduled_at: now - 10, attempts: 0, created_at: now - 100 };
+
+    const threads = { getMe: async () => ({ id: 'me1', username: 'mebau.vn' }), getUserThreads: async () => [], getReplies: async () => [] };
+    const gemini = {
+      generateCommentDecision: async () => {
+        const err = new Error('Gemini API HTTP 404: model not found');
+        err.status = 404;
+        err.retryable = false;
+        throw err;
+      },
+    };
+
+    await runTick({ config, state, threads, gemini, notifier, nowSec: () => now });
+    assert.equal(state.comments['c1'].status, 'pending');
+    assert.equal(state.comments['c1'].attempts, 0);
+    assert.ok(alerts.some((a) => a.text.includes('[ESCALATE]')));
+  }
+
+  // 3. Retryable error increments attempts + backs off 120s, failing on 3rd attempt
+  {
+    const { state, alerts, notifier, config } = makeBaseDeps();
+    const now = 1_004_000;
+    state.auth.expires_at = now + 30 * 86400;
+    state.watched_posts['p1'] = { post_id: 'p1', post_text: 'Test', permalink: 'https://threads.net/p1', published_at: now - 500, last_polled_at: now };
+    state.comments['c1'] = { comment_id: 'c1', post_id: 'p1', author_key: 'u1', author_username: 'u1', comment_text: 'chào mom', status: 'pending', scheduled_at: now - 10, attempts: 1, created_at: now - 200 };
+
+    const threads = {
+      getMe: async () => ({ id: 'me1', username: 'mebau.vn' }),
+      getUserThreads: async () => [],
+      getReplies: async () => [],
+      replyToComment: async () => { throw new ThreadsApiError('Rate limited', { status: 429, retryable: true }); },
+    };
+    const gemini = { generateCommentDecision: async () => ({ action: 'reply', reason: 'ok', detectedPair: 'mình-mom', replyText: 'Chào mom nha chúc mom thai kỳ khỏe mạnh' }) };
+
+    await runTick({ config, state, threads, gemini, notifier, nowSec: () => now });
+    assert.equal(state.comments['c1'].status, 'pending');
+    assert.equal(state.comments['c1'].attempts, 2);
+    assert.equal(state.comments['c1'].scheduled_at, now + 120);
+
+    await runTick({ config, state, threads, gemini, notifier, nowSec: () => now + 120 });
+    assert.equal(state.comments['c1'].status, 'failed');
+    assert.equal(state.comments['c1'].attempts, 3);
+    assert.ok(alerts.some((a) => a.text.includes('[ESCALATE]')));
+  }
+});

@@ -96,20 +96,28 @@ export async function runTick({
 
   // Pha B: Sync posts every 5m & poll direct replies
   if (now - (state.last_posts_sync_at || 0) >= POST_SYNC_INTERVAL_SEC) {
-    state.last_posts_sync_at = now;
-    const posts = await threads.getUserThreads(state.auth.user_id, state.auth.access_token);
-    const lookbackCutoff = now - config.postLookbackDays * DAY_SEC;
-    for (const post of posts) {
-      const publishedAt = parseTimestampSec(post.timestamp, now);
-      if (publishedAt < lookbackCutoff) continue;
-      const prev = state.watched_posts[post.id];
-      state.watched_posts[post.id] = {
-        post_id: post.id,
-        post_text: post.text || '',
-        permalink: post.permalink || '',
-        published_at: publishedAt,
-        last_polled_at: prev?.last_polled_at || 0,
-      };
+    try {
+      const posts = await threads.getUserThreads(state.auth.user_id, state.auth.access_token);
+      state.last_posts_sync_at = now;
+      const lookbackCutoff = now - config.postLookbackDays * DAY_SEC;
+      for (const post of posts) {
+        const publishedAt = parseTimestampSec(post.timestamp, now);
+        if (publishedAt < lookbackCutoff) continue;
+        const prev = state.watched_posts[post.id];
+        state.watched_posts[post.id] = {
+          post_id: post.id,
+          post_text: post.text || '',
+          permalink: post.permalink || '',
+          published_at: publishedAt,
+          last_polled_at: prev?.last_polled_at || 0,
+        };
+      }
+    } catch (err) {
+      await notifier.notify({
+        level: 'warn',
+        title: 'Lỗi đồng bộ danh sách bài Threads',
+        message: err?.message || String(err),
+      });
     }
   }
 
@@ -122,10 +130,10 @@ export async function runTick({
     })
     .slice(0, MAX_POSTS_PER_POLL);
 
-  const pendingPairs = new Set();
+  const blockedPairs = new Set();
   for (const c of Object.values(state.comments)) {
-    if (c.status === 'pending' && c.post_id && c.author_key) {
-      pendingPairs.add(`${c.post_id}:${c.author_key}`);
+    if ((c.status === 'pending' || c.status === 'escalated') && c.post_id && c.author_key) {
+      blockedPairs.add(`${c.post_id}:${c.author_key}`);
     }
   }
 
@@ -134,9 +142,15 @@ export async function runTick({
     try {
       replies = await threads.getReplies(post.post_id, state.auth.access_token);
     } catch (err) {
+      const isDeletedPost = err instanceof ThreadsApiError && (err.status === 404 || err.status === 400);
+      if (isDeletedPost) {
+        delete state.watched_posts[post.post_id];
+      }
       await notifier.notify({
-        level: 'warn',
-        title: `Lỗi đọc replies bài ${post.post_id}`,
+        level: err instanceof ThreadsApiError && (err.status === 401 || err.status === 403) ? 'escalate' : 'warn',
+        title: isDeletedPost
+          ? `Bài ${post.post_id} không còn tồn tại (${err.status}), dừng theo dõi`
+          : `Lỗi đọc replies bài ${post.post_id}`,
         message: err?.message || String(err),
         permalink: post.permalink,
       });
@@ -152,7 +166,7 @@ export async function runTick({
       if (state.comments[reply.id]) continue;
 
       const pairKey = `${post.post_id}:${authorKey}`;
-      if (state.replied_pairs[pairKey] || pendingPairs.has(pairKey)) continue;
+      if (state.replied_pairs[pairKey] || blockedPairs.has(pairKey)) continue;
 
       const filter = preFilterComment(reply.text);
       const baseRecord = {
@@ -199,7 +213,7 @@ export async function runTick({
           status: 'pending',
           scheduled_at: now + delay,
         };
-        pendingPairs.add(pairKey);
+        blockedPairs.add(pairKey);
         summary.enqueued++;
       }
     }
@@ -315,6 +329,19 @@ export async function runTick({
         summary.sent++;
       }
     } catch (err) {
+      const isAuthError = err instanceof ThreadsApiError && (err.status === 401 || err.status === 403);
+      const isGeminiNonRetryable = !(err instanceof ThreadsApiError) && err?.retryable === false;
+      if (isAuthError || isGeminiNonRetryable) {
+        await notifier.notify({
+          level: 'escalate',
+          title: isAuthError
+            ? `Lỗi xác thực/quyền Threads (${err.status})`
+            : `Lỗi cấu hình/API Gemini (${err?.status || '4xx'})`,
+          message: err?.message || String(err),
+          permalink: post.permalink,
+        });
+        break;
+      }
       if (err instanceof ThreadsApiError && !err.retryable) {
         item.status = 'failed';
         item.skip_reason = err.message;

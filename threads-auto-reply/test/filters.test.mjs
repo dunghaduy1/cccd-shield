@@ -20,16 +20,22 @@ test('preFilterComment escalates medical risk, medication dosage, and pregnancy 
   assert.equal(preFilterComment('sốt cao 39 độ rét run').decision, 'escalate');
 });
 
-test('preFilterComment passes normal pregnancy engagement comments', () => {
+test('preFilterComment passes normal pregnancy engagement comments including @handle.vn mentions', () => {
   assert.equal(preFilterComment('mình 28w cũng hay mất ngủ lắm mom').decision, 'pass');
   assert.equal(preFilterComment('chị ơi em mới 12w nghén quá trời').decision, 'pass');
   assert.equal(preFilterComment('trộm vía quá bà ơi').decision, 'pass');
   assert.equal(preFilterComment('hóng chia sẻ của mom nha').decision, 'pass');
+  assert.equal(preFilterComment('@mebau.vn ơi mình tuần 20 cũng bị vậy nè').decision, 'pass');
+  assert.equal(preFilterComment('@mebau.com chia sẻ hay quá ạ').decision, 'pass');
 });
 
-test('validateGeneratedReply accepts natural 1-2 sentence replies and rejects links, clichés, bullets, or overlong text', () => {
+test('validateGeneratedReply accepts natural 1-2 sentence replies (including decimals) and rejects links, clichés, bullets, or overlong text', () => {
   const ok = validateGeneratedReply('Trộm vía ghê nha mom, ráng ăn ngủ đều giữ sức cho hai mẹ con nhé');
   assert.equal(ok.ok, true);
+  assert.equal(
+    validateGeneratedReply('Tuần 28.5 bé tầm 1.1kg trộm vía lắm mom. Nhớ ăn ngủ đều nhé!').ok,
+    true
+  );
 
   assert.equal(validateGeneratedReply('ngắn quá').ok, false);
   assert.equal(validateGeneratedReply('a '.repeat(120)).ok, false);
