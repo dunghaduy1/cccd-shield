@@ -71,3 +71,54 @@ test('refreshLongLivedToken uses th_refresh_token and marks 400 non-retryable vs
   });
   await assert.rejects(() => client429.getReplies('p1', 'tok'), (e) => e instanceof ThreadsApiError && e.retryable === true);
 });
+
+test('replyToComment retries transient 400 on threads_publish with same creation_id and surfaces error_subcode on persistent error', async () => {
+  const sleepCalls = [];
+  let publishAttempts = 0;
+  let createCalls = 0;
+  const client = createThreadsClient({
+    publishDelayMs: 2000,
+    publishRetryDelayMs: 3000,
+    sleepImpl: async (ms) => { sleepCalls.push(ms); },
+    fetchImpl: async (url) => {
+      if (url.endsWith('/u1/threads')) {
+        createCalls++;
+        return new Response(JSON.stringify({ id: 'creation_99' }), { status: 200 });
+      }
+      if (url.endsWith('/u1/threads_publish')) {
+        publishAttempts++;
+        if (publishAttempts === 1) {
+          return new Response(
+            JSON.stringify({ error: { message: 'The requested resource does not exist', code: 24, error_subcode: 4279009 } }),
+            { status: 400 }
+          );
+        }
+        return new Response(JSON.stringify({ id: 'reply_retry_ok' }), { status: 200 });
+      }
+      throw new Error('Unexpected URL: ' + url);
+    },
+  });
+
+  const res = await client.replyToComment('u1', 'c1', 'Chào mom nha', 'tok');
+  assert.equal(res.id, 'reply_retry_ok');
+  assert.equal(createCalls, 1);
+  assert.equal(publishAttempts, 2);
+  assert.deepEqual(sleepCalls, [2000, 3000]);
+
+  const failClient = createThreadsClient({
+    publishDelayMs: 0,
+    publishRetryDelayMs: 0,
+    sleepImpl: async () => {},
+    fetchImpl: async (url) => {
+      if (url.endsWith('/u1/threads')) return new Response(JSON.stringify({ id: 'c_fail' }), { status: 200 });
+      return new Response(
+        JSON.stringify({ error: { message: 'The requested resource does not exist', code: 24, error_subcode: 4279009 } }),
+        { status: 400 }
+      );
+    },
+  });
+  await assert.rejects(
+    () => failClient.replyToComment('u1', 'c1', 'Chào mom nha', 'tok'),
+    (e) => e instanceof ThreadsApiError && e.message.includes('subcode 4279009')
+  );
+});

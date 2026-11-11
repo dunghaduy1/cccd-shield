@@ -15,6 +15,9 @@ function sanitizeErrorText(text) {
 export function createThreadsClient({
   fetchImpl = fetch,
   baseUrl = 'https://graph.threads.net',
+  publishDelayMs = 2000,
+  publishRetryDelayMs = 3000,
+  sleepImpl = (ms) => new Promise((resolve) => setTimeout(resolve, ms)),
 } = {}) {
   const root = baseUrl.replace(/\/+$/, '');
 
@@ -56,7 +59,10 @@ export function createThreadsClient({
 
     if (!res.ok) {
       const apiErr = json?.error || {};
-      const msg = sanitizeErrorText(apiErr.message || `Threads API HTTP ${res.status}`);
+      const parts = [apiErr.message || `Threads API HTTP ${res.status}`];
+      if (apiErr.error_subcode !== undefined) parts.push(`subcode ${apiErr.error_subcode}`);
+      if (apiErr.error_user_msg) parts.push(apiErr.error_user_msg);
+      const msg = sanitizeErrorText(parts.join(' — '));
       const retryable = res.status === 429 || res.status >= 500;
       throw new ThreadsApiError(msg, {
         status: res.status,
@@ -113,13 +119,29 @@ export function createThreadsClient({
           retryable: true,
         });
       }
-      return request(`${root}/v1.0/${uid}/threads_publish`, {
+      if (publishDelayMs > 0) {
+        await sleepImpl(publishDelayMs);
+      }
+      const publishUrl = `${root}/v1.0/${uid}/threads_publish`;
+      const publishOpts = {
         method: 'POST',
         accessToken,
         form: {
           creation_id: created.id,
         },
-      });
+      };
+      try {
+        return await request(publishUrl, publishOpts);
+      } catch (err) {
+        const shouldRetryPublish =
+          err instanceof ThreadsApiError &&
+          (err.status === 400 || err.status === 404 || err.retryable);
+        if (!shouldRetryPublish) throw err;
+        if (publishRetryDelayMs > 0) {
+          await sleepImpl(publishRetryDelayMs);
+        }
+        return request(publishUrl, publishOpts);
+      }
     },
 
     async refreshLongLivedToken(accessToken) {
