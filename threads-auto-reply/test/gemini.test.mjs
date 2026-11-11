@@ -57,3 +57,50 @@ test('generateCommentDecision rejects invalid JSON or unknown action cleanly', a
     client.generateCommentDecision({ postText: 'a', commentText: 'b' })
   );
 });
+
+test('generateCommentDecision supports custom baseUrl with slash model names and ignores thought parts', async () => {
+  let captured;
+  const client = createGeminiClient({
+    apiKey: 'local_tok',
+    model: 'ag/gemini-3.8-flash',
+    baseUrl: 'http://127.0.0.1:20128/',
+    fetchImpl: async (url, opts) => {
+      captured = { url, opts };
+      return new Response(
+        JSON.stringify({
+          candidates: [
+            {
+              content: {
+                parts: [
+                  { thought: true, text: 'internal reasoning...' },
+                  {
+                    text: JSON.stringify({
+                      action: 'reply',
+                      reason: 'ok',
+                      detected_pair: 'tui-bà',
+                      reply_text: 'Cố gắng nghỉ ngơi thêm nha bà ơi',
+                    }),
+                  },
+                ],
+              },
+            },
+          ],
+        }),
+        { status: 200 }
+      );
+    },
+  });
+
+  const out = await client.generateCommentDecision({
+    postText: 'Bầu tuần 28',
+    commentText: 'Tui cũng đau lưng quá bà ơi',
+    authorUsername: 'me_bi',
+  });
+  assert.equal(
+    captured.url,
+    'http://127.0.0.1:20128/v1beta/models/ag/gemini-3.8-flash:generateContent'
+  );
+  assert.equal(captured.opts.headers.Authorization, 'Bearer local_tok');
+  assert.equal(out.action, 'reply');
+  assert.equal(out.detectedPair, 'tui-bà');
+});

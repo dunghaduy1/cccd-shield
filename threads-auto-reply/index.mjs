@@ -82,6 +82,7 @@ export async function main(argv = process.argv.slice(2), deps = {}) {
     const gemini = createGeminiClient({
       apiKey: config.geminiApiKey,
       model: config.geminiModel,
+      baseUrl: config.geminiBaseUrl,
     });
     const notifier = createNotifier({
       telegramBotToken: config.telegramBotToken,

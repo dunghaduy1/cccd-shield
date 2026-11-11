@@ -1,0 +1,16 @@
+{
+  "name": "ThaiSanPro - Bảng Tính Tiền Thai Sản & Chế Độ BHXH",
+  "short_name": "ThaiSanPro",
+  "description": "Công cụ tính tiền thai sản, kiểm tra điều kiện đóng BHXH 6/12 tháng, lịch dự sinh và giỏ đồ đi sinh cho mẹ bầu.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#FAF8F5",
+  "theme_color": "#BE123C",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

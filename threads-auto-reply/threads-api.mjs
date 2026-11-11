@@ -102,14 +102,35 @@ export function createThreadsClient({
     },
 
     async getReplies(mediaId, accessToken) {
-      const params = new URLSearchParams({
-        fields: 'id,text,username,owner,timestamp,has_replies,replied_to',
-      });
-      const json = await request(
-        `${root}/v1.0/${encodeURIComponent(mediaId)}/replies?${params.toString()}`,
-        { accessToken }
-      );
-      return Array.isArray(json.data) ? json.data : [];
+      const results = [];
+      const seenCursors = new Set();
+      let after = '';
+      // ponytail: 10-page cap (1000 replies/post); raise or externalize if viral posts exceed
+      for (let page = 0; page < 10; page++) {
+        const params = new URLSearchParams({
+          fields: 'id,text,username,owner,timestamp,has_replies,replied_to',
+          limit: '100',
+        });
+        if (after) params.set('after', after);
+        const json = await request(
+          `${root}/v1.0/${encodeURIComponent(mediaId)}/replies?${params.toString()}`,
+          { accessToken }
+        );
+        if (Array.isArray(json.data)) results.push(...json.data);
+        if (!json?.paging?.next) break;
+        let nextAfter = json.paging.cursors?.after || '';
+        if (!nextAfter) {
+          try {
+            nextAfter = new URL(json.paging.next, root).searchParams.get('after') || '';
+          } catch {
+            nextAfter = '';
+          }
+        }
+        if (!nextAfter || seenCursors.has(nextAfter)) break;
+        seenCursors.add(nextAfter);
+        after = nextAfter;
+      }
+      return results;
     },
 
     async replyToComment(userId, commentId, text, accessToken) {

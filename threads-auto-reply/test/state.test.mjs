@@ -28,12 +28,26 @@ test('loadConfig applies Spec defaults and rejects missing required secrets', ()
   });
   assert.equal(cfg.dryRun, true);
   assert.equal(cfg.geminiModel, 'gemini-3.8-flash');
+  assert.equal(cfg.geminiBaseUrl, 'https://generativelanguage.googleapis.com');
   assert.equal(cfg.delayMinSec, 60);
   assert.equal(cfg.delayMaxSec, 300);
   assert.equal(cfg.maxRepliesPerHour, 20);
   assert.equal(cfg.maxRepliesPerDay, 100);
   assert.equal(cfg.maxQueueAgeSec, 2700);
   assert.equal(cfg.affiliateMode, 'off');
+
+  const customCfg = loadConfig('/nonexistent/.env', {
+    INIT_THREADS_TOKEN: 'th_tok',
+    GEMINI_API_KEY: 'gm_key',
+    GEMINI_BASE_URL: 'http://127.0.0.1:20128/',
+    GEMINI_MODEL: 'ag/gemini-3.8-flash',
+    MAX_REPLIES_PER_HOUR: '0',
+    MAX_REPLIES_PER_DAY: '0',
+  });
+  assert.equal(customCfg.geminiBaseUrl, 'http://127.0.0.1:20128');
+  assert.equal(customCfg.geminiModel, 'ag/gemini-3.8-flash');
+  assert.equal(customCfg.maxRepliesPerHour, 0);
+  assert.equal(customCfg.maxRepliesPerDay, 0);
 });
 
 test('loadConfig rejects AFFILIATE_MODE other than off', () => {
@@ -106,4 +120,7 @@ test('canSendReply enforces hourly and daily caps', () => {
 
   s.hourly_sent_timestamps = [now - 100];
   assert.equal(canSendReply(s, 20, 100, now).allowed, true);
+
+  s.hourly_sent_timestamps = Array.from({ length: 150 }, (_, i) => now - i * 10);
+  assert.equal(canSendReply(s, 0, 0, now).allowed, true);
 });

@@ -1,0 +1,2235 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Bảng tính tiền thai sản & chế độ BHXH 2026 | ThaiSanPro</title>
+  <meta name="title" content="Bảng tính tiền thai sản & chế độ BHXH 2026 | ThaiSanPro">
+  <meta name="description" content="Hệ sinh thái tiện ích cho mẹ bầu: Tính tiền thai sản chuẩn lương cơ sở 2.53M (NĐ 161/2026), kiểm tra điều kiện đóng 6/12 tháng, lịch dự sinh và checklist đồ đi sinh chuẩn.">
+  <meta name="keywords" content="tính tiền thai sản, điều kiện hưởng thai sản 6 tháng trong 12 tháng, tính ngày dự sinh, giỏ đồ đi sinh, chi phí sinh bệnh viện, tiền tã lót 2026">
+  <meta name="author" content="ThaiSanPro">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://thaisanpro.pages.dev/">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#BE123C">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://thaisanpro.pages.dev/">
+  <meta property="og:title" content="Bảng tính tiền thai sản & chế độ BHXH 2026 | ThaiSanPro">
+  <meta property="og:description" content="Tính chính xác tiền thai sản, kiểm tra mốc 6/12 tháng an toàn để nghỉ việc, tra cứu lịch khám thai và giỏ đồ đi sinh.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=1200&auto=format&fit=crop&q=80">
+  <meta property="og:locale" content="vi_VN">
+  <meta property="og:site_name" content="ThaiSanPro">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="Bảng tính tiền thai sản & chế độ BHXH 2026 | ThaiSanPro">
+  <meta property="twitter:description" content="Tính chính xác tiền thai sản, kiểm tra mốc 6/12 tháng an toàn để nghỉ việc, tra cứu lịch khám thai và giỏ đồ đi sinh.">
+  <meta property="twitter:image" content="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=1200&auto=format&fit=crop&q=80">
+
+  <!-- Google Fonts: Be Vietnam Pro -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Be Vietnam Pro"', 'system-ui', '-apple-system', 'sans-serif'],
+          },
+          colors: {
+            paper: {
+              50: '#FAF8F5',
+              100: '#F3EFEA',
+              200: '#E6DFD6',
+            },
+            ink: {
+              900: '#1C1917',
+              600: '#57534E',
+              500: '#6B625B',
+            },
+            brand: {
+              50: '#FFF1F2',
+              100: '#FFE4E6',
+              200: '#FECDD3',
+              600: '#BE123C',
+              700: '#9F1239',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --accent: #BE123C;
+      --accent-hover: #9F1239;
+      --surface-well: #E6DFD6;
+    }
+
+    .tabular { font-variant-numeric: tabular-nums; }
+
+    /* Custom accessible range slider */
+    input[type="range"].tsp-range {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 6px;
+      border-radius: 9999px;
+      background: var(--surface-well);
+      outline: none;
+    }
+    input[type="range"].tsp-range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 9999px;
+      background: #FFFFFF;
+      border: 2.5px solid var(--accent);
+      box-shadow: 0 2px 6px rgba(28, 25, 23, 0.16);
+      cursor: pointer;
+      transition: transform 0.15s cubic-bezier(0.23, 1, 0.32, 1), border-color 0.15s ease;
+    }
+    input[type="range"].tsp-range::-webkit-slider-thumb:hover {
+      transform: scale(1.08);
+      border-color: var(--accent-hover);
+    }
+    input[type="range"].tsp-range::-moz-range-thumb {
+      width: 22px;
+      height: 22px;
+      border-radius: 9999px;
+      background: #FFFFFF;
+      border: 2.5px solid var(--accent);
+      box-shadow: 0 2px 6px rgba(28, 25, 23, 0.16);
+      cursor: pointer;
+    }
+    input[type="range"].tsp-range:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 6px;
+    }
+
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    *:focus-visible {
+      outline: 2px solid #BE123C;
+      outline-offset: 2px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Bảng tính tiền thai sản online ThaiSanPro",
+      "url": "https://thaisanpro.pages.dev/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "All",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "VND" },
+      "description": "Công cụ tính tiền thai sản, kiểm tra điều kiện đóng 6/12 tháng và giỏ đồ đi sinh trực tuyến."
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Nghỉ việc trước khi sinh con có được nhận tiền thai sản không?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Có. Nếu trong 12 tháng trước khi sinh con mẹ đã đóng đủ 06 tháng BHXH trở lên, dù đã nghỉ việc trước ngày sinh vẫn được tự mang hồ sơ ra BHXH quận/huyện để nhận đủ tiền thai sản và tiền tã lót."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Mức trợ cấp 1 lần khi sinh con (tiền tã lót) năm 2026 là bao nhiêu?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Từ 01/7/2026 theo Nghị định 161/2026/NĐ-CP (mức lương cơ sở / tham chiếu 2.530.000đ), tiền trợ cấp 1 lần bằng 2 lần mức tham chiếu = 5.060.000 VNĐ cho mỗi con."
+          }
+        }
+      ]
+    }
+  ]
+  </script>
+</head>
+<body class="bg-paper-50 text-ink-900 antialiased min-h-screen flex flex-col font-sans pb-24 md:pb-0 selection:bg-brand-100 selection:text-brand-700">
+
+  <!-- Header -->
+  <header class="bg-paper-50/95 backdrop-blur-md border-b border-paper-200 sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+      <a href="index.html" class="flex items-center gap-2.5 shrink-0">
+        <div class="w-9 h-9 rounded-xl bg-brand-600 flex items-center justify-center text-white shadow-sm">
+          <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+          </svg>
+        </div>
+        <div>
+          <span class="font-extrabold text-[15px] tracking-tight text-ink-900 block leading-none">ThaiSan<span class="text-brand-600">Pro</span></span>
+          <span class="text-[11px] text-ink-500 font-medium leading-tight block mt-0.5">Quyền lợi BHXH &amp; cẩm nang sinh</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex items-center gap-1 text-[13px] font-semibold text-ink-600" aria-label="Điều hướng chính">
+        <a href="#tool-calculator" class="px-3 py-1.5 rounded-xl text-brand-700 bg-brand-50">Tính tiền</a>
+        <a href="#tool-eligibility" class="px-3 py-1.5 rounded-xl hover:text-ink-900 hover:bg-paper-100 transition">Điều kiện 6/12</a>
+        <a href="#tool-due-date" class="px-3 py-1.5 rounded-xl hover:text-ink-900 hover:bg-paper-100 transition">Dự sinh</a>
+        <a href="#tool-checklist" class="px-3 py-1.5 rounded-xl hover:text-ink-900 hover:bg-paper-100 transition">Giỏ đồ</a>
+        <a href="#tool-hospital" class="px-3 py-1.5 rounded-xl hover:text-ink-900 hover:bg-paper-100 transition">Viện phí</a>
+        <span class="w-px h-4 bg-paper-200 mx-1" aria-hidden="true"></span>
+        <a href="huong-dan.html" class="px-3 py-1.5 rounded-xl hover:text-ink-900 hover:bg-paper-100 transition">Thủ tục hồ sơ</a>
+      </nav>
+
+      <div class="flex items-center gap-2 shrink-0">
+        <button type="button" id="btn-install-app" onclick="openInstallModal()" class="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-2 rounded-xl bg-white border border-paper-200 text-ink-900 text-xs font-semibold hover:bg-paper-100 transition">
+          <svg class="w-3.5 h-3.5 text-brand-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2M7 10l5 5 5-5M12 15V3"/></svg>
+          <span class="sm:hidden">Cài app</span>
+          <span class="hidden sm:inline">Cài ứng dụng</span>
+        </button>
+
+        <button type="button" id="btn-hamburger" onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-xl text-ink-900 hover:bg-paper-100 transition" aria-label="Mở menu điều hướng" aria-expanded="false" aria-controls="mobile-menu-drawer">
+          <svg id="icon-menu-open" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+          <svg id="icon-menu-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu-drawer" class="lg:hidden hidden border-t border-paper-200 bg-white px-4 py-4 space-y-3 shadow-lg">
+      <div class="grid grid-cols-1 gap-1 text-sm font-semibold text-ink-900">
+        <a href="#tool-calculator" onclick="toggleMobileMenu()" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-paper-100 transition">
+          <svg class="w-4 h-4 text-brand-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="11" x2="10" y2="11"/><line x1="14" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="10" y2="15"/><line x1="14" y1="15" x2="16" y2="15"/></svg>
+          <span>Tính tiền thai sản BHXH</span>
+        </a>
+        <a href="#tool-eligibility" onclick="toggleMobileMenu()" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-paper-100 transition">
+          <svg class="w-4 h-4 text-brand-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+          <span>Kiểm tra điều kiện 6/12 tháng</span>
+        </a>
+        <a href="#tool-due-date" onclick="toggleMobileMenu()" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-paper-100 transition">
+          <svg class="w-4 h-4 text-brand-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span>Ngày dự sinh &amp; mốc khám thai</span>
+        </a>
+        <a href="#tool-checklist" onclick="toggleMobileMenu()" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-paper-100 transition">
+          <svg class="w-4 h-4 text-brand-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          <span>Checklist giỏ đồ đi sinh</span>
+        </a>
+        <a href="#tool-hospital" onclick="toggleMobileMenu()" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-paper-100 transition">
+          <svg class="w-4 h-4 text-brand-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9v.01"/><path d="M9 12v.01"/><path d="M9 15v.01"/><path d="M9 18v.01"/></svg>
+          <span>Bảng viện phí sinh con</span>
+        </a>
+        <a href="huong-dan.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-paper-100 transition">
+          <svg class="w-4 h-4 text-brand-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+          <span>Thủ tục &amp; hồ sơ BHXH</span>
+        </a>
+      </div>
+
+      <div class="pt-3 border-t border-paper-200 flex items-center justify-between text-xs font-semibold text-ink-600">
+        <button type="button" onclick="toggleMobileMenu(); openInstallModal();" class="inline-flex items-center gap-1.5 py-2 px-3 rounded-xl bg-ink-900 text-white">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2M7 10l5 5 5-5M12 15V3"/></svg>
+          <span>Cài ứng dụng</span>
+        </button>
+        <div class="flex items-center gap-3">
+          <a href="lien-he.html" class="hover:text-brand-600 py-1">Liên hệ</a>
+          <a href="chinh-sach-bao-mat.html" class="hover:text-brand-600 py-1">Bảo mật</a>
+          <a href="dieu-khoan.html" class="hover:text-brand-600 py-1">Điều khoản</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Compact Editorial Masthead -->
+  <section class="pt-7 pb-4 px-4 sm:px-6">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-paper-200 pb-6">
+      <div class="space-y-2 max-w-2xl">
+        <div class="inline-flex items-center gap-2 text-xs font-semibold text-brand-700 tracking-wide">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span>
+          <span>Cập nhật NĐ 161/2026 &amp; NĐ 168/2026 · Lương CS 2.530.000 đ</span>
+        </div>
+        <h1 class="text-2xl sm:text-3xl md:text-[34px] font-extrabold text-ink-900 tracking-tight leading-[1.18]">
+          Tính tiền thai sản &amp; lộ trình đón bé
+        </h1>
+        <p class="text-sm sm:text-[15px] text-ink-600 leading-relaxed">
+          Biết ngay tổng tiền BHXH nhận theo 2 đợt, chốt mốc nghỉ việc an toàn 6/12 tháng và rà đủ 17 món đi sinh trong 30 giây. Không cần đăng nhập.
+        </p>
+      </div>
+
+      <!-- Segmented Mode Control positioned right where action starts -->
+      <div class="bg-paper-100 p-1 rounded-2xl border border-paper-200 grid grid-cols-3 text-xs sm:text-[13px] font-semibold shrink-0 w-full md:w-auto" role="tablist" aria-label="Chọn đối tượng tính quyền lợi">
+        <button type="button" role="tab" aria-selected="true" id="tab-btn-mom" onclick="switchTab('mom')" class="py-2.5 px-3.5 sm:px-4 rounded-xl bg-white text-ink-900 shadow-sm transition-all flex items-center justify-center gap-1.5 whitespace-nowrap">
+          <span class="w-2 h-2 rounded-full bg-brand-600" id="tab-dot-mom"></span>
+          <span>Mẹ sinh con</span>
+        </button>
+        <button type="button" role="tab" aria-selected="false" id="tab-btn-dad" onclick="switchTab('dad')" class="py-2.5 px-3.5 sm:px-4 rounded-xl text-ink-600 hover:text-ink-900 transition-all flex items-center justify-center gap-1.5 whitespace-nowrap">
+          <span class="w-2 h-2 rounded-full bg-transparent" id="tab-dot-dad"></span>
+          <span>Bố có vợ sinh</span>
+        </button>
+        <button type="button" role="tab" aria-selected="false" id="tab-btn-misc" onclick="switchTab('misc')" class="py-2.5 px-3.5 sm:px-4 rounded-xl text-ink-600 hover:text-ink-900 transition-all flex items-center justify-center gap-1.5 whitespace-nowrap">
+          <span class="w-2 h-2 rounded-full bg-transparent" id="tab-dot-misc"></span>
+          <span>Khám &amp; Con ốm</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 pt-3 pb-12 flex-1 w-full space-y-14">
+
+    <!-- PHẦN 1: CÔNG CỤ TÍNH TIỀN THAI SẢN -->
+    <section id="tool-calculator" class="scroll-mt-20">
+
+      <!-- VIEW 1: MẸ SINH CON -->
+      <div id="section-mom" class="grid lg:grid-cols-12 gap-6 items-start">
+
+        <!-- Input Panel -->
+        <div class="lg:col-span-7 bg-white rounded-2xl p-5 sm:p-7 border border-paper-200 space-y-6">
+          <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-paper-200/80">
+            <div>
+              <h2 class="font-bold text-base text-ink-900">Thông tin đóng BHXH của mẹ</h2>
+              <p class="text-xs text-ink-500 mt-0.5">Tính theo bình quân tiền lương đóng BHXH 6 tháng liền kề trước sinh.</p>
+            </div>
+            <span class="text-[11px] text-emerald-800 font-semibold bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full">
+              Miễn 100% thuế TNCN
+            </span>
+          </div>
+
+          <!-- Lương BHXH -->
+          <div class="space-y-3">
+            <div class="flex items-baseline justify-between gap-2">
+              <label for="mom-salary-text" class="text-sm font-semibold text-ink-900">
+                Mức lương đóng BHXH hàng tháng
+              </label>
+              <div class="font-extrabold text-lg text-brand-600 tabular" id="mom-salary-badge">10.000.000 đ</div>
+            </div>
+
+            <div class="relative">
+              <input type="text" inputmode="numeric" id="mom-salary-text" value="10.000.000" oninput="syncSalaryFromText(this, 'mom')" class="w-full pl-4 pr-20 py-3 bg-paper-50 border border-paper-200 rounded-xl text-base font-bold text-ink-900 tabular focus:bg-white focus:border-brand-600 transition" aria-describedby="mom-cap-hint">
+              <span class="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs font-semibold text-ink-500">VNĐ / tháng</span>
+            </div>
+
+            <div class="pt-1 space-y-2">
+              <input type="range" id="mom-range" min="3000000" max="50600000" step="500000" value="10000000" oninput="syncSalaryFromRange('mom')" class="tsp-range" aria-label="Thanh trượt mức lương đóng BHXH của mẹ">
+              <div class="flex justify-between text-[11px] text-ink-500 font-medium tabular">
+                <span>3 triệu</span>
+                <span>15 triệu</span>
+                <span>30 triệu</span>
+                <span>Trần 50,6 triệu</span>
+              </div>
+            </div>
+
+            <p id="mom-cap-hint" class="hidden text-xs font-medium text-amber-800 bg-amber-50 border border-amber-200 rounded-xl px-3 py-2"></p>
+
+            <!-- Preset Chips -->
+            <div class="flex flex-wrap items-center gap-1.5 pt-0.5" id="mom-presets">
+              <span class="text-xs text-ink-500 font-medium mr-1">Chọn nhanh:</span>
+              <button type="button" data-val="6000000" onclick="setPreset('mom', 6000000)" class="preset-chip-mom px-2.5 py-1 rounded-lg text-xs font-semibold bg-paper-100 text-ink-600 hover:text-ink-900 transition tabular">6 triệu</button>
+              <button type="button" data-val="8000000" onclick="setPreset('mom', 8000000)" class="preset-chip-mom px-2.5 py-1 rounded-lg text-xs font-semibold bg-paper-100 text-ink-600 hover:text-ink-900 transition tabular">8 triệu</button>
+              <button type="button" data-val="10000000" onclick="setPreset('mom', 10000000)" class="preset-chip-mom px-2.5 py-1 rounded-lg text-xs font-semibold bg-brand-50 text-brand-700 border border-brand-200 transition tabular">10 triệu</button>
+              <button type="button" data-val="15000000" onclick="setPreset('mom', 15000000)" class="preset-chip-mom px-2.5 py-1 rounded-lg text-xs font-semibold bg-paper-100 text-ink-600 hover:text-ink-900 transition tabular">15 triệu</button>
+              <button type="button" data-val="20000000" onclick="setPreset('mom', 20000000)" class="preset-chip-mom px-2.5 py-1 rounded-lg text-xs font-semibold bg-paper-100 text-ink-600 hover:text-ink-900 transition tabular">20 triệu</button>
+            </div>
+          </div>
+
+          <!-- Hình thức sinh -->
+          <div class="space-y-2.5">
+            <span class="block text-xs font-bold uppercase tracking-wider text-ink-500">Hình thức sinh con</span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" role="radiogroup" aria-label="Hình thức sinh con">
+              <button type="button" role="radio" aria-checked="true" id="btn-birth-normal" onclick="setBirthType('normal')" class="p-3.5 rounded-xl border-2 border-brand-600 bg-brand-50/40 text-left transition flex items-start justify-between gap-3">
+                <div>
+                  <div class="font-bold text-ink-900 text-sm">Sinh thường</div>
+                  <div class="text-xs text-ink-500 mt-0.5">Nghỉ dưỡng sức tối đa 5 ngày</div>
+                </div>
+                <span class="birth-radio-dot w-4 h-4 mt-0.5 rounded-full border-2 border-brand-600 flex items-center justify-center shrink-0">
+                  <span class="w-2 h-2 rounded-full bg-brand-600"></span>
+                </span>
+              </button>
+
+              <button type="button" role="radio" aria-checked="false" id="btn-birth-surgery" onclick="setBirthType('surgery')" class="p-3.5 rounded-xl border border-paper-200 bg-white hover:border-ink-500/40 text-left transition flex items-start justify-between gap-3">
+                <div>
+                  <div class="font-bold text-ink-900 text-sm">Sinh mổ / Dưới 32 tuần</div>
+                  <div class="text-xs text-ink-500 mt-0.5">Nghỉ dưỡng sức tối đa 7 ngày</div>
+                </div>
+                <span class="birth-radio-dot w-4 h-4 mt-0.5 rounded-full border-2 border-paper-200 flex items-center justify-center shrink-0">
+                  <span class="w-2 h-2 rounded-full bg-transparent"></span>
+                </span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Số con -->
+          <div class="space-y-2.5">
+            <span class="block text-xs font-bold uppercase tracking-wider text-ink-500">Số lượng bé sinh</span>
+            <div class="grid grid-cols-3 gap-2.5 text-center text-xs sm:text-sm font-semibold" role="radiogroup" aria-label="Số lượng bé sinh">
+              <button type="button" role="radio" aria-checked="true" id="btn-child-1" onclick="setChildCount(1)" class="py-2.5 px-2 sm:px-3 rounded-xl border-2 border-brand-600 bg-brand-50/40 text-ink-900 transition">
+                1 bé <span id="lbl-child-1" class="block sm:inline text-[11px] font-medium text-ink-500">(Nghỉ 6T)</span>
+              </button>
+              <button type="button" role="radio" aria-checked="false" id="btn-child-2" onclick="setChildCount(2)" class="py-2.5 px-2 sm:px-3 rounded-xl border border-paper-200 bg-white hover:border-ink-500/40 text-ink-600 transition">
+                Sinh đôi <span id="lbl-child-2" class="block sm:inline text-[11px] font-medium text-ink-500">(7T)</span>
+              </button>
+              <button type="button" role="radio" aria-checked="false" id="btn-child-3" onclick="setChildCount(3)" class="py-2.5 px-2 sm:px-3 rounded-xl border border-paper-200 bg-white hover:border-ink-500/40 text-ink-600 transition">
+                Sinh ba <span id="lbl-child-3" class="block sm:inline text-[11px] font-medium text-ink-500">(8T)</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Sinh con thứ 2 (Luật Dân số) -->
+          <label for="mom-second-child-toggle" class="p-4 bg-paper-50 rounded-xl border border-paper-200 flex items-center justify-between gap-4 cursor-pointer hover:border-brand-200 transition">
+            <div>
+              <div class="text-sm font-bold text-ink-900">Sinh con thứ 2 (Luật Dân số 2025)</div>
+              <div class="text-xs text-ink-500 mt-0.5">Từ 01/7/2026 (NĐ 168/2026): mẹ sinh con thứ 2 được nghỉ 7 tháng</div>
+            </div>
+            <div class="relative inline-flex items-center shrink-0">
+              <input type="checkbox" id="mom-second-child-toggle" onchange="calculateAll()" class="sr-only peer">
+              <div class="w-11 h-6 bg-paper-200 rounded-full peer peer-focus-visible:ring-2 peer-focus-visible:ring-brand-600 peer-checked:bg-brand-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:shadow-sm after:transition-transform peer-checked:after:translate-x-5"></div>
+            </div>
+          </label>
+
+          <!-- Dưỡng sức toggle -->
+          <label for="mom-recovery-toggle" class="p-4 bg-paper-50 rounded-xl border border-paper-200 flex items-center justify-between gap-4 cursor-pointer hover:border-brand-200 transition">
+            <div>
+              <div class="text-sm font-bold text-ink-900">Nghỉ dưỡng sức phục hồi sau sinh</div>
+              <div class="text-xs text-ink-500 mt-0.5 tabular" id="mom-recovery-text">Hưởng 5 ngày × 759.000 đ = 3.795.000 đ</div>
+            </div>
+            <div class="relative inline-flex items-center shrink-0">
+              <input type="checkbox" id="mom-recovery-toggle" checked onchange="calculateAll()" class="sr-only peer">
+              <div class="w-11 h-6 bg-paper-200 rounded-full peer peer-focus-visible:ring-2 peer-focus-visible:ring-brand-600 peer-checked:bg-brand-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:shadow-sm after:transition-transform peer-checked:after:translate-x-5"></div>
+            </div>
+          </label>
+        </div>
+
+        <!-- Result Statement Card (Editorial Receipt) -->
+        <div id="mom-receipt-card" class="lg:col-span-5 lg:sticky lg:top-20 scroll-mt-20">
+          <div class="bg-white rounded-2xl border border-paper-200 shadow-[0_8px_30px_-12px_rgba(28,25,23,0.08)] overflow-hidden">
+            <div class="h-1.5 bg-brand-600"></div>
+
+            <div class="p-6 pb-5 bg-brand-50/45 border-b border-paper-200">
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-[11px] font-bold uppercase tracking-wider text-brand-700">Phiếu dự toán của mẹ</span>
+                <span class="text-[11px] font-medium text-ink-500 tabular">Lương CS: 2.530.000 đ</span>
+              </div>
+              <div class="mt-3 text-3xl sm:text-[38px] font-extrabold tracking-tight text-ink-900 tabular leading-none" id="mom-total-amount">
+                68.855.000 đ
+              </div>
+              <p class="text-xs text-ink-600 mt-2.5">
+                Tổng tiền thực nhận dự kiến · Chuyển thẳng vào tài khoản cá nhân
+              </p>
+            </div>
+
+            <!-- Breakdown Rows -->
+            <div class="p-6 space-y-4 text-sm">
+              <div class="flex items-start justify-between gap-3 pb-3.5 border-b border-dashed border-paper-200">
+                <div>
+                  <div class="font-semibold text-ink-900">1. Trợ cấp một lần (tiền tã lót)</div>
+                  <div class="text-xs text-ink-500 mt-0.5 tabular" id="mom-slip-oneshot-desc">1 bé × 5.060.000 đ (2 lần lương cơ sở)</div>
+                </div>
+                <div class="font-bold text-ink-900 text-right whitespace-nowrap tabular" id="mom-slip-oneshot">
+                  5.060.000 đ
+                </div>
+              </div>
+
+              <div class="flex items-start justify-between gap-3 pb-3.5 border-b border-dashed border-paper-200">
+                <div>
+                  <div class="font-semibold text-ink-900" id="mom-slip-salary-title">2. Lương nghỉ thai sản 6 tháng</div>
+                  <div class="text-xs text-ink-500 mt-0.5 tabular" id="mom-slip-salary-desc">100% × 10.000.000 đ × 6 tháng</div>
+                </div>
+                <div class="font-bold text-ink-900 text-right whitespace-nowrap tabular" id="mom-slip-salary">
+                  60.000.000 đ
+                </div>
+              </div>
+
+              <div class="flex items-start justify-between gap-3 pb-3.5 border-b border-paper-200">
+                <div>
+                  <div class="font-semibold text-ink-900" id="mom-slip-recovery-title">3. Dưỡng sức phục hồi (5 ngày)</div>
+                  <div class="text-xs text-ink-500 mt-0.5 tabular" id="mom-slip-recovery-desc">5 ngày × 759.000 đ (30% lương CS)</div>
+                </div>
+                <div class="font-bold text-ink-900 text-right whitespace-nowrap tabular" id="mom-slip-recovery">
+                  3.795.000 đ
+                </div>
+              </div>
+
+              <!-- Payout Schedule -->
+              <div class="bg-paper-50 rounded-xl p-3.5 border border-paper-200 space-y-2 text-xs">
+                <div class="font-bold uppercase tracking-wider text-[11px] text-ink-500">Dự kiến 2 đợt giải ngân</div>
+                <div class="flex justify-between gap-2 text-ink-600">
+                  <span>Đợt 1 (sau khi nộp giấy khai sinh):</span>
+                  <span class="font-bold text-ink-900 tabular whitespace-nowrap" id="mom-payout-1">65.060.000 đ</span>
+                </div>
+                <div class="flex justify-between gap-2 text-ink-600">
+                  <span>Đợt 2 (sau khi nghỉ dưỡng sức):</span>
+                  <span class="font-bold text-ink-900 tabular whitespace-nowrap" id="mom-payout-2">3.795.000 đ</span>
+                </div>
+              </div>
+
+              <a href="#tool-checklist" class="flex items-center justify-between gap-2 px-3.5 py-2.5 rounded-xl bg-brand-50/70 hover:bg-brand-50 border border-brand-200/80 text-xs font-semibold text-brand-700 transition">
+                <span>Dùng khoản tã lót <strong class="tabular" id="mom-bridge-oneshot">5.060.000 đ</strong> sắm đồ đi sinh</span>
+                <span class="shrink-0 font-bold">Xem 17 món ↓</span>
+              </a>
+            </div>
+
+            <!-- Actions -->
+            <div class="px-6 pb-6 pt-1 space-y-2.5">
+              <button type="button" onclick="shareSummary('mom')" class="w-full py-3 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-bold text-sm transition flex items-center justify-center gap-2">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+                <span>Gửi kết quả qua Zalo / Tin nhắn</span>
+              </button>
+
+              <div class="grid grid-cols-2 gap-2">
+                <button type="button" onclick="downloadImageCard('mom')" class="py-2.5 px-3 bg-paper-50 hover:bg-paper-100 text-ink-900 rounded-xl font-semibold text-xs transition flex items-center justify-center gap-1.5 border border-paper-200">
+                  <svg class="w-3.5 h-3.5 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  <span>Lưu ảnh phiếu PNG</span>
+                </button>
+                <button type="button" onclick="shareToFacebook()" class="py-2.5 px-3 bg-paper-50 hover:bg-paper-100 text-ink-900 rounded-xl font-semibold text-xs transition flex items-center justify-center gap-1.5 border border-paper-200">
+                  <svg class="w-3.5 h-3.5 text-ink-600" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                  <span>Chia sẻ Facebook</span>
+                </button>
+              </div>
+
+              <p id="toast-mom" role="status" aria-live="polite" class="text-center text-xs text-emerald-700 font-semibold hidden pt-1"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIEW 2: BỐ CÓ VỢ SINH -->
+      <div id="section-dad" class="grid lg:grid-cols-12 gap-6 items-start hidden">
+        <div class="lg:col-span-7 bg-white rounded-2xl p-5 sm:p-7 border border-paper-200 space-y-6">
+          <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-paper-200/80">
+            <div>
+              <h2 class="font-bold text-base text-ink-900">Thông tin thai sản của bố</h2>
+              <p class="text-xs text-ink-500 mt-0.5">Áp dụng cho chồng đang đóng BHXH khi vợ sinh con.</p>
+            </div>
+            <span class="text-[11px] text-ink-600 font-semibold bg-paper-100 border border-paper-200 px-2.5 py-1 rounded-full">
+              Nghỉ việc hưởng nguyên chế độ
+            </span>
+          </div>
+
+          <div class="space-y-3">
+            <div class="flex items-baseline justify-between gap-2">
+              <label for="dad-salary-text" class="text-sm font-semibold text-ink-900">Lương đóng BHXH của bố</label>
+              <div class="font-extrabold text-lg text-brand-600 tabular" id="dad-salary-badge">12.000.000 đ</div>
+            </div>
+
+            <div class="relative">
+              <input type="text" inputmode="numeric" id="dad-salary-text" value="12.000.000" oninput="syncSalaryFromText(this, 'dad')" class="w-full pl-4 pr-20 py-3 bg-paper-50 border border-paper-200 rounded-xl text-base font-bold text-ink-900 tabular focus:bg-white focus:border-brand-600 transition" aria-describedby="dad-cap-hint">
+              <span class="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs font-semibold text-ink-500">VNĐ / tháng</span>
+            </div>
+
+            <div class="pt-1 space-y-2">
+              <input type="range" id="dad-range" min="3000000" max="50600000" step="500000" value="12000000" oninput="syncSalaryFromRange('dad')" class="tsp-range" aria-label="Thanh trượt mức lương đóng BHXH của bố">
+              <div class="flex justify-between text-[11px] text-ink-500 font-medium tabular">
+                <span>3 triệu</span>
+                <span>15 triệu</span>
+                <span>30 triệu</span>
+                <span>Trần 50,6 triệu</span>
+              </div>
+            </div>
+
+            <p id="dad-cap-hint" class="hidden text-xs font-medium text-amber-800 bg-amber-50 border border-amber-200 rounded-xl px-3 py-2"></p>
+
+            <div class="flex flex-wrap items-center gap-1.5 pt-0.5">
+              <span class="text-xs text-ink-500 font-medium mr-1">Chọn nhanh:</span>
+              <button type="button" data-val="8000000" onclick="setPreset('dad', 8000000)" class="preset-chip-dad px-2.5 py-1 rounded-lg text-xs font-semibold bg-paper-100 text-ink-600 hover:text-ink-900 transition tabular">8 triệu</button>
+              <button type="button" data-val="12000000" onclick="setPreset('dad', 12000000)" class="preset-chip-dad px-2.5 py-1 rounded-lg text-xs font-semibold bg-brand-50 text-brand-700 border border-brand-200 transition tabular">12 triệu</button>
+              <button type="button" data-val="18000000" onclick="setPreset('dad', 18000000)" class="preset-chip-dad px-2.5 py-1 rounded-lg text-xs font-semibold bg-paper-100 text-ink-600 hover:text-ink-900 transition tabular">18 triệu</button>
+              <button type="button" data-val="25000000" onclick="setPreset('dad', 25000000)" class="preset-chip-dad px-2.5 py-1 rounded-lg text-xs font-semibold bg-paper-100 text-ink-600 hover:text-ink-900 transition tabular">25 triệu</button>
+            </div>
+          </div>
+
+          <div class="space-y-4 pt-1">
+            <div class="space-y-1.5">
+              <label for="dad-wife-status" class="block text-xs font-bold uppercase tracking-wider text-ink-500">Tình trạng BHXH của vợ</label>
+              <select id="dad-wife-status" onchange="calculateAll()" class="w-full px-3.5 py-2.5 bg-paper-50 border border-paper-200 rounded-xl text-sm font-semibold text-ink-900 focus:bg-white focus:border-brand-600 transition">
+                <option value="insured">Vợ CÓ đóng BHXH (vợ trực tiếp nhận trợ cấp 1 lần)</option>
+                <option value="uninsured">Vợ KHÔNG tham gia BHXH (bố được nhận thay 5.060.000 đ)</option>
+              </select>
+            </div>
+
+            <div class="space-y-1.5">
+              <label for="dad-days-select" class="block text-xs font-bold uppercase tracking-wider text-ink-500">Trường hợp sinh của vợ</label>
+              <select id="dad-days-select" onchange="calculateAll()" class="w-full px-3.5 py-2.5 bg-paper-50 border border-paper-200 rounded-xl text-sm font-semibold text-ink-900 focus:bg-white focus:border-brand-600 transition">
+                <option value="5">Sinh thường 1 con — Nghỉ 5 ngày làm việc</option>
+                <option value="7">Sinh phẫu thuật / dưới 32 tuần — Nghỉ 7 ngày làm việc</option>
+                <option value="10">Sinh con thứ 2 / Sinh đôi thường — Nghỉ 10 ngày làm việc</option>
+                <option value="14">Sinh đôi phẫu thuật — Nghỉ 14 ngày làm việc</option>
+                <option value="13">Sinh ba thường — Nghỉ 13 ngày làm việc</option>
+                <option value="17">Sinh ba phẫu thuật — Nghỉ 17 ngày làm việc</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div id="dad-receipt-card" class="lg:col-span-5 lg:sticky lg:top-20 scroll-mt-20">
+          <div class="bg-white rounded-2xl border border-paper-200 shadow-[0_8px_30px_-12px_rgba(28,25,23,0.08)] overflow-hidden">
+            <div class="h-1.5 bg-brand-600"></div>
+
+            <div class="p-6 pb-5 bg-brand-50/45 border-b border-paper-200">
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-[11px] font-bold uppercase tracking-wider text-brand-700">Phiếu dự toán của bố</span>
+                <span class="text-[11px] font-medium text-ink-500 tabular" id="dad-badge-leave">Nghỉ 5 ngày làm việc</span>
+              </div>
+              <div class="mt-3 text-3xl sm:text-[38px] font-extrabold tracking-tight text-ink-900 tabular leading-none" id="dad-total-amount">
+                2.500.000 đ
+              </div>
+              <p class="text-xs text-ink-600 mt-2.5">
+                Nộp bản sao giấy khai sinh để công ty giải quyết trong vòng 45 ngày
+              </p>
+            </div>
+
+            <div class="p-6 space-y-4 text-sm">
+              <div class="flex items-start justify-between gap-3 pb-3.5 border-b border-dashed border-paper-200">
+                <div>
+                  <div class="font-semibold text-ink-900" id="dad-leave-title">1. Tiền trợ cấp nghỉ việc (5 ngày)</div>
+                  <div class="text-xs text-ink-500 mt-0.5">(Lương bình quân / 24 ngày) × Số ngày nghỉ</div>
+                </div>
+                <div class="font-bold text-ink-900 text-right whitespace-nowrap tabular" id="dad-slip-leave">
+                  2.500.000 đ
+                </div>
+              </div>
+
+              <div class="flex items-start justify-between gap-3 pb-3.5 border-b border-paper-200">
+                <div>
+                  <div class="font-semibold text-ink-900">2. Trợ cấp một lần (tiền tã lót)</div>
+                  <div class="text-xs text-ink-500 mt-0.5" id="dad-slip-oneshot-desc">Vợ đã đóng BHXH nên vợ nhận khoản này</div>
+                </div>
+                <div class="font-bold text-ink-900 text-right whitespace-nowrap tabular" id="dad-slip-oneshot">
+                  0 đ
+                </div>
+              </div>
+
+              <a href="#tool-checklist" class="flex items-center justify-between gap-2 px-3.5 py-2.5 rounded-xl bg-brand-50/70 hover:bg-brand-50 border border-brand-200/80 text-xs font-semibold text-brand-700 transition">
+                <span id="dad-bridge-text">Sắm giỏ đồ đi sinh chuẩn bị đón bé giúp vợ</span>
+                <span class="shrink-0 font-bold">Xem 17 món ↓</span>
+              </a>
+            </div>
+
+            <div class="px-6 pb-6 pt-1 space-y-2.5">
+              <button type="button" onclick="shareSummary('dad')" class="w-full py-3 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-bold text-sm transition flex items-center justify-center gap-2">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+                <span>Gửi quyền lợi của bố qua Zalo / Tin nhắn</span>
+              </button>
+
+              <div class="grid grid-cols-2 gap-2">
+                <button type="button" onclick="downloadImageCard('dad')" class="py-2.5 px-3 bg-paper-50 hover:bg-paper-100 text-ink-900 rounded-xl font-semibold text-xs transition flex items-center justify-center gap-1.5 border border-paper-200">
+                  <svg class="w-3.5 h-3.5 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  <span>Lưu ảnh phiếu PNG</span>
+                </button>
+                <button type="button" onclick="shareToFacebook()" class="py-2.5 px-3 bg-paper-50 hover:bg-paper-100 text-ink-900 rounded-xl font-semibold text-xs transition flex items-center justify-center gap-1.5 border border-paper-200">
+                  <svg class="w-3.5 h-3.5 text-ink-600" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                  <span>Chia sẻ Facebook</span>
+                </button>
+              </div>
+
+              <p id="toast-dad" role="status" aria-live="polite" class="text-center text-xs text-emerald-700 font-semibold hidden pt-1"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIEW 3: KHÁM THAI & CON ỐM -->
+      <div id="section-misc" class="grid md:grid-cols-2 gap-6 hidden">
+        <div class="bg-white rounded-2xl p-6 border border-paper-200 space-y-5 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between gap-2 pb-3 border-b border-paper-200">
+              <h3 class="font-bold text-ink-900 text-base">Nghỉ đi khám thai</h3>
+              <span class="text-[11px] font-semibold text-brand-700 bg-brand-50 px-2.5 py-0.5 rounded-full">Tối đa 5 lần</span>
+            </div>
+            <p class="text-xs text-ink-600 leading-relaxed">
+              Nghỉ tối đa <strong>05 lần</strong>, mỗi lần <strong>không quá 02 ngày</strong> làm việc (Điều 51 Luật BHXH 2024). Tính tròn theo số ngày nghỉ thực tế không trùng ngày nghỉ hằng tuần.
+            </p>
+            <div class="grid sm:grid-cols-2 gap-3">
+              <div class="space-y-1.5">
+                <label for="misc-checkup-sal" class="block text-xs font-semibold text-ink-900">Lương BHXH (đ/tháng)</label>
+                <input type="text" inputmode="numeric" id="misc-checkup-sal" value="10.000.000" oninput="formatAndCalcMisc(this)" class="w-full px-3.5 py-2.5 bg-paper-50 border border-paper-200 rounded-xl text-sm font-bold text-ink-900 tabular focus:bg-white focus:border-brand-600 transition">
+              </div>
+              <div class="space-y-1.5">
+                <label for="misc-checkup-days" class="block text-xs font-semibold text-ink-900">Số ngày nghỉ khám</label>
+                <input type="number" id="misc-checkup-days" value="5" min="1" max="10" oninput="calculateMisc()" class="w-full px-3.5 py-2.5 bg-paper-50 border border-paper-200 rounded-xl text-sm font-bold text-ink-900 tabular focus:bg-white focus:border-brand-600 transition">
+              </div>
+            </div>
+          </div>
+          <div class="p-4 bg-paper-50 border border-paper-200 rounded-xl flex items-baseline justify-between gap-3">
+            <div>
+              <div class="text-xs font-semibold text-ink-600">Trợ cấp ước tính</div>
+              <div class="text-[11px] text-ink-500 mt-0.5">(Lương / 24) × Số ngày nghỉ</div>
+            </div>
+            <div id="misc-checkup-val" class="text-xl sm:text-2xl font-extrabold text-brand-600 tabular">2.083.333 đ</div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 border border-paper-200 space-y-5 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between gap-2 pb-3 border-b border-paper-200">
+              <h3 class="font-bold text-ink-900 text-base">Chăm sóc khi con ốm</h3>
+              <span class="text-[11px] font-semibold text-ink-600 bg-paper-100 px-2.5 py-0.5 rounded-full">Hưởng 75% lương</span>
+            </div>
+            <p class="text-xs text-ink-600 leading-relaxed">
+              Con dưới 3 tuổi được nghỉ tối đa <strong>20 ngày/năm</strong>; con từ 3 đến dưới 7 tuổi tối đa <strong>15 ngày/năm</strong> theo chỉ định cơ sở y tế.
+            </p>
+            <div class="grid sm:grid-cols-2 gap-3">
+              <div class="space-y-1.5">
+                <label for="misc-sick-sal" class="block text-xs font-semibold text-ink-900">Lương BHXH (đ/tháng)</label>
+                <input type="text" inputmode="numeric" id="misc-sick-sal" value="10.000.000" oninput="formatAndCalcMisc(this)" class="w-full px-3.5 py-2.5 bg-paper-50 border border-paper-200 rounded-xl text-sm font-bold text-ink-900 tabular focus:bg-white focus:border-brand-600 transition">
+              </div>
+              <div class="space-y-1.5">
+                <label for="misc-sick-days" class="block text-xs font-semibold text-ink-900">Số ngày nghỉ chăm con</label>
+                <input type="number" id="misc-sick-days" value="3" min="1" max="20" oninput="calculateMisc()" class="w-full px-3.5 py-2.5 bg-paper-50 border border-paper-200 rounded-xl text-sm font-bold text-ink-900 tabular focus:bg-white focus:border-brand-600 transition">
+              </div>
+            </div>
+          </div>
+          <div class="p-4 bg-paper-50 border border-paper-200 rounded-xl flex items-baseline justify-between gap-3">
+            <div>
+              <div class="text-xs font-semibold text-ink-600">Trợ cấp ước tính</div>
+              <div class="text-[11px] text-ink-500 mt-0.5">(Lương / 24) × 75% × Số ngày</div>
+            </div>
+            <div id="misc-sick-val" class="text-xl sm:text-2xl font-extrabold text-brand-600 tabular">937.500 đ</div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- PHẦN 2: KIỂM TRA ĐIỀU KIỆN 6/12 THÁNG -->
+    <section id="tool-eligibility" class="scroll-mt-20 pt-2 border-t border-paper-200">
+      <div class="grid lg:grid-cols-12 gap-8 items-start pt-6">
+        <div class="lg:col-span-5 space-y-5">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-brand-700">Điều kiện hưởng chế độ</span>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-ink-900 mt-1 leading-snug">
+              Kiểm tra mốc "6 tháng trong 12 tháng" trước khi sinh
+            </h2>
+            <p class="text-xs sm:text-sm text-ink-600 mt-2 leading-relaxed">
+              Xác định chính xác cửa sổ 12 tháng theo luật định để biết thời điểm an toàn nếu mẹ dự định xin nghỉ việc dưỡng thai.
+            </p>
+          </div>
+
+          <div class="bg-white rounded-2xl p-5 border border-paper-200 space-y-4">
+            <div>
+              <label for="eligibility-month" class="block text-xs font-bold uppercase tracking-wider text-ink-500 mb-1.5">
+                Tháng &amp; năm dự sinh của mẹ
+              </label>
+              <input type="month" id="eligibility-month" onchange="checkEligibility()" class="w-full px-3.5 py-2.5 bg-paper-50 border border-paper-200 rounded-xl text-sm font-bold text-ink-900 tabular focus:bg-white focus:border-brand-600 transition">
+            </div>
+
+            <div>
+              <label for="eligibility-paid-months" class="block text-xs font-bold uppercase tracking-wider text-ink-500 mb-1.5">
+                Số tháng đã (hoặc sẽ) đóng BHXH trong 12 tháng đó
+              </label>
+              <div class="flex items-center gap-3">
+                <input type="number" id="eligibility-paid-months" value="8" min="0" max="12" oninput="checkEligibility()" class="w-24 px-3.5 py-2.5 bg-paper-50 border border-paper-200 rounded-xl text-center font-extrabold text-lg text-ink-900 tabular focus:bg-white focus:border-brand-600 transition">
+                <span class="text-xs sm:text-sm font-medium text-ink-600">tháng (tối đa 12 tháng)</span>
+              </div>
+            </div>
+
+            <p class="text-xs text-ink-500 leading-relaxed pt-2 border-t border-paper-200">
+              Quy tắc: Sinh vào bất kỳ ngày nào trong tháng N, cửa sổ 12 tháng được tính từ tháng (N − 11) đến hết tháng N.
+            </p>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 space-y-4">
+          <!-- Status Banner -->
+          <div id="eligibility-box" class="p-6 rounded-2xl border border-emerald-300 bg-emerald-50/70 space-y-3">
+            <div class="flex items-center gap-2.5">
+              <span id="eligibility-icon" class="w-7 h-7 rounded-full bg-emerald-700 text-white flex items-center justify-center shrink-0">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              <span class="font-extrabold text-base sm:text-lg text-emerald-950" id="eligibility-title">ĐỦ ĐIỀU KIỆN HƯỞNG THAI SẢN</span>
+            </div>
+
+            <p class="text-xs sm:text-sm text-emerald-950/90 leading-relaxed" id="eligibility-desc"></p>
+
+            <div class="pt-3 border-t border-emerald-200 text-xs font-semibold text-emerald-900 leading-relaxed" id="eligibility-safe-notice"></div>
+
+            <div class="pt-2.5 border-t border-ink-900/10 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs font-bold">
+              <a href="#tool-calculator" class="text-brand-700 hover:underline">Tính ngay số tiền nhận được ↑</a>
+              <a href="huong-dan.html" class="text-ink-900 hover:underline">Xem hồ sơ tự nộp BHXH →</a>
+            </div>
+          </div>
+
+          <!-- Visual 12-Month Window Grid -->
+          <div class="bg-white rounded-2xl p-5 border border-paper-200 space-y-3">
+            <div class="flex flex-wrap items-center justify-between gap-2 text-xs">
+              <span class="font-bold text-ink-900">Biểu đồ cửa sổ 12 tháng trước sinh</span>
+              <span class="text-ink-500 tabular" id="eligibility-window-label">Mốc tối thiểu: 6 / 12 tháng</span>
+            </div>
+            <div id="eligibility-grid" class="grid grid-cols-4 sm:grid-cols-6 gap-2 tabular"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHẦN 3: TÍNH NGÀY DỰ SINH & MỐC KHÁM THAI -->
+    <section id="tool-due-date" class="scroll-mt-20 pt-2 border-t border-paper-200">
+      <div class="pt-6 space-y-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div class="max-w-2xl">
+            <span class="text-xs font-bold uppercase tracking-wider text-brand-700">Theo dõi thai kỳ</span>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-ink-900 mt-1">
+              Tính ngày dự sinh &amp; 5 mốc siêu âm quan trọng
+            </h2>
+            <p class="text-xs sm:text-sm text-ink-600 mt-1.5">
+              Nhập ngày đầu kỳ kinh cuối (hoặc ngày dự sinh bác sĩ đã siêu âm) để theo dõi tuần thai và lịch khám chuẩn.
+            </p>
+          </div>
+
+          <div class="inline-flex bg-paper-100 p-1 rounded-xl border border-paper-200 text-xs font-semibold self-start">
+            <button type="button" id="due-mode-lmp" onclick="setDueMode('lmp')" class="px-3 py-1.5 rounded-lg bg-white text-ink-900 shadow-sm transition">Từ ngày kinh cuối</button>
+            <button type="button" id="due-mode-edd" onclick="setDueMode('edd')" class="px-3 py-1.5 rounded-lg text-ink-600 hover:text-ink-900 transition">Đã có ngày dự sinh</button>
+          </div>
+        </div>
+
+        <div class="grid lg:grid-cols-12 gap-6 items-start">
+          <div class="lg:col-span-5 space-y-4">
+            <div class="bg-white rounded-2xl p-5 border border-paper-200 space-y-4">
+              <div id="wrap-lmp-input">
+                <label for="input-lmp-date" class="block text-xs font-bold uppercase tracking-wider text-ink-500 mb-1.5">
+                  Ngày đầu tiên của kỳ kinh cuối (LMP)
+                </label>
+                <input type="date" id="input-lmp-date" onchange="calcDueDate()" class="w-full px-3.5 py-2.5 bg-paper-50 border border-paper-200 rounded-xl text-sm font-bold text-ink-900 tabular focus:bg-white focus:border-brand-600 transition">
+              </div>
+
+              <div id="wrap-edd-input" class="hidden">
+                <label for="input-edd-date" class="block text-xs font-bold uppercase tracking-wider text-ink-500 mb-1.5">
+                  Ngày dự sinh theo phiếu siêu âm
+                </label>
+                <input type="date" id="input-edd-date" onchange="calcDueDate()" class="w-full px-3.5 py-2.5 bg-paper-50 border border-paper-200 rounded-xl text-sm font-bold text-ink-900 tabular focus:bg-white focus:border-brand-600 transition">
+              </div>
+
+              <!-- Summary + Progress -->
+              <div class="p-4 bg-brand-50/50 rounded-xl border border-brand-200/70 space-y-3">
+                <div>
+                  <span class="text-[11px] text-brand-700 font-bold uppercase tracking-wider">Ngày dự sinh ước tính</span>
+                  <div class="font-extrabold text-2xl text-ink-900 mt-0.5 tabular" id="output-due-date">--/--/----</div>
+                </div>
+
+                <div class="space-y-1.5">
+                  <div class="flex justify-between text-xs">
+                    <span class="text-ink-600">Tiến trình thai kỳ</span>
+                    <span class="font-bold text-brand-700 tabular" id="output-gestational-age">-- tuần -- ngày</span>
+                  </div>
+                  <div class="w-full h-2 bg-white rounded-full overflow-hidden border border-brand-100">
+                    <div id="pregnancy-progress-bar" class="h-full bg-brand-600 rounded-full transition-all duration-300" style="width: 45%"></div>
+                  </div>
+                  <div class="flex justify-between text-[11px] text-ink-500">
+                    <span id="output-trimester">3 tháng giữa</span>
+                    <span id="output-days-left" class="tabular">-- ngày nữa</span>
+                  </div>
+                </div>
+
+                <a href="#tool-checklist" id="due-checklist-nudge" class="flex items-center justify-between gap-2 pt-2.5 border-t border-brand-200/70 text-xs font-bold text-brand-700 hover:underline">
+                  <span>Chuẩn bị giỏ đồ đi sinh từ tuần 28</span>
+                  <span class="shrink-0">Xem 17 món ↓</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Vertical Timeline Milestones -->
+          <div class="lg:col-span-7 bg-white rounded-2xl p-5 sm:p-6 border border-paper-200 space-y-4">
+            <div class="flex items-center justify-between border-b border-paper-200 pb-3">
+              <span class="text-xs font-bold uppercase tracking-wider text-ink-500">Timeline 5 mốc khám vàng</span>
+              <span class="text-[11px] text-ink-500">Tự động đánh dấu theo tuần thai hiện tại</span>
+            </div>
+            <div class="relative pl-6 space-y-4 before:content-[''] before:absolute before:left-[9px] before:top-2 before:bottom-2 before:w-px before:bg-paper-200" id="timeline-milestones">
+              <!-- Populated via JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHẦN 4: CHECKLIST GIỎ ĐỒ ĐI SINH -->
+    <section id="tool-checklist" class="scroll-mt-20 pt-2 border-t border-paper-200">
+      <div class="pt-6 space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div class="max-w-xl">
+            <span class="text-xs font-bold uppercase tracking-wider text-brand-700">Chuẩn bị đi viện</span>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-ink-900 mt-1">
+              Checklist giỏ đồ đi sinh cho mẹ &amp; bé
+            </h2>
+            <p class="text-xs sm:text-sm text-ink-600 mt-1">
+              Trạng thái đánh dấu tự động lưu ngay trên trình duyệt thiết bị của bạn.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2.5 self-start sm:self-auto">
+            <span class="text-xs font-bold text-ink-900 bg-white border border-paper-200 px-3 py-1.5 rounded-xl tabular" id="checklist-total-badge">Đã chuẩn bị 0/17</span>
+
+            <button type="button" onclick="copyMissingChecklist()" class="text-xs font-semibold text-brand-700 bg-brand-50 hover:bg-brand-100 border border-brand-200 px-3 py-1.5 rounded-xl transition">
+              Chép món thiếu gửi Zalo
+            </button>
+
+            <div id="reset-confirm-wrap" class="flex items-center gap-2">
+              <button type="button" id="btn-reset-ask" onclick="askResetChecklist()" class="text-xs text-ink-500 hover:text-brand-600 font-semibold px-2.5 py-1.5 rounded-lg hover:bg-paper-100 transition">
+                Đặt lại
+              </button>
+              <div id="reset-confirm-actions" class="hidden items-center gap-1.5 bg-brand-50 border border-brand-200 px-2.5 py-1 rounded-xl">
+                <span class="text-[11px] font-semibold text-brand-700">Xóa hết dấu?</span>
+                <button type="button" onclick="confirmResetChecklist()" class="text-[11px] font-bold text-white bg-brand-600 px-2 py-0.5 rounded-md">Xóa</button>
+                <button type="button" onclick="cancelResetChecklist()" class="text-[11px] font-semibold text-ink-600 px-1.5 py-0.5">Hủy</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p id="toast-checklist" role="status" aria-live="polite" class="hidden text-xs font-semibold text-emerald-700"></p>
+        <p id="inapp-shopee-hint" class="hidden text-xs text-ink-600 bg-white border border-paper-200 rounded-xl px-3.5 py-2.5">
+          <strong class="text-ink-900">Mẹo khi xem từ Threads / Facebook / Zalo:</strong> Nếu bấm "Xem giá" chưa tự chuyển sang app Shopee, chọn dấu <strong>⋯</strong> → <strong>Mở bằng trình duyệt</strong> (Chrome/Safari) để giữ giỏ hàng.
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-5">
+          <div class="bg-white rounded-2xl p-5 border border-paper-200 space-y-3.5">
+            <div class="flex items-center justify-between pb-2.5 border-b border-paper-200">
+              <h3 class="font-bold text-ink-900 text-sm">Đồ cho bé sơ sinh</h3>
+              <span class="text-xs font-bold text-brand-700 bg-brand-50 px-2 py-0.5 rounded-full tabular" id="count-baby">0/7</span>
+            </div>
+            <div class="space-y-2" id="list-baby"></div>
+          </div>
+
+          <div class="bg-white rounded-2xl p-5 border border-paper-200 space-y-3.5">
+            <div class="flex items-center justify-between pb-2.5 border-b border-paper-200">
+              <h3 class="font-bold text-ink-900 text-sm">Đồ cho mẹ sau sinh</h3>
+              <span class="text-xs font-bold text-brand-700 bg-brand-50 px-2 py-0.5 rounded-full tabular" id="count-mom">0/6</span>
+            </div>
+            <div class="space-y-2" id="list-mom"></div>
+          </div>
+
+          <div class="bg-white rounded-2xl p-5 border border-paper-200 space-y-3.5">
+            <div class="flex items-center justify-between pb-2.5 border-b border-paper-200">
+              <h3 class="font-bold text-ink-900 text-sm">Giấy tờ nhập viện</h3>
+              <span class="text-xs font-bold text-brand-700 bg-brand-50 px-2 py-0.5 rounded-full tabular" id="count-docs">0/4</span>
+            </div>
+            <div class="space-y-2" id="list-docs"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHẦN 5: SO SÁNH VIỆN PHÍ -->
+    <section id="tool-hospital" class="scroll-mt-20 pt-2 border-t border-paper-200">
+      <div class="pt-6 space-y-5">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-brand-700">Chi phí dự trù</span>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-ink-900 mt-1">
+              So sánh viện phí sinh con tại các bệnh viện lớn
+            </h2>
+            <p class="text-xs sm:text-sm text-ink-600 mt-1">
+              Ước tính tham khảo giúp gia đình cân đối khoản thai sản nhận từ BHXH với ngân sách đi sinh.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-1.5 text-xs font-semibold" id="hospital-filters">
+            <button type="button" onclick="filterHospitals('all', this)" class="hosp-filter px-3 py-1.5 rounded-xl bg-ink-900 text-white transition">Tất cả (30)</button>
+            <button type="button" onclick="filterHospitals('hcm', this)" class="hosp-filter px-3 py-1.5 rounded-xl bg-white border border-paper-200 text-ink-600 hover:text-ink-900 transition">TP.HCM (10)</button>
+            <button type="button" onclick="filterHospitals('hn', this)" class="hosp-filter px-3 py-1.5 rounded-xl bg-white border border-paper-200 text-ink-600 hover:text-ink-900 transition">Hà Nội (10)</button>
+            <button type="button" onclick="filterHospitals('other', this)" class="hosp-filter px-3 py-1.5 rounded-xl bg-white border border-paper-200 text-ink-600 hover:text-ink-900 transition">Đà Nẵng &amp; Tỉnh (10)</button>
+            <button type="button" onclick="filterHospitals('public', this)" class="hosp-filter px-3 py-1.5 rounded-xl bg-white border border-paper-200 text-ink-600 hover:text-ink-900 transition">Bệnh viện công</button>
+            <button type="button" onclick="filterHospitals('intl', this)" class="hosp-filter px-3 py-1.5 rounded-xl bg-white border border-paper-200 text-ink-600 hover:text-ink-900 transition">Tư nhân / Quốc tế</button>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-paper-200 overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs sm:text-sm border-collapse min-w-[640px]">
+              <thead>
+                <tr class="bg-paper-50 text-ink-600 font-bold border-b border-paper-200 text-xs">
+                  <th class="py-3.5 px-5">Bệnh viện</th>
+                  <th class="py-3.5 px-3">Khu vực</th>
+                  <th class="py-3.5 px-3">Sinh thường</th>
+                  <th class="py-3.5 px-3">Sinh mổ</th>
+                  <th class="py-3.5 px-3">Mức hưởng BHYT</th>
+                  <th class="py-3.5 px-5">Ghi chú nổi bật</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-paper-200/70 tabular" id="hospital-table-body">
+              </tbody>
+            </table>
+          </div>
+          <div id="hospital-expand-wrap" class="border-t border-paper-200 bg-paper-50/70 px-5 py-2.5 text-center">
+            <button type="button" id="btn-toggle-hospitals" onclick="toggleAllHospitals()" class="text-xs font-bold text-brand-700 hover:underline py-1">
+              Xem đầy đủ 30 bệnh viện (TP.HCM · Hà Nội · Đà Nẵng &amp; Tỉnh) ↓
+            </button>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white border border-paper-200 rounded-2xl px-5 py-4 text-xs">
+          <p class="text-ink-600"><strong class="text-ink-900">Lưu ý khi sinh bệnh viện công:</strong> Mẹ cần tự chuẩn bị hầu hết đồ cá nhân cho mẹ và bé khi nhập viện.</p>
+          <a href="#tool-checklist" class="font-bold text-brand-700 hover:underline whitespace-nowrap shrink-0">Mở checklist 17 món đi sinh ↑</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHẦN 6: BẢNG TRA CỨU NHANH -->
+    <section class="pt-2 border-t border-paper-200">
+      <div class="pt-6 space-y-5">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <h2 class="text-lg sm:text-xl font-extrabold text-ink-900">Bảng tra cứu nhanh theo mức lương đóng BHXH</h2>
+            <p class="text-xs sm:text-sm text-ink-600 mt-0.5">Áp dụng cho mẹ sinh thường 01 con (lần đầu), có nghỉ dưỡng sức 5 ngày. Bấm vào một dòng để nạp vào bảng tính.</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-paper-200 overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs sm:text-sm border-collapse min-w-[540px]">
+              <thead>
+                <tr class="bg-paper-50 text-ink-600 font-bold border-b border-paper-200 text-xs">
+                  <th class="py-3.5 px-5">Lương đóng BHXH</th>
+                  <th class="py-3.5 px-3">Trợ cấp 1 lần</th>
+                  <th class="py-3.5 px-3">Lương nghỉ 6 tháng</th>
+                  <th class="py-3.5 px-3">Dưỡng sức (5 ngày)</th>
+                  <th class="py-3.5 px-5 text-right text-brand-700">Tổng thực nhận</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-paper-200/70 tabular" id="lookup-table-body">
+                <tr data-salary="5000000" onclick="applyLookupSalary(5000000)" class="cursor-pointer hover:bg-brand-50/40 transition">
+                  <td class="py-3.5 px-5 font-bold text-ink-900">5.000.000 đ</td>
+                  <td class="py-3.5 px-3 text-ink-600">5.060.000 đ</td>
+                  <td class="py-3.5 px-3 text-ink-600">30.000.000 đ</td>
+                  <td class="py-3.5 px-3 text-ink-600">3.795.000 đ</td>
+                  <td class="py-3.5 px-5 text-right font-extrabold text-brand-600">38.855.000 đ</td>
+                </tr>
+                <tr data-salary="6000000" onclick="applyLookupSalary(6000000)" class="cursor-pointer hover:bg-brand-50/40 transition">
+                  <td class="py-3.5 px-5 font-bold text-ink-900">6.000.000 đ</td>
+                  <td class="py-3.5 px-3 text-ink-600">5.060.000 đ</td>
+                  <td class="py-3.5 px-3 text-ink-600">36.000.000 đ</td>
+                  <td class="py-3.5 px-3 text-ink-600">3.795.000 đ</td>
+                  <td class="py-3.5 px-5 text-right font-extrabold text-brand-600">44.855.000 đ</td>
+                </tr>
+                <tr data-salary="8000000" onclick="applyLookupSalary(8000000)" class="cursor-pointer hover:bg-brand-50/40 transition">
+                  <td class="py-3.5 px-5 font-bold text-ink-900">8.000.000 đ</td>
+                  <td class="py-3.5 px-3 text-ink-600">5.060.000 đ</td>
+                  <td class="py-3.5 px-3 text-ink-600">48.000.000 đ</td>
+                  <td class="py-3.5 px-3 text-ink-600">3.795.000 đ</td>
+                  <td class="py-3.5 px-5 text-right font-extrabold text-brand-600">56.855.000 đ</td>
+                </tr>
+                <tr data-salary="10000000" onclick="applyLookupSalary(10000000)" class="cursor-pointer bg-brand-50/40 hover:bg-brand-50/70 transition">
+                  <td class="py-3.5 px-5 font-bold text-ink-900">10.000.000 đ <span class="text-[10px] bg-brand-100 text-brand-700 px-1.5 py-0.5 rounded font-semibold ml-1 font-sans">Phổ biến</span></td>
+                  <td class="py-3.5 px-3 text-ink-600">5.060.000 đ</td>
+                  <td class="py-3.5 px-3 text-ink-600">60.000.000 đ</td>
+                  <td class="py-3.5 px-3 text-ink-600">3.795.000 đ</td>
+                  <td class="py-3.5 px-5 text-right font-extrabold text-brand-600">68.855.000 đ</td>
+                </tr>
+                <tr data-salary="15000000" onclick="applyLookupSalary(15000000)" class="cursor-pointer hover:bg-brand-50/40 transition">
+                  <td class="py-3.5 px-5 font-bold text-ink-900">15.000.000 đ</td>
+                  <td class="py-3.5 px-3 text-ink-600">5.060.000 đ</td>
+                  <td class="py-3.5 px-3 text-ink-600">90.000.000 đ</td>
+                  <td class="py-3.5 px-3 text-ink-600">3.795.000 đ</td>
+                  <td class="py-3.5 px-5 text-right font-extrabold text-brand-600">98.855.000 đ</td>
+                </tr>
+                <tr data-salary="20000000" onclick="applyLookupSalary(20000000)" class="cursor-pointer hover:bg-brand-50/40 transition">
+                  <td class="py-3.5 px-5 font-bold text-ink-900">20.000.000 đ</td>
+                  <td class="py-3.5 px-3 text-ink-600">5.060.000 đ</td>
+                  <td class="py-3.5 px-3 text-ink-600">120.000.000 đ</td>
+                  <td class="py-3.5 px-3 text-ink-600">3.795.000 đ</td>
+                  <td class="py-3.5 px-5 text-right font-extrabold text-brand-600">128.855.000 đ</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="pt-2 border-t border-paper-200">
+      <div class="pt-6 grid lg:grid-cols-12 gap-8 items-start">
+        <div class="lg:col-span-4 space-y-2">
+          <h2 class="text-lg sm:text-xl font-extrabold text-ink-900">Câu hỏi thường gặp</h2>
+          <p class="text-xs sm:text-sm text-ink-600 leading-relaxed">
+            Giải đáp nhanh các thắc mắc phổ biến theo Luật Bảo hiểm xã hội Việt Nam.
+          </p>
+          <a href="huong-dan.html" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-700 hover:underline pt-1">
+            <span>Xem chi tiết thủ tục hồ sơ</span>
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+
+        <div class="lg:col-span-8 space-y-3 text-sm">
+          <details class="group bg-white rounded-2xl border border-paper-200 p-5" open>
+            <summary class="font-bold text-ink-900 cursor-pointer flex justify-between items-center gap-4 select-none list-none">
+              <span>Nghỉ việc trước khi sinh có được nhận tiền thai sản không?</span>
+              <svg class="w-4 h-4 text-ink-500 shrink-0 group-open:rotate-180 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="text-ink-600 mt-3 text-xs sm:text-sm leading-relaxed border-t border-paper-200/70 pt-3">
+              <strong>Có.</strong> Chỉ cần mẹ đã đóng đủ từ <strong>06 tháng BHXH trở lên</strong> trong vòng 12 tháng trước khi sinh con, dù đã nghỉ việc trước ngày sinh vẫn được tự mang Giấy khai sinh (hoặc Giấy chứng sinh) và sổ BHXH ra cơ quan Bảo hiểm xã hội quận/huyện nơi cư trú để nhận tiền trực tiếp. <a href="#tool-eligibility" class="font-bold text-brand-700 hover:underline">Kiểm tra cửa sổ 6/12 tháng tại đây →</a>
+            </div>
+          </details>
+
+          <details class="group bg-white rounded-2xl border border-paper-200 p-5">
+            <summary class="font-bold text-ink-900 cursor-pointer flex justify-between items-center gap-4 select-none list-none">
+              <span>Tiền thai sản có bị trừ thuế thu nhập cá nhân không?</span>
+              <svg class="w-4 h-4 text-ink-500 shrink-0 group-open:rotate-180 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="text-ink-600 mt-3 text-xs sm:text-sm leading-relaxed border-t border-paper-200/70 pt-3">
+              <strong>Không bị trừ bất kỳ đồng thuế nào.</strong> Khoản trợ cấp thai sản và tiền tã lót là thu nhập được miễn thuế thu nhập cá nhân 100% theo Thông tư 111/2013/TT-BTC.
+            </div>
+          </details>
+
+          <details class="group bg-white rounded-2xl border border-paper-200 p-5">
+            <summary class="font-bold text-ink-900 cursor-pointer flex justify-between items-center gap-4 select-none list-none">
+              <span>Hồ sơ nộp cho công ty gồm những giấy tờ gì?</span>
+              <svg class="w-4 h-4 text-ink-500 shrink-0 group-open:rotate-180 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="text-ink-600 mt-3 text-xs sm:text-sm leading-relaxed border-t border-paper-200/70 pt-3">
+              Mẹ nộp bản sao chứng thực <strong>Giấy khai sinh</strong> hoặc <strong>Trích lục khai sinh</strong> (hoặc Giấy chứng sinh) của bé cho phòng Nhân sự trong vòng 45 ngày kể từ ngày đi làm lại. Nếu sinh mổ, nộp thêm bản sao Giấy ra viện có ghi rõ phương pháp sinh.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Mobile Sticky Bottom Bar -->
+  <div id="mobile-sticky-bar" class="md:hidden fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-paper-200 px-4 py-3 z-40 shadow-[0_-4px_20px_rgba(28,25,23,0.08)] flex items-center justify-between gap-3">
+    <a id="mobile-sticky-link" href="#mom-receipt-card" class="min-w-0">
+      <span id="mobile-sticky-label" class="text-[10px] text-ink-500 font-bold block uppercase tracking-wider">Dự tính mẹ nhận</span>
+      <span class="font-extrabold text-lg text-brand-600 tabular leading-tight block" id="mobile-sticky-val">68.855.000 đ</span>
+      <span class="text-[10px] font-semibold text-ink-500 underline">Xem chi tiết</span>
+    </a>
+    <div class="flex items-center gap-2">
+      <button type="button" onclick="downloadImageCard(state.activeTab === 'dad' ? 'dad' : 'mom')" class="px-3 py-2 bg-paper-50 text-ink-900 border border-paper-200 rounded-xl text-xs font-semibold">
+        Tải ảnh
+      </button>
+      <button type="button" onclick="shareSummary(state.activeTab === 'dad' ? 'dad' : 'mom')" class="px-3.5 py-2 bg-brand-600 text-white rounded-xl text-xs font-bold flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+        <span id="mobile-sticky-share-label">Chia sẻ</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Install App Modal -->
+  <div id="install-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink-900/50 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="install-modal-title">
+    <div class="bg-white border border-paper-200 w-full max-w-sm rounded-2xl p-6 shadow-2xl space-y-4 relative">
+      <button type="button" onclick="closeInstallModal()" class="absolute top-4 right-4 p-1.5 rounded-lg text-ink-500 hover:text-ink-900 hover:bg-paper-100 transition" aria-label="Đóng hộp thoại">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-brand-600 text-white flex items-center justify-center shrink-0">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+        </div>
+        <div>
+          <h3 id="install-modal-title" class="font-bold text-ink-900 text-base">Cài ứng dụng ThaiSanPro</h3>
+          <p class="text-xs text-ink-500">Mở nhanh từ màn hình chính, dùng ngoại tuyến.</p>
+        </div>
+      </div>
+
+      <div class="space-y-3 text-xs text-ink-600">
+        <div class="p-3.5 rounded-xl bg-paper-50 border border-paper-200 space-y-1.5">
+          <div class="font-bold text-ink-900">Trên iPhone / iPad (Safari)</div>
+          <p>1. Bấm nút <strong>Chia sẻ (Share)</strong> ở thanh dưới trình duyệt.</p>
+          <p>2. Chọn <strong>"Thêm vào MH chính"</strong> (Add to Home Screen).</p>
+        </div>
+        <div class="p-3.5 rounded-xl bg-paper-50 border border-paper-200 space-y-1.5">
+          <div class="font-bold text-ink-900">Trên Android (Chrome)</div>
+          <p>Bấm menu <strong>3 chấm</strong> góc phải trên cùng, chọn <strong>"Cài đặt ứng dụng"</strong>.</p>
+        </div>
+      </div>
+
+      <button type="button" onclick="closeInstallModal()" class="w-full py-2.5 bg-ink-900 hover:bg-ink-900/90 text-white rounded-xl text-xs font-bold transition">
+        Đã hiểu
+      </button>
+    </div>
+  </div>
+
+  <!-- PNG Preview Modal (Fallback for in-app browsers) -->
+  <div id="png-preview-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink-900/60 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="png-preview-title">
+    <div class="bg-white border border-paper-200 w-full max-w-sm rounded-2xl p-4 shadow-2xl space-y-3 relative">
+      <div class="flex items-center justify-between gap-2">
+        <h3 id="png-preview-title" class="font-bold text-ink-900 text-sm">Phiếu dự toán thai sản</h3>
+        <button type="button" onclick="closePngPreviewModal()" class="p-1.5 rounded-lg text-ink-500 hover:text-ink-900 hover:bg-paper-100 transition" aria-label="Đóng ảnh xem trước">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <p class="text-xs text-brand-700 font-semibold bg-brand-50 border border-brand-200/80 rounded-xl px-3 py-2">
+        Nhấn giữ trực tiếp vào ảnh bên dưới rồi chọn "Lưu vào Ảnh" để lưu về máy.
+      </p>
+      <img id="png-preview-img" src="" alt="Phiếu dự toán thai sản PNG" class="w-full rounded-xl border border-paper-200 max-h-[60vh] object-contain bg-paper-50">
+      <div class="flex items-center gap-2">
+        <a id="png-preview-dl" href="#" download="phieu-thai-san.png" class="flex-1 py-2.5 text-center bg-paper-50 hover:bg-paper-100 border border-paper-200 rounded-xl text-xs font-semibold text-ink-900 transition">
+          Thử tải trực tiếp
+        </a>
+        <button type="button" onclick="closePngPreviewModal()" class="px-4 py-2.5 bg-ink-900 text-white rounded-xl text-xs font-bold transition">
+          Đóng
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hidden Canvas for Exporting Image Card -->
+  <canvas id="export-canvas" width="800" height="960" class="hidden"></canvas>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-paper-200 py-8 text-xs text-ink-500">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <span class="font-bold text-ink-900 text-sm">ThaiSanPro</span>
+        <span>— Công cụ tính quyền lợi BHXH &amp; cẩm nang mẹ bầu</span>
+      </div>
+      <div class="flex flex-wrap justify-center gap-5 font-medium">
+        <a href="index.html" class="text-brand-700 font-semibold">Bảng tính</a>
+        <a href="huong-dan.html" class="hover:text-ink-900 transition">Thủ tục hồ sơ</a>
+        <a href="dieu-khoan.html" class="hover:text-ink-900 transition">Điều khoản</a>
+        <a href="chinh-sach-bao-mat.html" class="hover:text-ink-900 transition">Bảo mật</a>
+        <a href="lien-he.html" class="hover:text-ink-900 transition">Liên hệ</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="affiliate.js"></script>
+  <script>
+    const BASE_SALARY = 2530000; // NĐ 161/2026/NĐ-CP từ 01/7/2026
+    const BHXH_SALARY_CEILING = BASE_SALARY * 20; // 50.600.000 VNĐ
+    const ONESHOT_PER_BABY = BASE_SALARY * 2; // 5.060.000 VNĐ
+    const RECOVERY_DAY_RATE = BASE_SALARY * 0.3; // 759.000 VNĐ
+
+    function getMomLeaveMonths(count, isSecondChild) {
+      return (isSecondChild ? 7 : 6) + (count - 1);
+    }
+
+    const state = {
+      activeTab: 'mom',
+      dueMode: 'lmp',
+      mom: {
+        salary: 10000000,
+        birthType: 'normal',
+        childCount: 1,
+        recovery: true
+      },
+      dad: {
+        salary: 12000000,
+        days: 5,
+        wifeInsured: 'insured'
+      }
+    };
+
+    function parseVND(val) {
+      if (!val) return 0;
+      return parseInt(val.toString().replace(/[^0-9]/g, ''), 10) || 0;
+    }
+
+    function formatVND(num) {
+      return Math.round(num).toLocaleString('vi-VN') + ' đ';
+    }
+
+    function clampCalculationSalary(raw, mode) {
+      const hint = document.getElementById(`${mode}-cap-hint`);
+      if (raw > BHXH_SALARY_CEILING) {
+        if (hint) {
+          hint.innerText = `Mức lương đóng BHXH tối đa theo quy định là ${formatVND(BHXH_SALARY_CEILING)} (20 lần lương cơ sở). Hệ thống đang tạm tính theo mức trần này.`;
+          hint.classList.remove('hidden');
+        }
+        return BHXH_SALARY_CEILING;
+      }
+      if (hint) hint.classList.add('hidden');
+      return raw;
+    }
+
+    function updatePresetChips(mode, currentSalary) {
+      document.querySelectorAll(`.preset-chip-${mode}`).forEach(btn => {
+        const val = parseInt(btn.dataset.val, 10);
+        if (val === currentSalary) {
+          btn.className = `preset-chip-${mode} px-2.5 py-1 rounded-lg text-xs font-semibold bg-brand-50 text-brand-700 border border-brand-200 transition tabular`;
+        } else {
+          btn.className = `preset-chip-${mode} px-2.5 py-1 rounded-lg text-xs font-semibold bg-paper-100 text-ink-600 hover:text-ink-900 transition tabular`;
+        }
+      });
+    }
+
+    function syncSalaryFromRange(mode) {
+      const val = parseInt(document.getElementById(`${mode}-range`).value, 10);
+      state[mode].salary = val;
+      document.getElementById(`${mode}-salary-badge`).innerText = formatVND(val);
+      document.getElementById(`${mode}-salary-text`).value = val.toLocaleString('vi-VN');
+      clampCalculationSalary(val, mode);
+      updatePresetChips(mode, val);
+      calculateAll();
+    }
+
+    function syncSalaryFromText(input, mode) {
+      const num = parseVND(input.value);
+      input.value = num ? num.toLocaleString('vi-VN') : '';
+      const effective = clampCalculationSalary(num, mode);
+      state[mode].salary = effective;
+      document.getElementById(`${mode}-salary-badge`).innerText = formatVND(effective);
+      const sliderVal = Math.min(Math.max(effective, 3000000), BHXH_SALARY_CEILING);
+      document.getElementById(`${mode}-range`).value = sliderVal;
+      updatePresetChips(mode, effective);
+      calculateAll();
+    }
+
+    function setPreset(mode, val) {
+      state[mode].salary = val;
+      document.getElementById(`${mode}-range`).value = val;
+      document.getElementById(`${mode}-salary-badge`).innerText = formatVND(val);
+      document.getElementById(`${mode}-salary-text`).value = val.toLocaleString('vi-VN');
+      clampCalculationSalary(val, mode);
+      updatePresetChips(mode, val);
+      calculateAll();
+    }
+
+    function applyLookupSalary(val) {
+      switchTab('mom');
+      setPreset('mom', val);
+      const calcEl = document.getElementById('tool-calculator');
+      if (calcEl) calcEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function highlightLookupTable(salary) {
+      document.querySelectorAll('#lookup-table-body tr').forEach(row => {
+        const rowVal = parseInt(row.dataset.salary, 10);
+        if (rowVal === salary) {
+          row.className = 'cursor-pointer bg-brand-50/45 hover:bg-brand-50/70 transition';
+        } else {
+          row.className = 'cursor-pointer hover:bg-brand-50/30 transition';
+        }
+      });
+    }
+
+    function setBirthType(type) {
+      state.mom.birthType = type;
+      const types = ['normal', 'surgery'];
+      types.forEach(t => {
+        const btn = document.getElementById(`btn-birth-${t}`);
+        const dotWrap = btn.querySelector('.birth-radio-dot');
+        const dotInner = dotWrap.querySelector('span');
+        const active = t === type;
+        btn.setAttribute('aria-checked', active ? 'true' : 'false');
+        if (active) {
+          btn.className = 'p-3.5 rounded-xl border-2 border-brand-600 bg-brand-50/40 text-left transition flex items-start justify-between gap-3';
+          dotWrap.className = 'birth-radio-dot w-4 h-4 mt-0.5 rounded-full border-2 border-brand-600 flex items-center justify-center shrink-0';
+          dotInner.className = 'w-2 h-2 rounded-full bg-brand-600';
+        } else {
+          btn.className = 'p-3.5 rounded-xl border border-paper-200 bg-white hover:border-ink-500/40 text-left transition flex items-start justify-between gap-3';
+          dotWrap.className = 'birth-radio-dot w-4 h-4 mt-0.5 rounded-full border-2 border-paper-200 flex items-center justify-center shrink-0';
+          dotInner.className = 'w-2 h-2 rounded-full bg-transparent';
+        }
+      });
+      calculateAll();
+    }
+
+    function setChildCount(count) {
+      state.mom.childCount = count;
+      [1, 2, 3].forEach(c => {
+        const btn = document.getElementById(`btn-child-${c}`);
+        const active = c === count;
+        btn.setAttribute('aria-checked', active ? 'true' : 'false');
+        if (active) {
+          btn.className = 'py-2.5 px-2 sm:px-3 rounded-xl border-2 border-brand-600 bg-brand-50/40 text-ink-900 transition';
+        } else {
+          btn.className = 'py-2.5 px-2 sm:px-3 rounded-xl border border-paper-200 bg-white hover:border-ink-500/40 text-ink-600 transition';
+        }
+      });
+      calculateAll();
+    }
+
+    function switchTab(tab) {
+      state.activeTab = tab;
+      ['mom', 'dad', 'misc'].forEach(t => {
+        document.getElementById(`section-${t}`).classList.add('hidden');
+        const btn = document.getElementById(`tab-btn-${t}`);
+        const dot = document.getElementById(`tab-dot-${t}`);
+        btn.setAttribute('aria-selected', 'false');
+        btn.className = 'py-2.5 px-3.5 sm:px-4 rounded-xl text-ink-600 hover:text-ink-900 transition-all flex items-center justify-center gap-1.5 whitespace-nowrap';
+        dot.className = 'w-2 h-2 rounded-full bg-transparent';
+      });
+
+      document.getElementById(`section-${tab}`).classList.remove('hidden');
+      const activeBtn = document.getElementById(`tab-btn-${tab}`);
+      const activeDot = document.getElementById(`tab-dot-${tab}`);
+      activeBtn.setAttribute('aria-selected', 'true');
+      activeBtn.className = 'py-2.5 px-3.5 sm:px-4 rounded-xl bg-white text-ink-900 shadow-sm transition-all flex items-center justify-center gap-1.5 whitespace-nowrap';
+      activeDot.className = 'w-2 h-2 rounded-full bg-brand-600';
+
+      updateMobileStickyBar();
+    }
+
+    let lastMomTotal = 0;
+    let lastDadTotal = 0;
+    let lastDueWeeks = 18;
+    let lastChecklistStats = { checked: 0, total: 17 };
+
+    function isInAppBrowser() {
+      return /FBAN|FBAV|Instagram|Barcelona|Threads|Zalo|Line/i.test(navigator.userAgent || '');
+    }
+
+    async function copyText(text) {
+      try {
+        await navigator.clipboard.writeText(text);
+        return true;
+      } catch (e) {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly', '');
+        ta.style.cssText = 'position:fixed;opacity:0';
+        document.body.appendChild(ta);
+        ta.select();
+        const ok = document.execCommand('copy');
+        ta.remove();
+        return ok;
+      }
+    }
+
+    function updateMobileStickyBar() {
+      const bar = document.getElementById('mobile-sticky-bar');
+      const link = document.getElementById('mobile-sticky-link');
+      const label = document.getElementById('mobile-sticky-label');
+      const val = document.getElementById('mobile-sticky-val');
+      if (state.activeTab === 'misc') {
+        bar.classList.add('hidden');
+        return;
+      }
+      bar.classList.remove('hidden');
+      if (state.activeTab === 'dad') {
+        label.innerText = 'Dự tính bố nhận';
+        val.innerText = formatVND(lastDadTotal);
+        if (link) link.href = '#dad-receipt-card';
+      } else {
+        label.innerText = 'Dự tính mẹ nhận';
+        val.innerText = formatVND(lastMomTotal);
+        if (link) link.href = '#mom-receipt-card';
+      }
+    }
+
+    function calculateAll() {
+      // 1. MẸ
+      const salary = state.mom.salary;
+      const count = state.mom.childCount;
+      const birthType = state.mom.birthType;
+      const isSecondChild = document.getElementById('mom-second-child-toggle').checked;
+      const hasRecovery = document.getElementById('mom-recovery-toggle').checked;
+
+      const baseM = isSecondChild ? 7 : 6;
+      document.getElementById('lbl-child-1').innerText = `(Nghỉ ${baseM}T)`;
+      document.getElementById('lbl-child-2').innerText = `(${baseM + 1}T)`;
+      document.getElementById('lbl-child-3').innerText = `(${baseM + 2}T)`;
+
+      const oneshot = ONESHOT_PER_BABY * count;
+      const months = getMomLeaveMonths(count, isSecondChild);
+      const leaveSalary = salary * months;
+
+      let recoveryDays = 0;
+      if (hasRecovery) {
+        if (count >= 2) recoveryDays = 10;
+        else if (birthType === 'surgery') recoveryDays = 7;
+        else recoveryDays = 5;
+      }
+      const recoveryPay = recoveryDays * RECOVERY_DAY_RATE;
+      const momTotal = oneshot + leaveSalary + recoveryPay;
+      lastMomTotal = momTotal;
+
+      document.getElementById('mom-total-amount').innerText = formatVND(momTotal);
+      document.getElementById('mom-slip-oneshot').innerText = formatVND(oneshot);
+      document.getElementById('mom-slip-oneshot-desc').innerText = `${count} bé × ${formatVND(ONESHOT_PER_BABY)} (2 lần lương cơ sở)`;
+
+      document.getElementById('mom-slip-salary-title').innerText = `2. Lương nghỉ thai sản ${months} tháng`;
+      document.getElementById('mom-slip-salary-desc').innerText = `100% × ${formatVND(salary)} × ${months} tháng`;
+      document.getElementById('mom-slip-salary').innerText = formatVND(leaveSalary);
+
+      document.getElementById('mom-slip-recovery-title').innerText = `3. Dưỡng sức phục hồi (${recoveryDays} ngày)`;
+      document.getElementById('mom-slip-recovery-desc').innerText = `${recoveryDays} ngày × ${formatVND(RECOVERY_DAY_RATE)} (30% lương CS)`;
+      document.getElementById('mom-slip-recovery').innerText = formatVND(recoveryPay);
+
+      document.getElementById('mom-recovery-text').innerText = hasRecovery
+        ? `Hưởng ${recoveryDays} ngày × ${formatVND(RECOVERY_DAY_RATE)} = ${formatVND(recoveryPay)}`
+        : 'Không tính khoản dưỡng sức sau sinh (0 đ)';
+
+      document.getElementById('mom-payout-1').innerText = formatVND(oneshot + leaveSalary);
+      document.getElementById('mom-payout-2').innerText = formatVND(recoveryPay);
+      const bridgeOneshot = document.getElementById('mom-bridge-oneshot');
+      if (bridgeOneshot) bridgeOneshot.innerText = formatVND(oneshot);
+
+      highlightLookupTable(salary);
+
+      // 2. BỐ
+      const dadSal = state.dad.salary;
+      const dadDays = parseInt(document.getElementById('dad-days-select').value, 10);
+      const dadWife = document.getElementById('dad-wife-status').value;
+
+      const dadLeavePay = Math.round((dadSal / 24) * dadDays);
+      const dadOneshot = (dadWife === 'uninsured') ? ONESHOT_PER_BABY : 0;
+      const dadTotal = dadLeavePay + dadOneshot;
+      lastDadTotal = dadTotal;
+
+      document.getElementById('dad-total-amount').innerText = formatVND(dadTotal);
+      document.getElementById('dad-badge-leave').innerText = `Nghỉ ${dadDays} ngày làm việc`;
+      document.getElementById('dad-leave-title').innerText = `1. Tiền trợ cấp nghỉ việc (${dadDays} ngày)`;
+      document.getElementById('dad-slip-leave').innerText = formatVND(dadLeavePay);
+      document.getElementById('dad-slip-oneshot').innerText = formatVND(dadOneshot);
+      document.getElementById('dad-slip-oneshot-desc').innerText = (dadWife === 'uninsured')
+        ? 'Vợ không đóng BHXH, chồng nhận thay 2 lần lương cơ sở'
+        : 'Vợ đã đóng BHXH (khoản này người vợ nhận)';
+      const dadBridge = document.getElementById('dad-bridge-text');
+      if (dadBridge) {
+        dadBridge.innerText = (dadWife === 'uninsured')
+          ? `Dùng khoản tã lót ${formatVND(dadOneshot)} sắm đồ đi sinh giúp vợ`
+          : 'Sắm giỏ đồ đi sinh chuẩn bị đón bé giúp vợ';
+      }
+
+      calculateMisc();
+      updateMobileStickyBar();
+    }
+
+    function formatAndCalcMisc(input) {
+      const num = parseVND(input.value);
+      input.value = num ? num.toLocaleString('vi-VN') : '';
+      calculateMisc();
+    }
+
+    function calculateMisc() {
+      const checkupSal = Math.min(parseVND(document.getElementById('misc-checkup-sal').value), BHXH_SALARY_CEILING);
+      const checkupDays = Math.max(0, Math.min(10, parseInt(document.getElementById('misc-checkup-days').value, 10) || 0));
+      const checkupVal = Math.round((checkupSal / 24) * checkupDays);
+      document.getElementById('misc-checkup-val').innerText = formatVND(checkupVal);
+
+      const sickSal = Math.min(parseVND(document.getElementById('misc-sick-sal').value), BHXH_SALARY_CEILING);
+      const sickDays = Math.max(0, Math.min(20, parseInt(document.getElementById('misc-sick-days').value, 10) || 0));
+      const sickVal = Math.round((sickSal / 24) * 0.75 * sickDays);
+      document.getElementById('misc-sick-val').innerText = formatVND(sickVal);
+    }
+
+    // --- TÍNH NĂNG 2: KIỂM TRA ĐIỀU KIỆN 6/12 THÁNG ---
+    function checkEligibility() {
+      const monthInput = document.getElementById('eligibility-month').value;
+      const rawPaid = parseInt(document.getElementById('eligibility-paid-months').value, 10);
+      const paidMonths = isNaN(rawPaid) ? 0 : Math.max(0, Math.min(12, rawPaid));
+      if (!monthInput) return;
+
+      const [yearStr, monthStr] = monthInput.split('-');
+      const y = parseInt(yearStr, 10);
+      const m = parseInt(monthStr, 10);
+
+      // Build 12 calendar months inside the legal window
+      const windowMonths = [];
+      for (let offset = -11; offset <= 0; offset++) {
+        const d = new Date(y, (m - 1) + offset, 1);
+        const mm = d.getMonth() + 1;
+        const yy = d.getFullYear();
+        windowMonths.push({
+          label: `T${mm < 10 ? '0' + mm : mm}/${yy.toString().slice(-2)}`,
+          full: `Tháng ${mm < 10 ? '0' + mm : mm}/${yy}`,
+          isBirthMonth: offset === 0
+        });
+      }
+
+      const startLabel = windowMonths[0].full;
+      const endLabel = windowMonths[11].full;
+
+      const box = document.getElementById('eligibility-box');
+      const icon = document.getElementById('eligibility-icon');
+      const title = document.getElementById('eligibility-title');
+      const desc = document.getElementById('eligibility-desc');
+      const notice = document.getElementById('eligibility-safe-notice');
+      const windowLabel = document.getElementById('eligibility-window-label');
+
+      windowLabel.innerText = `Đã tích lũy ${paidMonths} / 12 tháng (cần tối thiểu 6 tháng)`;
+
+      if (paidMonths >= 6) {
+        box.className = 'p-6 rounded-2xl border border-emerald-300 bg-emerald-50/70 space-y-3';
+        icon.className = 'w-7 h-7 rounded-full bg-emerald-700 text-white flex items-center justify-center shrink-0';
+        icon.innerHTML = '<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>';
+        title.className = 'font-extrabold text-base sm:text-lg text-emerald-950';
+        title.innerText = 'ĐỦ ĐIỀU KIỆN HƯỞNG THAI SẢN';
+        desc.className = 'text-xs sm:text-sm text-emerald-950/90 leading-relaxed';
+        desc.innerHTML = `Cửa sổ 12 tháng trước sinh là <strong>${startLabel} đến hết ${endLabel}</strong>. Mẹ đã có <strong>${paidMonths} tháng</strong> đóng BHXH trong khoảng thời gian này.`;
+        notice.className = 'pt-3 border-t border-emerald-200 text-xs font-semibold text-emerald-900 leading-relaxed';
+        notice.innerText = 'Mẹ có thể yên tâm nghỉ việc sau khi đã chốt đủ 6 tháng đóng BHXH trong cửa sổ trên mà vẫn hưởng trọn vẹn tiền thai sản.';
+      } else {
+        const remaining = 6 - paidMonths;
+        box.className = 'p-6 rounded-2xl border border-amber-300 bg-amber-50/80 space-y-3';
+        icon.className = 'w-7 h-7 rounded-full bg-amber-600 text-white flex items-center justify-center shrink-0';
+        icon.innerHTML = '<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>';
+        title.className = 'font-extrabold text-base sm:text-lg text-amber-950';
+        title.innerText = `CHƯA ĐỦ ĐIỀU KIỆN (THIẾU ${remaining} THÁNG)`;
+        desc.className = 'text-xs sm:text-sm text-amber-950/90 leading-relaxed';
+        desc.innerHTML = `Cửa sổ 12 tháng trước sinh là <strong>${startLabel} đến hết ${endLabel}</strong>. Hiện mới đạt <strong>${paidMonths}/6 tháng</strong> tối thiểu — cần đóng thêm ít nhất <strong>${remaining} tháng</strong> nữa.`;
+        notice.className = 'pt-3 border-t border-amber-200 text-xs font-semibold text-amber-900 leading-relaxed';
+        notice.innerText = 'Lưu ý: Trường hợp nghỉ dưỡng thai theo chỉ định bệnh viện chỉ cần đóng đủ 3 tháng trong 12 tháng trước sinh (nếu trước đó đã tích lũy đủ 12 tháng BHXH).';
+      }
+
+      // Render 12-month visual cells
+      const grid = document.getElementById('eligibility-grid');
+      grid.innerHTML = windowMonths.map((item, idx) => {
+        const covered = idx < paidMonths;
+        let cls = 'px-2 py-2 rounded-xl text-center text-[11px] font-semibold border transition ';
+        if (covered) {
+          cls += paidMonths >= 6
+            ? 'bg-emerald-50 border-emerald-200 text-emerald-900'
+            : 'bg-amber-50 border-amber-200 text-amber-900';
+        } else {
+          cls += 'bg-paper-50 border-paper-200 text-ink-500';
+        }
+        const tag = item.isBirthMonth ? '<span class="block text-[9px] text-brand-700 font-bold uppercase mt-0.5">Sinh</span>' : `<span class="block text-[9px] opacity-70 mt-0.5">${covered ? 'Đã đóng' : 'Trống'}</span>`;
+        return `<div class="${cls}"><div>${item.label}</div>${tag}</div>`;
+      }).join('');
+    }
+
+    // --- TÍNH NĂNG 3: LỊCH DỰ SINH & MỐC KHÁM ---
+    function parseLocalDate(yyyyMmDd) {
+      if (!yyyyMmDd) return null;
+      const parts = yyyyMmDd.split('-').map(Number);
+      if (parts.length !== 3 || parts.some(isNaN)) return null;
+      return new Date(parts[0], parts[1] - 1, parts[2]);
+    }
+
+    function toInputDateStr(d) {
+      const y = d.getFullYear();
+      const m = (d.getMonth() + 1).toString().padStart(2, '0');
+      const day = d.getDate().toString().padStart(2, '0');
+      return `${y}-${m}-${day}`;
+    }
+
+    function formatDateVN(d) {
+      return `${d.getDate().toString().padStart(2, '0')}/${(d.getMonth() + 1).toString().padStart(2, '0')}/${d.getFullYear()}`;
+    }
+
+    function setDueMode(mode) {
+      state.dueMode = mode;
+      const lmpBtn = document.getElementById('due-mode-lmp');
+      const eddBtn = document.getElementById('due-mode-edd');
+      const lmpWrap = document.getElementById('wrap-lmp-input');
+      const eddWrap = document.getElementById('wrap-edd-input');
+
+      if (mode === 'lmp') {
+        lmpBtn.className = 'px-3 py-1.5 rounded-lg bg-white text-ink-900 shadow-sm transition';
+        eddBtn.className = 'px-3 py-1.5 rounded-lg text-ink-600 hover:text-ink-900 transition';
+        lmpWrap.classList.remove('hidden');
+        eddWrap.classList.add('hidden');
+      } else {
+        eddBtn.className = 'px-3 py-1.5 rounded-lg bg-white text-ink-900 shadow-sm transition';
+        lmpBtn.className = 'px-3 py-1.5 rounded-lg text-ink-600 hover:text-ink-900 transition';
+        eddWrap.classList.remove('hidden');
+        lmpWrap.classList.add('hidden');
+      }
+      calcDueDate();
+    }
+
+    function calcDueDate() {
+      const MS_DAY = 24 * 60 * 60 * 1000;
+      let lmp, dueDate;
+
+      if (state.dueMode === 'lmp') {
+        lmp = parseLocalDate(document.getElementById('input-lmp-date').value);
+        if (!lmp) return;
+        dueDate = new Date(lmp.getTime() + 280 * MS_DAY);
+        document.getElementById('input-edd-date').value = toInputDateStr(dueDate);
+      } else {
+        dueDate = parseLocalDate(document.getElementById('input-edd-date').value);
+        if (!dueDate) return;
+        lmp = new Date(dueDate.getTime() - 280 * MS_DAY);
+        document.getElementById('input-lmp-date').value = toInputDateStr(lmp);
+      }
+
+      const now = new Date();
+      const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      const diffDays = Math.floor((today - lmp) / MS_DAY);
+      const weeks = Math.floor(diffDays / 7);
+      const days = Math.max(0, diffDays % 7);
+      const daysLeft = Math.max(0, Math.ceil((dueDate - today) / MS_DAY));
+
+      document.getElementById('output-due-date').innerText = formatDateVN(dueDate);
+      document.getElementById('output-gestational-age').innerText =
+        diffDays <= 0 ? 'Chưa tới kỳ thụ thai' : (weeks <= 42 ? `${weeks} tuần ${days} ngày` : 'Đã qua 42 tuần');
+
+      const pct = Math.max(2, Math.min(100, Math.round((diffDays / 280) * 100)));
+      document.getElementById('pregnancy-progress-bar').style.width = `${pct}%`;
+
+      let trim = '3 tháng đầu (Tuần 1 – 13)';
+      if (weeks >= 14 && weeks <= 27) trim = '3 tháng giữa (Tuần 14 – 27)';
+      else if (weeks >= 28) trim = '3 tháng cuối (Tuần 28 – 40)';
+      document.getElementById('output-trimester').innerText = trim;
+      document.getElementById('output-days-left').innerText = daysLeft > 0 ? `Còn ${daysLeft} ngày` : 'Sẵn sàng đón bé';
+      lastDueWeeks = weeks;
+      updateDueChecklistNudge();
+
+      const milestones = [
+        { weekStart: 11, weekEnd: 13, targetWeek: 12, title: 'Tuần 11 – 13: Đo độ mờ da gáy', desc: 'Siêu âm kiểm tra độ mờ da gáy, xét nghiệm Double test hoặc NIPT.' },
+        { weekStart: 20, weekEnd: 22, targetWeek: 22, title: 'Tuần 20 – 22: Siêu âm 4D hình thái', desc: 'Khảo sát chi tiết cấu trúc tim, não, cột sống và các cơ quan của bé.' },
+        { weekStart: 24, weekEnd: 28, targetWeek: 26, title: 'Tuần 24 – 28: Nghiệm pháp đường huyết', desc: 'Tầm soát tiểu đường thai kỳ để kịp thời điều chỉnh dinh dưỡng.' },
+        { weekStart: 30, weekEnd: 32, targetWeek: 32, title: 'Tuần 30 – 32: Tiêm uốn ván & tăng trưởng', desc: 'Tiêm phòng uốn ván theo lịch, đánh giá ngôi thai và cân nặng.' },
+        { weekStart: 36, weekEnd: 40, targetWeek: 36, title: 'Tuần 36 trở đi: Theo dõi tim thai hằng tuần', desc: 'Đo Monitor cơn gò tim thai và hoàn thiện hồ sơ nhập viện sinh.' }
+      ];
+
+      document.getElementById('timeline-milestones').innerHTML = milestones.map(ms => {
+        const msDate = new Date(lmp.getTime() + ms.targetWeek * 7 * MS_DAY);
+        let status = 'upcoming';
+        if (weeks > ms.weekEnd) status = 'done';
+        else if (weeks >= ms.weekStart && weeks <= ms.weekEnd) status = 'active';
+
+        const dotCls = status === 'done'
+          ? 'bg-emerald-600 border-emerald-600'
+          : (status === 'active' ? 'bg-brand-600 border-brand-600 ring-4 ring-brand-100' : 'bg-white border-paper-200');
+        const badge = status === 'done'
+          ? '<span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full">Đã qua</span>'
+          : (status === 'active'
+            ? '<span class="text-[10px] font-bold text-brand-700 bg-brand-50 px-2 py-0.5 rounded-full">Giai đoạn này</span>'
+            : '');
+
+        return `
+          <div class="relative flex items-start justify-between gap-3 p-3.5 rounded-xl ${status === 'active' ? 'bg-brand-50/45 border border-brand-200' : 'bg-paper-50 border border-paper-200/80'}">
+            <span class="absolute -left-[22px] top-4 w-3 h-3 rounded-full border-2 ${dotCls}"></span>
+            <div class="space-y-1">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="font-bold text-ink-900 text-xs sm:text-sm">${ms.title}</span>
+                ${badge}
+              </div>
+              <p class="text-[11px] sm:text-xs text-ink-600">${ms.desc}</p>
+            </div>
+            <span class="text-xs font-bold text-brand-700 whitespace-nowrap tabular pt-0.5">${formatDateVN(msDate)}</span>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // --- TÍNH NĂNG 4: CHECKLIST GIỎ ĐỒ ĐI SINH ---
+    const CHECKLIST_DATA = {
+      baby: [
+        { id: 'b1', name: 'Áo sơ sinh cotton (4 - 5 bộ)', url: 'https://s.shopee.vn/AKc0z3J3b6', query: 'ao so sinh cotton' },
+        { id: 'b2', name: 'Tã dán / Tã bỉm sơ sinh NB (1 bịch)', query: 'bim ta so sinh newborn' },
+        { id: 'b3', name: 'Khăn xô tắm & khăn sữa (20 cái)', query: 'khan xo sua so sinh' },
+        { id: 'b4', name: 'Bao tay, bao chân, mũ đội (3 - 4 bộ)', query: 'bao tay bao chan so sinh' },
+        { id: 'b5', name: 'Bình sữa & nước rửa bình', query: 'binh sua so sinh chong sac' },
+        { id: 'b6', name: 'Nước muối sinh lý & gạc rơ lưỡi', query: 'gac ro luoi rang mieng cho be' },
+        { id: 'b7', name: 'Chăn ủ kén đón bé xuất viện', query: 'chan u ken so sinh' }
+      ],
+      mom: [
+        { id: 'm1', name: 'Băng vệ sinh Mama sau sinh (2 gói)', query: 'bang ve sinh mama sau sinh' },
+        { id: 'm2', name: 'Quần lót giấy dùng 1 lần (2 bịch)', query: 'quan lot giay sau sinh' },
+        { id: 'm3', name: 'Miếng lót thấm sữa & áo lót cho con bú', query: 'ao lot cho con bu' },
+        { id: 'm4', name: 'Máy hút sữa điện đôi', query: 'may hut sua dien doi' },
+        { id: 'm5', name: 'Dung dịch vệ sinh & khăn lau chuyên dụng', query: 'dung dich ve sinh sau sinh' },
+        { id: 'm6', name: 'Vớ chân & mũ trùm giữ ấm khi ra viện', query: 'vo chan sau sinh cho me' }
+      ],
+      docs: [
+        { id: 'd1', name: 'CCCD gắn chip của mẹ & bố (bản gốc + 2 photo)', query: null },
+        { id: 'd2', name: 'Thẻ BHYT (hoặc app VssID/VNeID)', query: null },
+        { id: 'd3', name: 'Sổ khám thai, toàn bộ phiếu siêu âm & xét nghiệm', query: null },
+        { id: 'd4', name: 'Tiền tạm ứng viện phí (khoảng 5 - 10 triệu)', query: null }
+      ]
+    };
+
+    function getSavedCheck(id) {
+      try {
+        return localStorage.getItem(`chk_${id}`) === '1';
+      } catch (e) {
+        return false;
+      }
+    }
+
+    function renderChecklist() {
+      let totalAll = 0;
+      let checkedAll = 0;
+
+      ['baby', 'mom', 'docs'].forEach(group => {
+        const container = document.getElementById(`list-${group}`);
+        container.innerHTML = '';
+        let checkedCount = 0;
+
+        CHECKLIST_DATA[group].forEach(item => {
+          totalAll++;
+          const isChecked = getSavedCheck(item.id);
+          if (isChecked) {
+            checkedCount++;
+            checkedAll++;
+          }
+
+          const row = document.createElement('div');
+          row.className = `flex items-center justify-between gap-2 px-3 py-2.5 rounded-xl border transition ${isChecked ? 'bg-paper-50/70 border-paper-200/70' : 'bg-white border-paper-200 hover:border-brand-200'}`;
+
+          const affUrl = (window.AFFILIATE_LINKS && window.AFFILIATE_LINKS[item.id]) ? window.AFFILIATE_LINKS[item.id].trim() : '';
+          const targetUrl = affUrl || item.url || (item.query ? `https://shopee.vn/search?keyword=${encodeURIComponent(item.query)}` : null);
+
+          const label = document.createElement('label');
+          label.className = 'flex items-center gap-2.5 cursor-pointer flex-1 min-w-0';
+
+          const checkbox = document.createElement('input');
+          checkbox.type = 'checkbox';
+          checkbox.checked = isChecked;
+          checkbox.className = 'w-4 h-4 rounded accent-[#BE123C] shrink-0 cursor-pointer';
+          checkbox.addEventListener('change', () => toggleCheck(item.id));
+
+          const span = document.createElement('span');
+          span.className = isChecked ? 'line-through text-ink-500 text-xs leading-snug' : 'text-ink-900 font-medium text-xs leading-snug';
+          span.innerText = item.name;
+
+          label.appendChild(checkbox);
+          label.appendChild(span);
+          row.appendChild(label);
+
+          if (targetUrl) {
+            const link = document.createElement('a');
+            link.href = targetUrl;
+            link.target = '_blank';
+            link.rel = 'nofollow noopener';
+            link.setAttribute('aria-label', `Xem giá tham khảo ${item.name} trên Shopee`);
+            link.className = 'text-[11px] text-brand-700 font-semibold hover:underline shrink-0 px-2 py-1 rounded-lg bg-brand-50/70';
+            link.innerText = 'Xem giá ↗';
+            row.appendChild(link);
+          }
+
+          container.appendChild(row);
+        });
+
+        document.getElementById(`count-${group}`).innerText = `${checkedCount}/${CHECKLIST_DATA[group].length}`;
+      });
+
+      document.getElementById('checklist-total-badge').innerText = `Đã chuẩn bị ${checkedAll}/${totalAll}`;
+      lastChecklistStats = { checked: checkedAll, total: totalAll };
+      updateDueChecklistNudge();
+    }
+
+    function updateDueChecklistNudge() {
+      const dueNudge = document.getElementById('due-checklist-nudge');
+      if (!dueNudge) return;
+      const { checked, total } = lastChecklistStats;
+      dueNudge.firstElementChild.innerText = lastDueWeeks >= 28
+        ? `Tuần ${lastDueWeeks}: cần chốt giỏ đồ đi sinh (${checked}/${total} món)`
+        : `Chuẩn bị giỏ đồ từ tuần 28 (đã xong ${checked}/${total} món)`;
+    }
+
+    function toggleCheck(id) {
+      const next = !getSavedCheck(id);
+      try {
+        localStorage.setItem(`chk_${id}`, next ? '1' : '0');
+      } catch (e) {}
+      renderChecklist();
+    }
+
+    function askResetChecklist() {
+      document.getElementById('btn-reset-ask').classList.add('hidden');
+      const box = document.getElementById('reset-confirm-actions');
+      box.classList.remove('hidden');
+      box.classList.add('flex');
+    }
+
+    function cancelResetChecklist() {
+      document.getElementById('btn-reset-ask').classList.remove('hidden');
+      const box = document.getElementById('reset-confirm-actions');
+      box.classList.add('hidden');
+      box.classList.remove('flex');
+    }
+
+    function confirmResetChecklist() {
+      try {
+        ['baby', 'mom', 'docs'].forEach(group => {
+          CHECKLIST_DATA[group].forEach(item => localStorage.removeItem(`chk_${item.id}`));
+        });
+      } catch (e) {}
+      cancelResetChecklist();
+      renderChecklist();
+    }
+
+    async function copyMissingChecklist() {
+      const missing = [];
+      ['baby', 'mom', 'docs'].forEach(group => {
+        CHECKLIST_DATA[group].forEach(item => {
+          if (!getSavedCheck(item.id)) missing.push(`- ${item.name}`);
+        });
+      });
+      const text = missing.length
+        ? `GIỎ ĐỒ ĐI SINH CÒN THIẾU (${missing.length} món):\n${missing.join('\n')}\n(Xem gợi ý mua tại: https://thaisanpro.pages.dev/#tool-checklist)`
+        : 'Đã chuẩn bị đủ 17/17 món trong giỏ đồ đi sinh! (thaisanpro.pages.dev)';
+      const toast = document.getElementById('toast-checklist');
+      if ((await copyText(text)) && toast) {
+        toast.innerText = missing.length
+          ? `Đã chép ${missing.length} món còn thiếu — bạn có thể dán vào Zalo.`
+          : 'Đã đủ 17/17 món — đã chép xác nhận.';
+        toast.classList.remove('hidden');
+        setTimeout(() => toast.classList.add('hidden'), 3500);
+      }
+    }
+
+    // --- HOSPITAL DATA & FILTER (10 BV / KHU VỰC) ---
+    const HOSPITALS = [
+      // TP.HCM (10)
+      { name: 'BV Từ Dũ', area: 'TP.HCM', n: '3 – 8 triệu', c: '8 – 16 triệu', bhyt: '80% – 100%', note: 'Đầu ngành sản khoa phía Nam; sinh dịch vụ/gia đình cao hơn mức chuẩn.', tags: 'hcm public', top: 1 },
+      { name: 'BV Hùng Vương', area: 'TP.HCM', n: '4 – 9 triệu', c: '9 – 17 triệu', bhyt: '80% – 100%', note: 'Khu dịch vụ Cát Tường khang trang, bác sĩ tận tâm.', tags: 'hcm public' },
+      { name: 'BV Đại học Y Dược TP.HCM', area: 'TP.HCM', n: '6 – 12 triệu', c: '13 – 22 triệu', bhyt: '80% – 100%', note: 'Quy trình chuyên nghiệp, phối hợp đa chuyên khoa cho mẹ có bệnh nền.', tags: 'hcm public' },
+      { name: 'BV Nhân Dân Gia Định', area: 'TP.HCM', n: '4 – 8 triệu', c: '9 – 16 triệu', bhyt: '80% – 100%', note: 'Bệnh viện hạng I khu Bình Thạnh, phòng hậu sản sạch sẽ.', tags: 'hcm public' },
+      { name: 'BV Nguyễn Tri Phương', area: 'TP.HCM', n: '4 – 8 triệu', c: '9 – 15 triệu', bhyt: '80% – 100%', note: 'Chi phí tiết kiệm, thuận tiện khu vực Quận 5 và các quận lân cận.', tags: 'hcm public' },
+      { name: 'BV Phụ sản MêKông', area: 'TP.HCM', n: '15 – 22 triệu', c: '22 – 34 triệu', bhyt: 'Đồng chi trả', note: 'Chuyên sản phụ khoa lâu năm (tiền thân cơ sở 2 ĐH Y Dược).', tags: 'hcm intl' },
+      { name: 'BV ĐKQT Tâm Anh TP.HCM', area: 'TP.HCM', n: '24 – 35 triệu', c: '36 – 52 triệu', bhyt: 'Đồng chi trả', note: 'Gói sinh cao cấp tại Tân Bình, cơ sở vật chất mới, chăm sóc chu đáo.', tags: 'hcm intl' },
+      { name: 'BV Quốc tế Hạnh Phúc', area: 'TP.HCM', n: '25 – 38 triệu', c: '40 – 58 triệu', bhyt: 'Bảo lãnh VP', note: 'Tiêu chuẩn Singapore, dịch vụ chăm sóc mẹ và bé tận phòng.', tags: 'hcm intl' },
+      { name: 'BV ĐKQT Vinmec Central Park', area: 'TP.HCM', n: '28 – 42 triệu', c: '45 – 68 triệu', bhyt: 'Đồng chi trả', note: 'Thai sản trọn gói tiêu chuẩn cao, đầy đủ đồ dùng mẹ và bé.', tags: 'hcm intl', top: 1 },
+      { name: 'BV Pháp Việt (FV)', area: 'TP.HCM', n: '35 – 55 triệu', c: '55 – 85 triệu', bhyt: 'Bảo lãnh VP', note: 'Chuẩn quốc tế JCI tại Quận 7, đội ngũ bác sĩ Pháp – Việt.', tags: 'hcm intl' },
+      // Hà Nội (10)
+      { name: 'BV Phụ sản Trung ương', area: 'Hà Nội', n: '4 – 10 triệu', c: '10 – 19 triệu', bhyt: '80% – 100%', note: 'Tuyến đầu miền Bắc, xử lý tốt các ca sinh khó và nguy cơ cao.', tags: 'hn public', top: 1 },
+      { name: 'BV Phụ sản Hà Nội', area: 'Hà Nội', n: '5 – 12 triệu', c: '12 – 24 triệu', bhyt: '80% – 100%', note: 'Có khu D3 tự nguyện/dịch vụ (khoảng 18–28 triệu), nhiều cơ sở.', tags: 'hn public' },
+      { name: 'Khoa Sản – BV Bạch Mai', area: 'Hà Nội', n: '4 – 9 triệu', c: '10 – 18 triệu', bhyt: '80% – 100%', note: 'An toàn cao cho sản phụ có bệnh lý nền tim mạch, nội tiết.', tags: 'hn public' },
+      { name: 'BV E Hà Nội (Khoa Sản)', area: 'Hà Nội', n: '4 – 8 triệu', c: '9 – 16 triệu', bhyt: '80% – 100%', note: 'Chi phí hợp lý khu vực Cầu Giấy, ít quá tải hơn tuyến Trung ương.', tags: 'hn public' },
+      { name: 'BV Bưu Điện (Định Công)', area: 'Hà Nội', n: '6 – 12 triệu', c: '12 – 20 triệu', bhyt: '80% – 100%', note: 'Phòng sạch sẽ, giá vừa phải, mạnh về theo dõi thai kỳ IVF.', tags: 'hn public' },
+      { name: 'BV ĐK Phương Đông', area: 'Hà Nội', n: '14 – 24 triệu', c: '22 – 36 triệu', bhyt: 'Đồng chi trả', note: 'Khuôn viên xanh rộng tại Bắc Từ Liêm, thường có ưu đãi gói sinh.', tags: 'hn intl' },
+      { name: 'BV ĐKQT Thu Cúc (TCI)', area: 'Hà Nội', n: '16 – 26 triệu', c: '28 – 44 triệu', bhyt: 'Đồng chi trả', note: 'Thai sản trọn gói tiện nghi, tặng bộ ảnh và video khoảnh khắc đón bé.', tags: 'hn intl', top: 1 },
+      { name: 'BV ĐK Hồng Ngọc', area: 'Hà Nội', n: '22 – 34 triệu', c: '34 – 50 triệu', bhyt: 'Đồng chi trả', note: 'Cơ sở Phúc Trường Minh & Yên Ninh hiện đại, hậu sản chu đáo.', tags: 'hn intl' },
+      { name: 'BV ĐKQT Tâm Anh Hà Nội', area: 'Hà Nội', n: '24 – 36 triệu', c: '36 – 54 triệu', bhyt: 'Đồng chi trả', note: 'Cơ sở Long Biên quy tụ nhiều chuyên gia đầu ngành sản nhi.', tags: 'hn intl' },
+      { name: 'BV ĐKQT Vinmec Times City', area: 'Hà Nội', n: '28 – 42 triệu', c: '45 – 68 triệu', bhyt: 'Đồng chi trả', note: 'Phòng riêng tiêu chuẩn cao, trọn gói đồ dùng sinh không cần mang thêm.', tags: 'hn intl' },
+      // Đà Nẵng & Tỉnh khác (10)
+      { name: 'BV Phụ sản – Nhi Đà Nẵng', area: 'Đà Nẵng', n: '3 – 7 triệu', c: '7 – 14 triệu', bhyt: '80% – 100%', note: 'Tuyến đầu sản nhi miền Trung, có khu thường và khu tự nguyện.', tags: 'other public', top: 1 },
+      { name: 'BV Hoàn Mỹ Đà Nẵng', area: 'Đà Nẵng', n: '11 – 18 triệu', c: '18 – 28 triệu', bhyt: 'Đồng chi trả', note: 'Gói sinh trọn gói tiện nghi, hỗ trợ BHYT và bảo hiểm sức khỏe.', tags: 'other intl' },
+      { name: 'BV Gia Đình (Family)', area: 'Đà Nẵng', n: '13 – 20 triệu', c: '20 – 32 triệu', bhyt: 'Đồng chi trả', note: 'Phòng sinh gia đình thân thiện, chăm sóc sau sinh 24/7 tại ĐN.', tags: 'other intl' },
+      { name: 'BV Trung ương Huế (Sản)', area: 'Huế', n: '3 – 7 triệu', c: '7 – 15 triệu', bhyt: '80% – 100%', note: 'Bệnh viện hạng đặc biệt miền Trung, đội ngũ bác sĩ dày dặn kinh nghiệm.', tags: 'other public' },
+      { name: 'BV Phụ sản Hải Phòng', area: 'Hải Phòng', n: '4 – 9 triệu', c: '9 – 18 triệu', bhyt: '80% – 100%', note: 'Chuyên khoa sản tuyến thành phố, có phòng dịch vụ theo yêu cầu.', tags: 'other public' },
+      { name: 'BV Sản Nhi Quảng Ninh', area: 'Quảng Ninh', n: '4 – 9 triệu', c: '9 – 17 triệu', bhyt: '80% – 100%', note: 'Cơ sở vật chất công lập hiện đại hàng đầu vùng Đông Bắc.', tags: 'other public' },
+      { name: 'BV Phụ sản TP. Cần Thơ', area: 'Cần Thơ', n: '3 – 8 triệu', c: '8 – 16 triệu', bhyt: '80% – 100%', note: 'Tuyến cuối sản phụ khoa vùng ĐBSCL, chi phí công lập dễ tiếp cận.', tags: 'other public' },
+      { name: 'BV Quốc tế Phương Châu', area: 'Cần Thơ', n: '15 – 24 triệu', c: '22 – 35 triệu', bhyt: 'Đồng chi trả', note: 'Hệ thống sản nhi theo chuẩn quốc tế nổi bật nhất khu vực miền Tây.', tags: 'other intl', top: 1 },
+      { name: 'BV Quốc tế Becamex', area: 'Bình Dương', n: '14 – 22 triệu', c: '22 – 34 triệu', bhyt: 'Đồng chi trả', note: 'Tại Thuận An, phòng lưu viện sạch đẹp, khấu trừ BHYT thuận lợi.', tags: 'other intl' },
+      { name: 'BV Âu Cơ Biên Hòa', area: 'Đồng Nai', n: '12 – 19 triệu', c: '19 – 30 triệu', bhyt: 'Đồng chi trả', note: 'Bệnh viện chuyên sản nhi tư nhân lớn tại TP. Biên Hòa, Đồng Nai.', tags: 'other intl' }
+    ];
+
+    let currentHospTag = 'all';
+    let showAllHosp = false;
+
+    function renderHospitals() {
+      const tbody = document.getElementById('hospital-table-body');
+      const wrap = document.getElementById('hospital-expand-wrap');
+      const btn = document.getElementById('btn-toggle-hospitals');
+      if (!tbody) return;
+
+      const matched = HOSPITALS.filter(h => currentHospTag === 'all' || h.tags.split(' ').includes(currentHospTag));
+      const compactAll = currentHospTag === 'all' && !showAllHosp;
+
+      tbody.innerHTML = matched.map(h => {
+        const isPublic = h.tags.includes('public');
+        const hiddenCls = (compactAll && !h.top) ? ' hidden' : '';
+        return `
+          <tr class="hover:bg-paper-50/70 transition${hiddenCls}">
+            <td class="py-3.5 px-5 font-bold text-ink-900">${h.name}</td>
+            <td class="py-3.5 px-3 text-ink-600">${h.area}</td>
+            <td class="py-3.5 px-3 font-semibold ${isPublic ? 'text-brand-700' : 'text-ink-900'}">${h.n}</td>
+            <td class="py-3.5 px-3 font-semibold ${isPublic ? 'text-brand-700' : 'text-ink-900'}">${h.c}</td>
+            <td class="py-3.5 px-3 ${isPublic ? 'text-emerald-700 font-bold' : 'text-ink-500'}">${h.bhyt}</td>
+            <td class="py-3.5 px-5 text-ink-600 text-xs font-sans">${h.note}</td>
+          </tr>
+        `;
+      }).join('');
+
+      if (wrap && btn) {
+        if (currentHospTag !== 'all') {
+          wrap.classList.add('hidden');
+        } else {
+          wrap.classList.remove('hidden');
+          btn.innerText = showAllHosp
+            ? 'Thu gọn bảng viện phí ↑'
+            : `Xem đầy đủ ${HOSPITALS.length} bệnh viện (TP.HCM · Hà Nội · Đà Nẵng & Tỉnh) ↓`;
+        }
+      }
+    }
+
+    function toggleAllHospitals() {
+      showAllHosp = !showAllHosp;
+      renderHospitals();
+    }
+
+    function filterHospitals(tag, btnEl) {
+      currentHospTag = tag;
+      document.querySelectorAll('.hosp-filter').forEach(b => {
+        b.className = 'hosp-filter px-3 py-1.5 rounded-xl bg-white border border-paper-200 text-ink-600 hover:text-ink-900 transition';
+      });
+      btnEl.className = 'hosp-filter px-3 py-1.5 rounded-xl bg-ink-900 text-white transition';
+      renderHospitals();
+    }
+
+    // --- TẢI ẢNH PHIẾU DỰ TOÁN PNG ---
+    function downloadImageCard(mode) {
+      const canvas = document.getElementById('export-canvas');
+      const ctx = canvas.getContext('2d');
+      if (!ctx.roundRect) ctx.roundRect = (x, y, w, h) => ctx.rect(x, y, w, h);
+      const fontBase = '"Be Vietnam Pro", system-ui, sans-serif';
+
+      ctx.fillStyle = '#FAF8F5';
+      ctx.fillRect(0, 0, 800, 960);
+
+      // Card container
+      ctx.fillStyle = '#FFFFFF';
+      ctx.strokeStyle = '#E6DFD6';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.roundRect(44, 44, 712, 872, 24);
+      ctx.fill();
+      ctx.stroke();
+
+      // Top accent stripe
+      ctx.fillStyle = '#BE123C';
+      ctx.beginPath();
+      ctx.roundRect(44, 44, 712, 10, [24, 24, 0, 0]);
+      ctx.fill();
+
+      // Soft header block
+      ctx.fillStyle = '#FFF5F6';
+      ctx.fillRect(45, 54, 710, 224);
+
+      ctx.strokeStyle = '#E6DFD6';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(44, 278);
+      ctx.lineTo(756, 278);
+      ctx.stroke();
+
+      ctx.fillStyle = '#9F1239';
+      ctx.font = `700 15px ${fontBase}`;
+      ctx.textAlign = 'center';
+      ctx.fillText(mode === 'mom' ? 'PHIẾU DỰ TOÁN QUYỀN LỢI THAI SẢN — MẸ SINH CON' : 'PHIẾU DỰ TOÁN QUYỀN LỢI THAI SẢN — BỐ CÓ VỢ SINH', 400, 104);
+
+      const totalText = mode === 'mom'
+        ? document.getElementById('mom-total-amount').innerText
+        : document.getElementById('dad-total-amount').innerText;
+
+      ctx.fillStyle = '#1C1917';
+      ctx.font = `800 54px ${fontBase}`;
+      ctx.fillText(totalText, 400, 182);
+
+      ctx.fillStyle = '#57534E';
+      ctx.font = `500 16px ${fontBase}`;
+      ctx.fillText(`Căn cứ Luật BHXH 2024 & NĐ 161/2026 (Lương cơ sở ${formatVND(BASE_SALARY)}) · Miễn 100% thuế TNCN`, 400, 232);
+
+      // Details
+      ctx.textAlign = 'left';
+      ctx.fillStyle = '#1C1917';
+      ctx.font = `700 19px ${fontBase}`;
+      ctx.fillText('Chi tiết các khoản dự kiến nhận:', 86, 340);
+
+      const momMonths = getMomLeaveMonths(state.mom.childCount, document.getElementById('mom-second-child-toggle').checked);
+      const rows = mode === 'mom' ? [
+        ['1. Trợ cấp một lần (tiền tã lót)', document.getElementById('mom-slip-oneshot').innerText],
+        [`2. Tiền lương nghỉ thai sản (${momMonths} tháng)`, document.getElementById('mom-slip-salary').innerText],
+        ['3. Tiền dưỡng sức phục hồi sau sinh', document.getElementById('mom-slip-recovery').innerText]
+      ] : [
+        [`1. Tiền trợ cấp nghỉ việc (${document.getElementById('dad-days-select').value} ngày)`, document.getElementById('dad-slip-leave').innerText],
+        ['2. Trợ cấp một lần (nếu vợ không có BHXH)', document.getElementById('dad-slip-oneshot').innerText]
+      ];
+
+      rows.forEach(([label, val], idx) => {
+        const y = 410 + idx * 84;
+        ctx.fillStyle = '#57534E';
+        ctx.font = `500 17px ${fontBase}`;
+        ctx.fillText(label, 86, y);
+
+        ctx.fillStyle = '#BE123C';
+        ctx.font = `700 22px ${fontBase}`;
+        ctx.textAlign = 'right';
+        ctx.fillText(val, 714, y);
+        ctx.textAlign = 'left';
+
+        ctx.strokeStyle = '#F3EFEA';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(86, y + 28);
+        ctx.lineTo(714, y + 28);
+        ctx.stroke();
+      });
+
+      // Advice box
+      ctx.fillStyle = '#FAF8F5';
+      ctx.strokeStyle = '#E6DFD6';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.roundRect(86, 680, 628, 136, 16);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.fillStyle = '#1C1917';
+      ctx.font = `700 16px ${fontBase}`;
+      ctx.fillText('Lưu ý khi làm hồ sơ:', 112, 720);
+
+      ctx.fillStyle = '#57534E';
+      ctx.font = `400 15px ${fontBase}`;
+      ctx.fillText('• Nộp bản sao Giấy khai sinh cho công ty trong vòng 45 ngày khi đi làm lại.', 112, 756);
+      ctx.fillText('• Tiền chế độ được BHXH chi trả trực tiếp vào tài khoản cá nhân.', 112, 786);
+
+      // Footer
+      ctx.textAlign = 'center';
+      ctx.fillStyle = '#6B625B';
+      ctx.font = `600 14px ${fontBase}`;
+      ctx.fillText('ThaiSanPro · thaisanpro.pages.dev', 400, 878);
+
+      const dataUrl = canvas.toDataURL('image/png');
+      const fileName = `phieu-thai-san-${mode}.png`;
+      if (isInAppBrowser()) {
+        openPngPreviewModal(dataUrl, fileName);
+        return;
+      }
+      const link = document.createElement('a');
+      link.download = fileName;
+      link.href = dataUrl;
+      link.click();
+      const toast = document.getElementById(`toast-${mode}`);
+      if (toast) {
+        toast.innerText = 'Đã tải ảnh phiếu dự toán PNG về máy.';
+        toast.classList.remove('hidden');
+        setTimeout(() => toast.classList.add('hidden'), 3500);
+      }
+    }
+
+    function openPngPreviewModal(dataUrl, fileName) {
+      const modal = document.getElementById('png-preview-modal');
+      const img = document.getElementById('png-preview-img');
+      const dl = document.getElementById('png-preview-dl');
+      if (img) img.src = dataUrl;
+      if (dl) {
+        dl.href = dataUrl;
+        dl.download = fileName;
+      }
+      if (modal) modal.classList.remove('hidden');
+    }
+
+    function closePngPreviewModal() {
+      const modal = document.getElementById('png-preview-modal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    // Mobile Drawer & Modal
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobile-menu-drawer');
+      const iconOpen = document.getElementById('icon-menu-open');
+      const iconClose = document.getElementById('icon-menu-close');
+      const btn = document.getElementById('btn-hamburger');
+      const opening = drawer.classList.contains('hidden');
+      drawer.classList.toggle('hidden');
+      iconOpen.classList.toggle('hidden');
+      iconClose.classList.toggle('hidden');
+      btn.setAttribute('aria-expanded', opening ? 'true' : 'false');
+    }
+
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      const btn = document.getElementById('btn-install-app');
+      if (btn) btn.classList.remove('hidden');
+    });
+
+    function openInstallModal() {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(() => { deferredPrompt = null; });
+        return;
+      }
+      document.getElementById('install-modal').classList.remove('hidden');
+    }
+
+    function closeInstallModal() {
+      document.getElementById('install-modal').classList.add('hidden');
+    }
+
+    document.getElementById('install-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'install-modal') closeInstallModal();
+    });
+    document.getElementById('png-preview-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'png-preview-modal') closePngPreviewModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeInstallModal();
+        closePngPreviewModal();
+      }
+    });
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(() => {});
+      });
+    }
+
+    async function shareSummary(mode) {
+      const isMom = mode === 'mom';
+      const total = isMom
+        ? document.getElementById('mom-total-amount').innerText
+        : document.getElementById('dad-total-amount').innerText;
+
+      let text = '';
+      const title = isMom
+        ? `Bảng tính tiền thai sản: ${total} (ThaiSanPro)`
+        : `Chế độ thai sản của bố: ${total} (ThaiSanPro)`;
+
+      if (isMom) {
+        const oneshot = document.getElementById('mom-slip-oneshot').innerText;
+        const salary = document.getElementById('mom-slip-salary').innerText;
+        const recovery = document.getElementById('mom-slip-recovery').innerText;
+        text = `BẢNG TÍNH TIỀN THAI SẢN (MẸ SINH CON)\n- Tổng thực nhận: ${total}\n- Trợ cấp 1 lần (tã lót): ${oneshot}\n- Tiền nghỉ thai sản: ${salary}\n- Dưỡng sức phục hồi: ${recovery}\n(Theo Luật BHXH 2024 & NĐ 161/2026, Lương CS 2.53M — thaisanpro.pages.dev)`;
+      } else {
+        const leave = document.getElementById('dad-slip-leave').innerText;
+        const oneshot = document.getElementById('dad-slip-oneshot').innerText;
+        text = `CHẾ ĐỘ THAI SẢN CỦA BỐ KHI VỢ SINH\n- Tổng tiền nhận được: ${total}\n- Trợ cấp nghỉ việc: ${leave}\n- Tiền tã lót: ${oneshot}\n(Theo Luật BHXH — thaisanpro.pages.dev)`;
+      }
+
+      if (navigator.share) {
+        try {
+          await navigator.share({ title, text, url: 'https://thaisanpro.pages.dev/' });
+          return;
+        } catch (err) {
+          if (err.name === 'AbortError') return;
+        }
+      }
+
+      if (await copyText(text)) {
+        const toast = document.getElementById(`toast-${mode}`);
+        if (toast) {
+          toast.innerText = 'Đã sao chép bảng kê — bạn có thể dán vào Zalo hoặc tin nhắn.';
+          toast.classList.remove('hidden');
+          setTimeout(() => toast.classList.add('hidden'), 3500);
+        }
+        const mLabel = document.getElementById('mobile-sticky-share-label');
+        if (mLabel) {
+          mLabel.innerText = 'Đã chép!';
+          setTimeout(() => { mLabel.innerText = 'Chia sẻ'; }, 2500);
+        }
+      }
+    }
+
+    function shareToFacebook() {
+      const url = encodeURIComponent('https://thaisanpro.pages.dev/');
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank', 'width=600,height=500');
+    }
+
+    // Initialize dynamic dates
+    (function init() {
+      const now = new Date();
+      // Default eligibility birth month = +4 months from today
+      const futureBirth = new Date(now.getFullYear(), now.getMonth() + 4, 1);
+      const emY = futureBirth.getFullYear();
+      const emM = (futureBirth.getMonth() + 1).toString().padStart(2, '0');
+      document.getElementById('eligibility-month').value = `${emY}-${emM}`;
+
+      // Default LMP = ~18 weeks ago
+      const defaultLmp = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 126);
+      document.getElementById('input-lmp-date').value = toInputDateStr(defaultLmp);
+
+      calculateAll();
+      checkEligibility();
+      calcDueDate();
+      renderChecklist();
+      renderHospitals();
+      const inAppHint = document.getElementById('inapp-shopee-hint');
+      if (inAppHint && isInAppBrowser()) inAppHint.classList.remove('hidden');
+    })();
+  </script>
+  <!-- Cloudflare Web Analytics -->
+  <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c3d2142acacc4e6bbcac8bcfa1efa1f9"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+</body>
+</html>

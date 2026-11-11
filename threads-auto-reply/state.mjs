@@ -149,10 +149,10 @@ export function canSendReply(state, maxPerHour, maxPerDay, nowSec = Math.floor(D
       if (ts >= hourCutoff) hourCount++;
     }
   }
-  if (hourCount >= maxPerHour) {
+  if (maxPerHour > 0 && hourCount >= maxPerHour) {
     return { allowed: false, reason: `hourly cap reached (${hourCount}/${maxPerHour})` };
   }
-  if (dayCount >= maxPerDay) {
+  if (maxPerDay > 0 && dayCount >= maxPerDay) {
     return { allowed: false, reason: `daily cap reached (${dayCount}/${maxPerDay})` };
   }
   return { allowed: true };

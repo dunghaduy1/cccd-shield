@@ -29,6 +29,42 @@ test('getMe, getUserThreads, and getReplies parse Graph responses with auth head
   assert.ok(calls.every((c) => c.opts.headers.Authorization === 'Bearer tok'));
 });
 
+test('getReplies paginates while paging.next is present and stops when paging.next is absent even if cursors.after exists', async () => {
+  const urls = [];
+  const client = createThreadsClient({
+    fetchImpl: async (url) => {
+      urls.push(url);
+      if (!url.includes('after=')) {
+        return new Response(
+          JSON.stringify({
+            data: [{ id: 'c1' }, { id: 'c2' }],
+            paging: {
+              cursors: { after: 'cur_page_2' },
+              next: 'https://graph.threads.net/v1.0/p1/replies?limit=100&after=cur_page_2',
+            },
+          }),
+          { status: 200 }
+        );
+      }
+      return new Response(
+        JSON.stringify({
+          data: [{ id: 'c3' }],
+          paging: {
+            cursors: { after: 'cur_end_ignored' },
+          },
+        }),
+        { status: 200 }
+      );
+    },
+  });
+
+  const replies = await client.getReplies('p1', 'tok');
+  assert.deepEqual(replies.map((r) => r.id), ['c1', 'c2', 'c3']);
+  assert.equal(urls.length, 2);
+  assert.match(urls[0], /limit=100/);
+  assert.match(urls[1], /after=cur_page_2/);
+});
+
 test('getThread fetches single post metadata by id', async () => {
   const client = createThreadsClient({
     fetchImpl: async (url, opts) => {

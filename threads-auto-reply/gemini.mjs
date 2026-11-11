@@ -5,7 +5,7 @@ QUY TẮC BẮT BUỘC:
 1. Bắt đúng cặp xưng hô từ bình luận của người xem:
    - Nếu họ gọi "chị - em" / "chị ơi" -> xưng "chị - em" (hoặc "mình - em" nếu phù hợp).
    - Nếu họ dùng "tui - bà" / "bà ơi" -> xưng "tui - bà".
-   - Nếu họ dùng "mình - mom" / "mom ơi" hoặc trung tính không rõ -> dùng "mình - mom".
+   - Nếu họ dùng "mình - mom" / "mom ơi" hoặc trung tính không rõ -> dùng "mình - bạn".
 2. Giọng văn bình dân, thân mật như nhắn tin điện thoại: 1–2 câu ngắn gọn (10–220 ký tự), tự nhiên như người thật ("trộm vía", "nha mom", "cố gắng xíu nè", "đúng rồi đó"), tối đa 1 emoji nhẹ hoặc không dùng emoji.
 3. TUYỆT ĐỐI KHÔNG:
    - Không gạch đầu dòng, không liệt kê dài dòng.
@@ -15,7 +15,8 @@ QUY TẮC BẮT BUỘC:
 4. Phân loại "action":
    - "escalate": bình luận có dấu hiệu nguy hiểm thai kỳ (ra máu, đau bụng dữ dội, dọa sảy/sảy thai/lưu thai, ngất, sốt cao), hỏi tên/liều thuốc uống, hoặc chuyện buồn mất bé. Không tự viết lời khuyên y khoa.
    - "skip": spam, quảng cáo, hoặc bình luận vô nghĩa/công kích không nên trả lời.
-   - "reply": bình luận chia sẻ, hỏi han bình thường về thai kỳ/mẹ bầu.`;
+   - "reply": bình luận chia sẻ, hỏi han bình thường về thai kỳ/mẹ bầu.
+5. Luôn trả về DUY NHẤT 1 JSON object hợp lệ (không markdown): {"action":"reply"|"escalate"|"skip","reason":"lý do ngắn","detected_pair":"cặp xưng hô","reply_text":"câu trả lời (để trống nếu không reply)"}.`;
 
 const RESPONSE_SCHEMA = {
   type: 'OBJECT',
@@ -41,10 +42,22 @@ function stripCodeFences(raw) {
 export function createGeminiClient({
   apiKey,
   model = 'gemini-3.8-flash',
+  baseUrl = 'https://generativelanguage.googleapis.com',
   fetchImpl = fetch,
 } = {}) {
   if (!apiKey) throw new Error('Gemini apiKey is required');
-  const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`;
+  const root = String(baseUrl || 'https://generativelanguage.googleapis.com')
+    .trim()
+    .replace(/\/+$/, '');
+  const modelPath = String(model).split('/').map(encodeURIComponent).join('/');
+  const endpoint = `${root}/v1beta/models/${modelPath}:generateContent`;
+  const headers = {
+    'Content-Type': 'application/json',
+    'x-goog-api-key': apiKey,
+  };
+  if (!root.includes('generativelanguage.googleapis.com')) {
+    headers.Authorization = `Bearer ${apiKey}`;
+  }
 
   return {
     async generateCommentDecision({ postText, commentText, authorUsername = '' }) {
@@ -56,10 +69,7 @@ export function createGeminiClient({
 
       const res = await fetchImpl(endpoint, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-goog-api-key': apiKey,
-        },
+        headers,
         body: JSON.stringify({
           systemInstruction: { parts: [{ text: SYSTEM_INSTRUCTION }] },
           contents: [{ role: 'user', parts: [{ text: userPrompt }] }],
@@ -81,7 +91,10 @@ export function createGeminiClient({
       }
 
       const envelope = JSON.parse(raw);
-      const partText = envelope?.candidates?.[0]?.content?.parts?.[0]?.text;
+      const parts = envelope?.candidates?.[0]?.content?.parts || [];
+      const partText =
+        parts.findLast((p) => !p?.thought && p?.text)?.text ||
+        parts.find((p) => p?.text)?.text;
       if (!partText) {
         throw new Error('Gemini returned empty candidate content');
       }

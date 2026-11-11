@@ -22,10 +22,10 @@ export function parseDotEnv(rawText) {
   return out;
 }
 
-function parsePositiveInt(raw, fallback, name) {
+function parsePositiveInt(raw, fallback, name, min = 1) {
   const val = raw === undefined || raw === '' ? fallback : Number(raw);
-  if (!Number.isInteger(val) || val <= 0) {
-    throw new Error(`Invalid ${name}: expected positive integer`);
+  if (!Number.isInteger(val) || val < min) {
+    throw new Error(`Invalid ${name}: expected integer >= ${min}`);
   }
   return val;
 }
@@ -67,14 +67,17 @@ export function loadConfig(
     initThreadsToken,
     geminiApiKey,
     geminiModel: String(env.GEMINI_MODEL || 'gemini-3.8-flash').trim(),
+    geminiBaseUrl: String(env.GEMINI_BASE_URL || 'https://generativelanguage.googleapis.com')
+      .trim()
+      .replace(/\/+$/, ''),
     dryRun: String(env.DRY_RUN ?? 'true').trim().toLowerCase() !== 'false',
     telegramBotToken: String(env.TELEGRAM_BOT_TOKEN || '').trim(),
     telegramChatId: String(env.TELEGRAM_CHAT_ID || '').trim(),
     pollIntervalSec: parsePositiveInt(env.POLL_INTERVAL_SEC, 60, 'POLL_INTERVAL_SEC'),
     delayMinSec,
     delayMaxSec,
-    maxRepliesPerHour: parsePositiveInt(env.MAX_REPLIES_PER_HOUR, 20, 'MAX_REPLIES_PER_HOUR'),
-    maxRepliesPerDay: parsePositiveInt(env.MAX_REPLIES_PER_DAY, 100, 'MAX_REPLIES_PER_DAY'),
+    maxRepliesPerHour: parsePositiveInt(env.MAX_REPLIES_PER_HOUR, 20, 'MAX_REPLIES_PER_HOUR', 0),
+    maxRepliesPerDay: parsePositiveInt(env.MAX_REPLIES_PER_DAY, 100, 'MAX_REPLIES_PER_DAY', 0),
     maxQueueAgeSec: parsePositiveInt(env.MAX_QUEUE_AGE_SEC, 2700, 'MAX_QUEUE_AGE_SEC'),
     postLookbackDays: parsePositiveInt(env.POST_LOOKBACK_DAYS, 7, 'POST_LOOKBACK_DAYS'),
     targetPost: String(env.TARGET_POST || '').trim(),
